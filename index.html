@@ -1,145 +1,128 @@
-<nav>
-    <a href="index.html">Startseite</a> |
-    <a href="mechaniken.html">Spielmechaniken</a>
-</nav>
-<hr>
-
 <!DOCTYPE html>
 <html lang="de">
 <head>
     <meta charset="UTF-8">
     <title>The After Life – Game Projekt</title>
-</head>
 
+    <!-- Einfaches dunkles Design nur mit HTML + CSS -->
+    <style>
+        body {
+            margin: 0;
+            font-family: Arial, sans-serif;
+            background: #111;
+            color: #eee;
+        }
+
+        header {
+            background: #181818;
+            padding: 20px 40px;
+            border-bottom: 1px solid #333;
+        }
+
+        header h1 {
+            margin: 0;
+            font-size: 32px;
+        }
+
+        header p {
+            margin: 5px 0 0 0;
+            color: #aaa;
+        }
+
+        nav {
+            background: #151515;
+            padding: 10px 40px;
+            border-bottom: 1px solid #333;
+        }
+
+        nav a {
+            color: #ddd;
+            text-decoration: none;
+            margin-right: 20px;
+            font-size: 15px;
+        }
+
+        nav a:hover {
+            color: #ffffff;
+            text-decoration: underline;
+        }
+
+        main {
+            max-width: 900px;
+            margin: 30px auto 60px auto;
+            padding: 0 20px;
+            line-height: 1.6;
+        }
+
+        h2 {
+            margin-top: 30px;
+            border-bottom: 1px solid #444;
+            padding-bottom: 5px;
+        }
+
+        img.full {
+            width: 100%;
+            max-width: 900px;
+            display: block;
+            margin: 15px auto;
+            border-radius: 4px;
+        }
+
+        footer {
+            text-align: center;
+            color: #777;
+            font-size: 13px;
+            padding: 20px 0 30px 0;
+            border-top: 1px solid #333;
+            background: #101010;
+        }
+    </style>
+</head>
 <body>
 
-    <h1>The After Life</h1>
-    <h2>Platformer – Survival Adventure – Indie Game</h2>
+    <!-- Kopfbereich -->
+    <header>
+        <h1>The After Life</h1>
+        <p>Platformer – Survival Adventure – Indie Game</p>
+    </header>
 
-    <h3>Game Design Dokument</h3>
-    <p>Basierend auf dem offiziellen Game Design Document (GDD) Version 1.0 vom 06.10.2025.</p>
+    <!-- Navigation zu deinen Unterseiten -->
+    <nav>
+        <a href="index.html">Überblick</a>
+        <a href="charaktere.html">Charaktere</a>
+        <a href="orte.html">Orte</a>
+        <a href="mechaniken.html">Spielmechaniken</a>
+        <a href="story.html">Story &amp; Team</a>
+    </nav>
 
-    <!-- ===================== ÜBERBLICK ===================== -->
-    <h2>Überblick</h2>
-    <p>
-        „The After Life“ ist ein Side-Scroller Survival-Adventure in einer
-        postapokalyptischen Welt voller Zombies. Der Spieler baut Siedlungen auf,
-        kämpft gegen Bedrohungen und versucht, eine neue Zivilisation zu gründen.
-    </p>
+    <!-- Hauptinhalt -->
+    <main>
+        <h2>Game Design Dokument</h2>
+        <p>
+            Basierend auf dem offiziellen Game Design Document (GDD) Version 1.0 vom 06.10.2025.
+        </p>
 
-    <!-- ===================== PITCHDECK ===================== -->
-    <h2>Pitchdeck – Folien</h2>
+        <h2>Überblick</h2>
+        <p>
+            „The After Life“ ist ein Side-Scroller Survival-Adventure in einer postapokalyptischen Welt voller Zombies.
+            Der Spieler baut Siedlungen auf, kämpft gegen Bedrohungen und versucht, eine neue Zivilisation zu gründen.
+        </p>
 
-    <figure>
-        <img src="pictures/1.jpeg" width="600" alt="Pitchdeck Titel-Folie">
-        <figcaption>Folie 1 – Titel und grundlegende Vorstellung des Spiels.</figcaption>
-    </figure>
+        <h2>Pitchdeck – Folien</h2>
+        <p>Hier siehst du einen Überblick über die wichtigsten Präsentationsfolien aus dem Pitchdeck.</p>
 
-    <figure>
-        <img src="pictures/2.jpeg" width="600" alt="Pitchdeck Story-Folie">
-        <figcaption>Folie 2 – Story, Welt und Ausgangssituation.</figcaption>
-    </figure>
+        <!-- Titelbild – nimm z.B. 1.jpeg -->
+        <img src="pictures/1.jpeg" alt="Titelbild The After Life" class="full">
 
-    <figure>
-        <img src="pictures/3.jpeg" width="600" alt="Pitchdeck Einzigartigkeit">
-        <figcaption>Folie 3 – Einzigartige Features und Besonderheiten des Spiels.</figcaption>
-    </figure>
+        <!-- Weitere Folien -->
+        <img src="pictures/2.jpeg" alt="Story-Übersicht" class="full">
+        <img src="pictures/3.jpeg" alt="Locations &amp; Gameplay" class="full">
+        <img src="pictures/4.jpeg" alt="Charaktere &amp; Begleiter" class="full">
+        <img src="pictures/5.jpeg" alt="Weitere Features" class="full">
+    </main>
 
-    <figure>
-        <img src="pictures/4.jpeg" width="600" alt="Pitchdeck Locations">
-        <figcaption>Folie 4 – Übersicht über wichtige Orte der Spielwelt.</figcaption>
-    </figure>
-
-    <figure>
-        <img src="pictures/5.jpeg" width="600" alt="Pitchdeck Zielgruppe">
-        <figcaption>Folie 5 – Zielgruppe und Ausrichtung des Projekts.</figcaption>
-    </figure>
-
-    <!-- ===================== HAUPTCHARAKTERE ===================== -->
-    <h2>Hauptcharaktere</h2>
-
-    <h3>Wolfram</h3>
-    <p>
-        Überlebender, 43 Jahre alt. Er beginnt in einem kleinen Camp und entwickelt dort die erste Siedlung.
-    </p>
-    <img src="pictures/GDDWolfram4x.png" width="300" alt="Charakter Wolfram">
-
-    <h3>Manfred</h3>
-    <p>
-        Wolframs Mentor. Er bringt ihm die Grundlagen des Überlebens bei und ist wichtig für den Einstieg ins Spiel.
-    </p>
-    <img src="pictures/GDDManfred4x.png" width="300" alt="Charakter Manfred">
-
-    <h3>Max (Begleithund)</h3>
-    <p>
-        Der Hund von Manfred. Er begleitet Wolfram nach den Ereignissen im Camp
-        und unterstützt ihn während seiner Reise.
-    </p>
-    <img src="pictures/GDDMax4x.png" width="300" alt="Hund Max">
-
-    <!-- ===================== ORTE ===================== -->
-    <h2>Wichtige Orte</h2>
-
-    <h3>Camp (Startort)</h3>
-    <p>Der Spieler beginnt hier und lernt die Grundmechaniken des Spiels.</p>
-    <img src="pictures/Camp.jpg" width="500" alt="Camp – Startgebiet">
-
-    <h3>Militärstützpunkt Dänholm</h3>
-    <p>
-        Ein verlassener Militärposten. Hier findet man Händler, Söldner und erste Nebenquests.
-    </p>
-    <figure>
-        <img src="pictures/GDDDaenholm4x.png" width="500" alt="Karte von Dänholm">
-        <figcaption>Top-Down-Karte des Militärstützpunkts Dänholm.</figcaption>
-    </figure>
-    <figure>
-        <img src="pictures/Dänholm.jpg" width="600" alt="Umgebungsansicht von Dänholm">
-        <figcaption>Umgebungs-Illustration des Militärstützpunkts.</figcaption>
-    </figure>
-
-    <h3>Greifswalder Oie</h3>
-    <p>
-        Eine windige Insel mit Leuchtturm. Sie dient als sicherer Handelsposten
-        und wichtiger Knotenpunkt in der Spielwelt.
-    </p>
-    <figure>
-        <img src="pictures/GDDGreifswalder_Oie4x.png" width="500" alt="Karte der Greifswalder Oie">
-        <figcaption>Top-Down-Karte der Greifswalder Oie.</figcaption>
-    </figure>
-    <figure>
-        <img src="pictures/image.jpg" width="600" alt="Leuchtturm auf der Greifswalder Oie">
-        <figcaption>Stimmungsbild der Insel mit Leuchtturm und Küstenumgebung.</figcaption>
-    </figure>
-
-    <h3>Göhren</h3>
-    <p>
-        Küstenort und möglicher Ausgangspunkt für weitere Missionen und Erkundung.
-    </p>
-    <img src="pictures/GDDGoehren4x.png" width="500" alt="Karte von Göhren">
-
-    <!-- ===================== SPIELMECHANIKEN ===================== -->
-    <h2>Spielmechaniken</h2>
-    <p>
-        Eine Übersicht der Spielmechaniken findest du
-        <a href="mechaniken.html">auf dieser Seite</a>.
-    </p>
-
-
-    <!-- ===================== STORY ===================== -->
-    <h2>Story – Kurzzusammenfassung</h2>
-    <p>
-        Wolfram lebt mit seinem Mentor Manfred und Hund Max in einem kleinen Camp.
-        Nach Manfreds Tod beginnt er seine Reise, die erste Siedlung aufzubauen,
-        um den Grundstein einer neuen Zivilisation zu legen.
-    </p>
-
-    <p>Weitere Storypunkte findest du im GDD (siehe PDF).</p>
-
-    <!-- ===================== TEAM ===================== -->
-    <h2>Team</h2>
-    <ul>
-        <li>Noorollah Mousavi</li>
-    </ul>
-
+    <footer>
+        &copy; 2025 The After Life – Game Projekt · Noorollah Mousavi
+    </footer>
 </body>
 </html>

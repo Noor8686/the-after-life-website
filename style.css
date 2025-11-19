@@ -142,3 +142,41 @@ footer {
     background: #1d3557;
     color: #fff;
 }
+
+/* Allgemeine Links im Text */
+a {
+    color: #4da3ff;              /* helles Blau */
+    text-decoration: none;       /* keine Standard-Unterstreichung */
+    font-weight: 600;
+    position: relative;
+}
+
+/* dünner Balken unter dem Link beim Hover */
+a::after {
+    content: "";
+    position: absolute;
+    left: 0;
+    bottom: -3px;
+    width: 0;
+    height: 2px;
+    background: #4da3ff;
+    transition: width 0.25s ease;
+}
+
+a:hover::after {
+    width: 100%;
+}
+
+a:hover {
+    color: #ffffff;
+}
+
+/* bereits besuchter Link – etwas blasser */
+a:visited {
+    color: #9bb8ff;
+}
+
+/* beim Klicken */
+a:active {
+    color: #ff6b6b;
+}

@@ -1,3 +1,5 @@
+/* ===== Allgemeines Design ===== */
+
 body {
     margin: 0;
     font-family: Arial, sans-serif;
@@ -84,11 +86,11 @@ footer {
     background: #507eff;
 }
 
-/* Hero-Bereich auf der Startseite */
+/* ===== Hero-Bereich (Startseite) ===== */
 
 .hero {
-    min-height: 80vh;                /* fast voller Bildschirm */
-    background-image: url("pictures/image.jpg"); /* nimm hier dein großes Titelbild */
+    min-height: 80vh;
+    background-image: url("pictures/image.jpg"); /* ← HIER DEIN STARTBILD */
     background-size: cover;
     background-position: center;
     display: flex;
@@ -96,9 +98,10 @@ footer {
     justify-content: flex-start;
     padding: 4rem;
     color: #fff;
+    position: relative;
 }
 
-.hero::before {                      /* dunkler Overlay, damit Text lesbar ist */
+.hero::before {
     content: "";
     position: absolute;
     inset: 0;
@@ -122,20 +125,12 @@ footer {
     margin-bottom: 2rem;
 }
 
-/* Buttons im Hero */
+/* Hero Buttons */
 
 .hero-buttons {
     display: flex;
     gap: 1rem;
     flex-wrap: wrap;
-}
-
-.button {
-    display: inline-block;
-    padding: 0.8rem 1.6rem;
-    border-radius: 4px;
-    text-decoration: none;
-    font-weight: 600;
 }
 
 .button.primary {

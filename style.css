@@ -180,3 +180,36 @@ a:visited {
 a:active {
     color: #ff6b6b;
 }
+
+
+nav {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    background: #151515;
+    padding: 15px 40px;
+    border-bottom: 1px solid #333;
+    z-index: 1000;
+}
+
+body {
+    padding-top: 70px; /* damit Inhalt nicht unter der Navi versteckt wird */
+}
+
+.top-btn {
+    position: fixed;
+    bottom: 25px;
+    right: 25px;
+    background: #e63946;
+    padding: 12px 16px;
+    border-radius: 8px;
+    color: white;
+    text-decoration: none;
+    font-weight: bold;
+    box-shadow: 0 0 10px #000;
+}
+
+.top-btn:hover {
+    background: #ff4a57;
+}

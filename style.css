@@ -218,3 +218,22 @@ a:active {
 .top-btn:hover {
     background: #ff4a57;
 }
+
+.fullscreen-img {
+    width: 100vw;                 /* komplette Bildschirmbreite */
+    height: 100vh;                /* komplette Bildschirmhöhe */
+    object-fit: cover;            /* schneidet sauber zu, keine Verzerrung */
+    display: block;
+    margin: 0;
+    padding: 0;
+}
+
+/* Vollbild-Bilder (Folien) */
+.fullscreen-img {
+    width: 100vw;        /* ganze Bildschirmbreite */
+    height: 100vh;       /* ganze Bildschirmhöhe */
+    object-fit: cover;   /* Bild wird zugeschnitten, nicht verzerrt */
+    display: block;
+    margin: 0;
+    padding: 0;
+}

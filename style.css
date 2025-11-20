@@ -227,13 +227,3 @@ a:active {
     margin: 0;
     padding: 0;
 }
-
-/* Vollbild-Bilder (Folien) */
-.fullscreen-img {
-    width: 100vw;        /* ganze Bildschirmbreite */
-    height: 100vh;       /* ganze Bildschirmhöhe */
-    object-fit: cover;   /* Bild wird zugeschnitten, nicht verzerrt */
-    display: block;
-    margin: 0;
-    padding: 0;
-}

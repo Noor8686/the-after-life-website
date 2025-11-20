@@ -2,6 +2,7 @@
 
 body {
     margin: 0;
+    padding-top: 70px;          /* Platz für die fixe Navigation */
     font-family: Arial, sans-serif;
     background: #111;
     color: #eee;
@@ -23,10 +24,17 @@ header p {
     color: #aaa;
 }
 
+/* Navigation – fix am oberen Rand */
+
 nav {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
     background: #151515;
-    padding: 10px 40px;
+    padding: 15px 40px;
     border-bottom: 1px solid #333;
+    z-index: 1000;
 }
 
 nav a {
@@ -38,8 +46,9 @@ nav a {
 
 nav a:hover {
     color: #ffffff;
-    text-decoration: underline;
 }
+
+/* Hauptbereich */
 
 main {
     max-width: 900px;
@@ -54,6 +63,8 @@ h2 {
     padding-bottom: 5px;
 }
 
+/* Bilder im Inhalt */
+
 img.full {
     width: 100%;
     max-width: 900px;
@@ -61,6 +72,8 @@ img.full {
     margin: 15px auto;
     border-radius: 4px;
 }
+
+/* Footer */
 
 footer {
     text-align: center;
@@ -70,6 +83,8 @@ footer {
     border-top: 1px solid #333;
     background: #101010;
 }
+
+/* Buttons */
 
 .button {
     display: inline-block;
@@ -90,7 +105,7 @@ footer {
 
 .hero {
     min-height: 80vh;
-    background-image: url("pictures/image.jpg"); /* ← HIER DEIN STARTBILD */
+    background-image: url("pictures/image.jpg"); /* Startbild */
     background-size: cover;
     background-position: center;
     display: flex;
@@ -125,7 +140,7 @@ footer {
     margin-bottom: 2rem;
 }
 
-/* Hero Buttons */
+/* Buttons im Hero */
 
 .hero-buttons {
     display: flex;
@@ -144,14 +159,16 @@ footer {
 }
 
 /* Allgemeine Links im Text */
+
 a {
-    color: #4da3ff;              /* helles Blau */
-    text-decoration: none;       /* keine Standard-Unterstreichung */
+    color: #4da3ff;
+    text-decoration: none;
     font-weight: 600;
     position: relative;
 }
 
 /* dünner Balken unter dem Link beim Hover */
+
 a::after {
     content: "";
     position: absolute;
@@ -171,31 +188,19 @@ a:hover {
     color: #ffffff;
 }
 
-/* bereits besuchter Link – etwas blasser */
+/* bereits besuchter Link */
+
 a:visited {
     color: #9bb8ff;
 }
 
 /* beim Klicken */
+
 a:active {
     color: #ff6b6b;
 }
 
-
-nav {
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    background: #151515;
-    padding: 15px 40px;
-    border-bottom: 1px solid #333;
-    z-index: 1000;
-}
-
-body {
-    padding-top: 70px; /* damit Inhalt nicht unter der Navi versteckt wird */
-}
+/* Zur-Top-Schaltfläche */
 
 .top-btn {
     position: fixed;

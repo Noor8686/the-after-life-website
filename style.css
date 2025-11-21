@@ -227,3 +227,33 @@ a:active {
     margin: 0;
     padding: 0;
 }
+
+/* ===== GRID LAYOUT: Charaktere ===== */
+
+.grid-characters {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 30px;
+    margin-top: 20px;
+}
+
+.char-box {
+    background: #181818;
+    padding: 20px;
+    border-radius: 8px;
+    text-align: center;
+    border: 1px solid #333;
+    box-shadow: 0 0 10px rgba(0,0,0,0.3);
+}
+
+.char-box img {
+    width: 100%;
+    height: 320px;
+    object-fit: cover;
+    border-radius: 8px;
+}
+
+.char-box h3 {
+    margin-top: 15px;
+    color: #fff;
+}

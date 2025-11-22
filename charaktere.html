@@ -42,5 +42,24 @@
     <footer>
         &copy; 2025 The After Life – Game Projekt
     </footer>
+    <script>
+document.addEventListener('DOMContentLoaded', function () {
+    const elements = document.querySelectorAll('.reveal');
+
+    const observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                entry.target.classList.add('in-view');
+                // Optional: danach nicht mehr beobachten
+                observer.unobserve(entry.target);
+            }
+        });
+    }, { threshold: 0.15 });
+
+    elements.forEach(el => observer.observe(el));
+});
+</script>
 </body>
 </html>
+
+

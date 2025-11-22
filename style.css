@@ -181,6 +181,12 @@ footer {
     box-shadow: 0 15px 25px rgba(0, 0, 0, 0.7);
 }
 
+.button:active,
+.top-btn:active {
+    transform: scale(0.96) translateY(1px);
+    box-shadow: 0 2px 6px rgba(0,0,0,0.4);
+}
+
 /* =========================================================
    HERO-BEREICH (Startseite)
    ========================================================= */
@@ -197,8 +203,8 @@ footer {
     color: #fff;
     position: relative;
 
-    /* sanftes Einblenden der Bühne */
-    animation: heroFadeIn 1.2s ease-out forwards;
+    /* leichtes Schweben / Parallax */
+    animation: heroFloat 12s ease-in-out infinite alternate;
 }
 
 .hero::before {
@@ -405,17 +411,6 @@ main ul li:hover {
    KEYFRAMES FÜR HERO-ANIMATIONEN
    ========================================================= */
 
-@keyframes heroFadeIn {
-    from {
-        opacity: 0;
-        transform: scale(1.02);
-    }
-    to {
-        opacity: 1;
-        transform: scale(1);
-    }
-}
-
 @keyframes heroContentUp {
     from {
         opacity: 0;
@@ -425,6 +420,47 @@ main ul li:hover {
         opacity: 1;
         transform: translateY(0);
     }
+}
+
+@keyframes heroFloat {
+    from { background-position: center top; }
+    to   { background-position: center 20px; }
+}
+
+/* =========================================================
+   SCROLL-ANIMATIONEN (für Handy, Tablet & Desktop)
+   ========================================================= */
+
+/* Ausgangszustand: unsichtbar + leicht verschoben */
+.reveal {
+    opacity: 0;
+    transform: translateY(30px);
+    transition: opacity 0.6s ease-out, transform 0.6s ease-out;
+}
+
+/* Wenn Element im Sichtbereich ist */
+.reveal.in-view {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+/* Varianten: von links/rechts/Zoom */
+.reveal-left {
+    transform: translateX(-40px);
+}
+
+.reveal-right {
+    transform: translateX(40px);
+}
+
+.reveal-zoom {
+    transform: scale(0.95);
+}
+
+.reveal-left.in-view,
+.reveal-right.in-view,
+.reveal-zoom.in-view {
+    transform: none;
 }
 
 /* =========================================================
@@ -569,62 +605,4 @@ main ul li:hover {
     .hero p {
         font-size: 1.4rem;
     }
-}
-
-/* =========================================================
-   SCROLL-ANIMATIONEN (für Handy, Tablet & Desktop)
-   ========================================================= */
-
-/* Ausgangszustand: unsichtbar + leicht verschoben */
-.reveal {
-    opacity: 0;
-    transform: translateY(30px);
-    transition: opacity 0.6s ease-out, transform 0.6s ease-out;
-}
-
-/* Wenn Element im Sichtbereich ist */
-.reveal.in-view {
-    opacity: 1;
-    transform: translateY(0);
-}
-
-/* Varianten: von links/rechts/Zoom */
-.reveal-left {
-    transform: translateX(-40px);
-}
-
-.reveal-right {
-    transform: translateX(40px);
-}
-
-.reveal-zoom {
-    transform: scale(0.95);
-}
-
-.reveal-left.in-view,
-.reveal-right.in-view,
-.reveal-zoom.in-view {
-    transform: none;
-}
-
-/* Leichtes Schweben für Hero-Hintergrund (Pseudo-Parallax) */
-.hero {
-    animation: heroFloat 12s ease-in-out infinite alternate;
-}
-
-@keyframes heroFloat {
-    from { background-position: center top; }
-    to   { background-position: center 20px; }
-}
-
-/* Button-Animation beim Antippen/Klicken (Handy & Maus) */
-.button,
-.top-btn {
-    transition: transform 0.15s ease, box-shadow 0.15s ease, background 0.2s ease;
-}
-
-.button:active,
-.top-btn:active {
-    transform: scale(0.96) translateY(1px);
-    box-shadow: 0 2px 6px rgba(0,0,0,0.4);
 }

@@ -472,3 +472,89 @@ main ul li:nth-child(even) {
         font-size: 1rem;
     }
 }
+
+
+/* ===================== */
+/*  MEDIA QUERIES       */
+/*  Handy & Tablet       */
+/* ===================== */
+
+/* Smartphones (bis ca. 480px Breite) */
+@media only screen and (max-width: 480px) {
+
+    body {
+        padding-top: 60px;
+        font-size: 15px;
+    }
+
+    header {
+        padding: 10px 15px;
+        text-align: center;
+    }
+
+    nav {
+        padding: 10px 8px;
+    }
+
+    nav a {
+        margin-right: 8px;
+        font-size: 13px;
+    }
+
+    /* Hero kleiner machen */
+    .hero {
+        min-height: 70vh;
+        padding: 2rem 1rem;
+    }
+
+    .hero h2 {
+        font-size: 1.6rem;
+    }
+
+    .hero p {
+        font-size: 1rem;
+        margin-bottom: 1rem;
+    }
+
+    /* Inhalt über die ganze Breite */
+    main {
+        max-width: 100%;
+        margin: 20px auto 40px auto;
+        padding: 0 15px;
+    }
+
+    /* Bilder wirklich auf Bildschirmbreite */
+    img.full {
+        max-width: 100%;
+        border-radius: 0;
+        margin: 10px 0;
+    }
+}
+
+
+/* Tablets (bis ca. 768px Breite) */
+@media only screen and (max-width: 768px) {
+
+    header {
+        padding: 15px 20px;
+        text-align: center;
+    }
+
+    nav {
+        padding: 12px 20px;
+    }
+
+    main {
+        max-width: 95%;
+        margin: 25px auto 50px auto;
+        padding: 0 15px;
+    }
+
+    .hero {
+        padding: 3rem 2rem;
+    }
+
+    .hero h2 {
+        font-size: 2.2rem;
+    }
+}

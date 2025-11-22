@@ -1,21 +1,23 @@
-/* ===== Allgemeines Design ===== */
+/* ===== Grunddesign ===== */
 
 body {
     margin: 0;
-    padding-top: 70px;          /* Platz für die fixe Navigation */
+    padding-top: 70px;
     font-family: Arial, sans-serif;
     background: #111;
     color: #eee;
 }
 
+/* ===== Header ===== */
+
 header {
     background: #181818;
     padding: 20px 40px;
     border-bottom: 1px solid #333;
+    text-align: center;
 }
 
 header h1 {
-    margin: 0;
     font-size: 32px;
 }
 
@@ -24,7 +26,7 @@ header p {
     color: #aaa;
 }
 
-/* Navigation – fix am oberen Rand */
+/* ===== Navigation (fixiert oben) ===== */
 
 nav {
     position: fixed;
@@ -32,15 +34,18 @@ nav {
     left: 0;
     width: 100%;
     background: #151515;
-    padding: 15px 40px;
+    padding: 15px 20px;
     border-bottom: 1px solid #333;
     z-index: 1000;
+
+    display: flex;
+    flex-wrap: wrap;
+    gap: 15px;
 }
 
 nav a {
     color: #ddd;
     text-decoration: none;
-    margin-right: 20px;
     font-size: 15px;
 }
 
@@ -48,7 +53,7 @@ nav a:hover {
     color: #ffffff;
 }
 
-/* Hauptbereich */
+/* ===== Main ===== */
 
 main {
     max-width: 900px;
@@ -63,57 +68,32 @@ h2 {
     padding-bottom: 5px;
 }
 
-/* Bilder im Inhalt */
+/* ===== Bilder ===== */
 
 img.full {
     width: 100%;
-    max-width: 900px;
+    height: auto;
+    max-width: 100%;
+    border-radius: 4px;
     display: block;
-    margin: 15px auto;
-    border-radius: 4px;
+    margin: 20px 0;
 }
 
-/* Footer */
-
-footer {
-    text-align: center;
-    color: #777;
-    font-size: 13px;
-    padding: 20px 0 30px 0;
-    border-top: 1px solid #333;
-    background: #101010;
-}
-
-/* Buttons */
-
-.button {
-    display: inline-block;
-    padding: 10px 18px;
-    margin: 10px 0;
-    background: #2c6cff;
-    color: #fff;
-    text-decoration: none;
-    border-radius: 4px;
-    font-size: 14px;
-}
-
-.button:hover {
-    background: #507eff;
-}
-
-/* ===== Hero-Bereich (Startseite) ===== */
+/* ===== Hero Bereich ===== */
 
 .hero {
     min-height: 80vh;
-    background-image: url("pictures/image.jpg"); /* Startbild */
+    background-image: url("pictures/image.jpg");
     background-size: cover;
     background-position: center;
+
     display: flex;
     align-items: center;
-    justify-content: flex-start;
-    padding: 4rem;
-    color: #fff;
+    justify-content: center;
+    padding: 3rem;
+
     position: relative;
+    text-align: center;
 }
 
 .hero::before {
@@ -136,71 +116,35 @@ footer {
 }
 
 .hero p {
-    font-size: 1.2rem;
+    font-size: 1.3rem;
     margin-bottom: 2rem;
 }
-
-/* Buttons im Hero */
 
 .hero-buttons {
     display: flex;
     gap: 1rem;
     flex-wrap: wrap;
+    justify-content: center;
 }
 
-.button.primary {
-    background: #e63946;
-    color: #fff;
-}
+/* Buttons */
 
-.button.secondary {
-    background: #1d3557;
-    color: #fff;
-}
-
-/* Allgemeine Links im Text */
-
-a {
-    color: #4da3ff;
+.button {
+    padding: 12px 20px;
+    border-radius: 4px;
     text-decoration: none;
     font-weight: 600;
-    position: relative;
+    color: white;
 }
 
-/* dünner Balken unter dem Link beim Hover */
+.button.primary { background: #e63946; }
+.button.secondary { background: #1d3557; }
 
-a::after {
-    content: "";
-    position: absolute;
-    left: 0;
-    bottom: -3px;
-    width: 0;
-    height: 2px;
-    background: #4da3ff;
-    transition: width 0.25s ease;
+.button:hover {
+    opacity: 0.85;
 }
 
-a:hover::after {
-    width: 100%;
-}
-
-a:hover {
-    color: #ffffff;
-}
-
-/* bereits besuchter Link */
-
-a:visited {
-    color: #9bb8ff;
-}
-
-/* beim Klicken */
-
-a:active {
-    color: #ff6b6b;
-}
-
-/* Zur-Top-Schaltfläche */
+/* Back-to-top button */
 
 .top-btn {
     position: fixed;
@@ -215,113 +159,49 @@ a:active {
     box-shadow: 0 0 10px #000;
 }
 
-.top-btn:hover {
-    background: #ff4a57;
+.top-btn:hover { background: #ff4a57; }
+
+/* ========================================================= */
+/* ==========  RESPONSIVE MEDIA QUERIES  ====================*/
+/* ========================================================= */
+
+/* === Handy (bis 600px) === */
+@media (max-width: 600px) {
+
+    nav { justify-content: center; }
+
+    header h1 { font-size: 24px; }
+    header p { font-size: 14px; }
+
+    .hero {
+        padding: 2rem 1rem;
+        min-height: 70vh;
+    }
+
+    .hero h2 { font-size: 2rem; }
+    .hero p { font-size: 1rem; }
+
+    main { padding: 0 15px; }
 }
 
-.fullscreen-img {
-    width: 100vw;                 /* komplette Bildschirmbreite */
-    height: 100vh;                /* komplette Bildschirmhöhe */
-    object-fit: cover;            /* schneidet sauber zu, keine Verzerrung */
-    display: block;
-    margin: 0;
-    padding: 0;
+/* === Tablet (600px – 1024px) === */
+@media (min-width: 600px) and (max-width: 1024px) {
+
+    nav { justify-content: center; }
+
+    .hero {
+        padding: 3rem;
+    }
+
+    .hero h2 { font-size: 2.5rem; }
 }
 
-/* ===== GRID LAYOUT: Charaktere ===== */
+/* === Große Bildschirme (über 1400px) === */
+@media (min-width: 1400px) {
+    body { font-size: 20px; }
 
-.grid-characters {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-    gap: 30px;
-    margin-top: 20px;
-}
+    .hero h2 { font-size: 4rem; }
+    .hero p { font-size: 1.5rem; }
 
-.char-box {
-    background: #181818;
-    padding: 20px;
-    border-radius: 8px;
-    text-align: center;
-    border: 1px solid #333;
-    box-shadow: 0 0 10px rgba(0,0,0,0.3);
-}
-
-.char-box img {
-    width: 100%;
-    height: 320px;
-    object-fit: cover;
-    border-radius: 8px;
-}
-
-.char-box h3 {
-    margin-top: 15px;
-    color: #fff;
-}
-
-/* --- Spielmechaniken-Liste automatisch stylen --- */
-
-main ul li {
-    padding: 6px 10px;
-    margin-bottom: 5px;
-    border-radius: 6px;
-}
-
-/* Erster Punkt */
-main ul li:first-child {
-    background: #134611;
-    color: #b9ffb5;
-    font-weight: bold;
-}
-
-/* Letzter Punkt */
-main ul li:last-child {
-    background: #5c0a0a;
-    color: #ffbaba;
-    font-weight: bold;
-}
-
-/* Jeder ungerade Punkt */
-main ul li:nth-child(odd) {
-    background: #1a3a5f;
-}
-
-/* Jeder gerade Punkt */
-main ul li:nth-child(even) {
-    background: #24486e;
-}
-
-/* ===== Beispiel: Pseudo-Selektoren für die Mechanik-Liste ===== */
-
-.mechanik-liste {
-    list-style: none;        /* Punkte vor der Liste entfernen */
-    padding: 0;
-    margin: 20px 0;
-}
-
-/* jedes Listenelement bekommt etwas Abstand */
-.mechanik-liste li {
-    padding: 8px 10px;
-}
-
-/* 1. Element: besonders hervorheben */
-.mechanik-liste li:first-child {
-    background: #1d3557;
-    color: #fff;
-    font-weight: bold;
-}
-
-/* letztes Element: andere Farbe */
-.mechanik-liste li:last-child {
-    background: #111827;
-    border-top: 1px solid #444;
-}
-
-/* alle ungeraden Elemente (1,3,5,7,...) */
-.mechanik-liste li:nth-child(odd) {
-    background: #222;
-}
-
-/* alle geraden Elemente (2,4,6,8,...) */
-.mechanik-liste li:nth-child(even) {
-    background: #2a2a2a;
+    main { max-width: 1100px; }
 }

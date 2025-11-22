@@ -257,3 +257,35 @@ a:active {
     margin-top: 15px;
     color: #fff;
 }
+
+/* --- Spielmechaniken-Liste automatisch stylen --- */
+
+main ul li {
+    padding: 6px 10px;
+    margin-bottom: 5px;
+    border-radius: 6px;
+}
+
+/* Erster Punkt */
+main ul li:first-child {
+    background: #134611;
+    color: #b9ffb5;
+    font-weight: bold;
+}
+
+/* Letzter Punkt */
+main ul li:last-child {
+    background: #5c0a0a;
+    color: #ffbaba;
+    font-weight: bold;
+}
+
+/* Jeder ungerade Punkt */
+main ul li:nth-child(odd) {
+    background: #1a3a5f;
+}
+
+/* Jeder gerade Punkt */
+main ul li:nth-child(even) {
+    background: #24486e;
+}

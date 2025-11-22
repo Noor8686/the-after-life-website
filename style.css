@@ -75,11 +75,12 @@ h2 {
 
 img.full {
     width: 100%;
-    max-width: 100%;
+    height: auto;
     display: block;
     margin: 15px 0;
     border-radius: 4px;
 }
+
 
 /* für evtl. Vollbild-Bilder */
 .fullscreen-img {
@@ -424,5 +425,50 @@ main ul li:nth-child(even) {
 
     .hero p {
         font-size: 1.4rem;
+    }
+}
+
+/* ===== Handy Ansicht ===== */
+@media (max-width: 600px) {
+
+    nav {
+        padding: 10px;
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: center;
+        gap: 10px;
+    }
+
+    nav a {
+        font-size: 13px;
+        margin: 0;
+        padding: 5px 0;
+    }
+
+    header h1 {
+        font-size: 22px;
+        text-align: center;
+    }
+
+    header p {
+        font-size: 14px;
+        text-align: center;
+    }
+
+    main {
+        padding: 10px;
+        margin-top: 10px;
+    }
+
+    .hero {
+        padding: 2rem;
+    }
+
+    .hero h2 {
+        font-size: 2rem;
+    }
+
+    .hero p {
+        font-size: 1rem;
     }
 }

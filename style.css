@@ -1,8 +1,352 @@
-/* ========================================================= */
-/* ==========  RESPONSIVE MEDIA QUERIES  ====================*/
-/* ========================================================= */
+/* =========================================================
+   GLOBAL GRUNDDESIGN
+   ========================================================= */
 
-/* === Smartphones klein (bis 480px) === */
+body {
+    margin: 0;
+    padding-top: 70px;          /* Platz für die fixe Navigation */
+    font-family: Arial, sans-serif;
+    background: #111;
+    color: #eee;
+}
+
+/* ---------------- Header ---------------- */
+
+header {
+    background: #181818;
+    padding: 20px 40px;
+    border-bottom: 1px solid #333;
+    text-align: center;
+}
+
+header h1 {
+    margin: 0;
+    font-size: 32px;
+}
+
+header p {
+    margin: 5px 0 0 0;
+    color: #aaa;
+}
+
+/* ---------------- Navigation (fix oben) ---------------- */
+
+nav {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    background: #151515;
+    padding: 15px 40px;
+    border-bottom: 1px solid #333;
+    z-index: 1000;
+
+    display: flex;
+    flex-wrap: wrap;
+    gap: 15px;
+    align-items: center;
+}
+
+nav a {
+    color: #ddd;
+    text-decoration: none;
+    margin-right: 20px;
+    font-size: 15px;
+}
+
+nav a:hover {
+    color: #ffffff;
+}
+
+/* ---------------- Hauptbereich ---------------- */
+
+main {
+    max-width: 900px;
+    margin: 30px auto 60px auto;
+    padding: 0 20px;
+    line-height: 1.6;
+}
+
+h2 {
+    margin-top: 30px;
+    border-bottom: 1px solid #444;
+    padding-bottom: 5px;
+}
+
+/* ---------------- Bilder im Inhalt ---------------- */
+
+img.full {
+    width: 100%;
+    height: auto;
+    display: block;
+    margin: 15px 0;
+    border-radius: 4px;
+}
+
+/* optional: echte Vollbildbilder */
+.fullscreen-img {
+    width: 100vw;
+    height: 100vh;
+    object-fit: cover;
+    display: block;
+    margin: 0;
+    padding: 0;
+}
+
+/* ---------------- Footer ---------------- */
+
+footer {
+    text-align: center;
+    color: #777;
+    font-size: 13px;
+    padding: 20px 0 30px 0;
+    border-top: 1px solid #333;
+    background: #101010;
+}
+
+/* =========================================================
+   BUTTONS
+   ========================================================= */
+
+.button {
+    display: inline-block;
+    padding: 10px 18px;
+    margin: 10px 0;
+    background: #2c6cff;
+    color: #fff;
+    text-decoration: none;
+    border-radius: 4px;
+    font-size: 14px;
+    font-weight: 600;
+}
+
+.button:hover {
+    background: #507eff;
+}
+
+.button.primary {
+    background: #e63946;
+    color: #fff;
+}
+
+.button.secondary {
+    background: #1d3557;
+    color: #fff;
+}
+
+/* Zur-Top-Schaltfläche */
+
+.top-btn {
+    position: fixed;
+    bottom: 25px;
+    right: 25px;
+    background: #e63946;
+    padding: 12px 16px;
+    border-radius: 8px;
+    color: white;
+    text-decoration: none;
+    font-weight: bold;
+    box-shadow: 0 0 10px #000;
+}
+
+.top-btn:hover {
+    background: #ff4a57;
+}
+
+/* =========================================================
+   HERO-BEREICH (Startseite)
+   ========================================================= */
+
+.hero {
+    min-height: 80vh;
+    background-image: url("pictures/image.jpg"); /* Startbild */
+    background-size: cover;
+    background-position: center;
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    padding: 4rem;
+    color: #fff;
+    position: relative;
+}
+
+.hero::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background: rgba(0, 0, 0, 0.55);
+    z-index: 0;
+}
+
+.hero-content {
+    position: relative;
+    max-width: 600px;
+    z-index: 1;
+}
+
+.hero h2 {
+    font-size: 3rem;
+    margin-bottom: 1rem;
+}
+
+.hero p {
+    font-size: 1.2rem;
+    margin-bottom: 2rem;
+}
+
+.hero-buttons {
+    display: flex;
+    gap: 1rem;
+    flex-wrap: wrap;
+}
+
+/* =========================================================
+   LINKS & PSEUDO-SELEKTOREN
+   ========================================================= */
+
+a {
+    color: #4da3ff;
+    text-decoration: none;
+    font-weight: 600;
+    position: relative;
+}
+
+/* dünner Balken unter dem Link beim Hover */
+a::after {
+    content: "";
+    position: absolute;
+    left: 0;
+    bottom: -3px;
+    width: 0;
+    height: 2px;
+    background: #4da3ff;
+    transition: width 0.25s ease;
+}
+
+a:hover::after {
+    width: 100%;
+}
+
+a:hover {
+    color: #ffffff;
+}
+
+a:visited {
+    color: #9bb8ff;
+}
+
+a:active {
+    color: #ff6b6b;
+}
+
+/* =========================================================
+   CHARAKTER-GRID (z.B. für spätere Erweiterung)
+   ========================================================= */
+
+.grid-characters {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 30px;
+    margin-top: 20px;
+}
+
+.char-box {
+    background: #181818;
+    padding: 20px;
+    border-radius: 8px;
+    text-align: center;
+    border: 1px solid #333;
+    box-shadow: 0 0 10px rgba(0,0,0,0.3);
+}
+
+.char-box img {
+    width: 100%;
+    height: 320px;
+    object-fit: cover;
+    border-radius: 8px;
+}
+
+.char-box h3 {
+    margin-top: 15px;
+    color: #fff;
+}
+
+/* =========================================================
+   LISTEN / MECHANIK-LISTE MIT PSEUDO-SELEKTOREN
+   ========================================================= */
+
+/* Grundstil für normale ULs im main */
+main ul li {
+    padding: 6px 10px;
+    margin-bottom: 5px;
+    border-radius: 6px;
+}
+
+/* Erster Punkt */
+main ul li:first-child {
+    background: #134611;
+    color: #b9ffb5;
+    font-weight: bold;
+}
+
+/* Letzter Punkt */
+main ul li:last-child {
+    background: #5c0a0a;
+    color: #ffbaba;
+    font-weight: bold;
+}
+
+/* Jeder ungerade Punkt */
+main ul li:nth-child(odd) {
+    background: #1a3a5f;
+}
+
+/* Jeder gerade Punkt */
+main ul li:nth-child(even) {
+    background: #24486e;
+}
+
+/* Spezielle Mechanik-Liste (überschreibt obige Regeln) */
+
+.mechanik-liste {
+    list-style: none;
+    padding: 0;
+    margin: 20px 0;
+}
+
+.mechanik-liste li {
+    padding: 8px 10px;
+    margin-bottom: 4px;
+}
+
+/* 1. Element: besonders hervorheben */
+.mechanik-liste li:first-child {
+    background: #1d3557;
+    color: #fff;
+    font-weight: bold;
+}
+
+/* letztes Element */
+.mechanik-liste li:last-child {
+    background: #111827;
+    border-top: 1px solid #444;
+}
+
+/* ungerade Elemente */
+.mechanik-liste li:nth-child(odd) {
+    background: #222;
+}
+
+/* gerade Elemente */
+.mechanik-liste li:nth-child(even) {
+    background: #2a2a2a;
+}
+
+/* =========================================================
+   RESPONSIVE MEDIA QUERIES
+   ========================================================= */
+
+/* Smartphones klein (bis 480px) */
 @media (max-width: 480px) {
 
     body {
@@ -67,8 +411,7 @@
     }
 }
 
-
-/* === Smartphones / kleine Tablets (480px – 768px) === */
+/* Smartphones / kleine Tablets (480px – 768px) */
 @media (min-width: 480px) and (max-width: 768px) {
 
     nav {
@@ -86,6 +429,8 @@
 
     .hero {
         padding: 3rem 2rem;
+        text-align: center;
+        justify-content: center;
     }
 
     .hero h2 {
@@ -93,8 +438,7 @@
     }
 }
 
-
-/* === Tablets (768px – 1024px) === */
+/* Tablets (768px – 1024px) */
 @media (min-width: 768px) and (max-width: 1024px) {
 
     nav {
@@ -114,8 +458,7 @@
     }
 }
 
-
-/* === Desktop Normal (1024px – 1400px) === */
+/* Desktop normal (1024px – 1400px) */
 @media (min-width: 1024px) and (max-width: 1400px) {
 
     main {
@@ -123,8 +466,7 @@
     }
 }
 
-
-/* === Große Bildschirme (ab 1400px) === */
+/* Große Bildschirme (ab 1400px) */
 @media (min-width: 1400px) {
 
     body {

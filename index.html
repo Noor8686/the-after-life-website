@@ -86,28 +86,5 @@ document.addEventListener('DOMContentLoaded', function () {
     elements.forEach(el => observer.observe(el));
 });
 </script>
-
-<script>
-// Navigation Schatten
-window.addEventListener("scroll", function() {
-    const nav = document.querySelector("nav");
-    if (window.scrollY > 30) {
-        nav.classList.add("nav-shadow");
-    } else {
-        nav.classList.remove("nav-shadow");
-    }
-});
-
-// Top-Button sichtbar machen
-window.addEventListener("scroll", function() {
-    const topBtn = document.querySelector(".top-btn");
-    if (window.scrollY > 600) {
-        topBtn.classList.add("visible");
-    } else {
-        topBtn.classList.remove("visible");
-    }
-});
-</script>
-
 </body>
 </html>

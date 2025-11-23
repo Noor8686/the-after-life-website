@@ -606,3 +606,31 @@ main ul li:hover {
         font-size: 1.4rem;
     }
 }
+/* ================================
+   NAV-SHADOW BEI SCROLL
+   ================================ */
+
+nav {
+    transition: box-shadow 0.3s ease, background 0.3s ease;
+}
+
+nav.nav-shadow {
+    box-shadow: 0 4px 15px rgba(0,0,0,0.5);
+    background: #101010f5; /* leicht dunkler + etwas durchsichtig */
+}
+
+
+/* ================================
+   TOP-BUTTON EIN-/AUSBLENDEN
+   ================================ */
+
+.top-btn {
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity 0.4s ease;
+}
+
+.top-btn.visible {
+    opacity: 1;
+    pointer-events: auto;
+}

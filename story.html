@@ -2,73 +2,68 @@
 <html lang="de">
 <head>
     <meta charset="UTF-8">
-     <!-- WICHTIG für Handy & Tablet: -->
+    <!-- WICHTIG für Handy & Tablet: -->
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>The After Life – Story & Team</title>
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
 
-    <header>
-        <h1>The After Life</h1>
-        <p>Story &amp; Team</p>
-    </header>
-
+    <!-- Navigation -->
     <nav>
         <a href="index.html">Überblick</a>
         <a href="charaktere.html">Charaktere</a>
         <a href="orte.html">Orte</a>
         <a href="mechaniken.html">Spielmechaniken</a>
-        <a href="story.html">Story &amp; Team</a>
+        <a href="story.html" class="active">Story &amp; Team</a>
     </nav>
 
+    <!-- Kopfbereich -->
+    <header class="reveal">
+        <h1>The After Life</h1>
+        <p>Story &amp; Team</p>
+    </header>
+
+    <!-- Hauptinhalt -->
     <main>
-        <h2>Story – Kurzzusammenfassung</h2>
-        <p>
+
+        <h2 class="reveal">Story – Kurzzusammenfassung</h2>
+
+        <p class="reveal">
             Wolfram lebt mit seinem Mentor Manfred und Hund Max in einem kleinen Camp.
             Nach Manfreds Tod beginnt er seine Reise, die erste Siedlung aufzubauen,
             um den Grundstein einer neuen Zivilisation zu legen.
         </p>
-        <p>
+
+        <p class="reveal">
             Auf dem Weg trifft er auf verschiedene Fraktionen, gefährliche Mutationen der Zombies
             und moralische Entscheidungen, die den Verlauf der Geschichte beeinflussen.
         </p>
 
-        <!-- NEU hinzugefügt: GDD Button -->
-        <p>Weitere Storypunkte findest du im GDD.</p>
+        <!-- GDD Button -->
+        <p class="reveal">Weitere Storypunkte findest du im vollständigen Game Design Document (GDD):</p>
 
-        <a href="GDD.pdf" target="_blank" class="button">
+        <a href="GDD.pdf" target="_blank" class="button reveal">
             Zum vollständigen GDD
         </a>
 
-        <h2>Team</h2>
-        <ul>
+        <h2 class="reveal">Team</h2>
+
+        <ul class="reveal">
             <li>Noorollah Mousavi – Game Design &amp; Webprojekt</li>
         </ul>
 
-        <img src="pictures/GDDManfred4x.png" alt="Manfred Konzeptbild" class="full">
+        <img src="pictures/GDDManfred4x.png" 
+             alt="Manfred Konzeptbild" 
+             class="full reveal reveal-zoom">
+
     </main>
 
     <footer>
         &copy; 2025 The After Life – Game Projekt
     </footer>
 
-    <script>
-document.addEventListener('DOMContentLoaded', function () {
-    const elements = document.querySelectorAll('.reveal');
-
-    const observer = new IntersectionObserver((entries) => {
-        entries.forEach(entry => {
-            if (entry.isIntersecting) {
-                entry.target.classList.add('in-view');
-                // Optional: danach nicht mehr beobachten
-                observer.unobserve(entry.target);
-            }
-        });
-    }, { threshold: 0.15 });
-
-    elements.forEach(el => observer.observe(el));
-});
-</script>
+    <!-- Externe JavaScript-Datei -->
+    <script src="script.js"></script>
 </body>
 </html>

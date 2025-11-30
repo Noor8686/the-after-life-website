@@ -45,6 +45,14 @@ nav {
     flex-wrap: wrap;
     gap: 15px;
     align-items: center;
+
+    /* für Scroll-Schatten (nav-shadow) */
+    transition: box-shadow 0.3s ease, background 0.3s ease;
+}
+
+nav.nav-shadow {
+    box-shadow: 0 4px 15px rgba(0,0,0,0.5);
+    background: #101010f5; /* leicht dunkler + etwas durchsichtig */
 }
 
 nav a {
@@ -55,6 +63,12 @@ nav a {
 
     /* sanfter Übergang für Farbe/Bewegung */
     transition: color 0.3s ease, transform 0.2s ease;
+}
+
+/* aktiver Menüpunkt */
+nav a.active {
+    color: #ffffff;
+    border-bottom: 2px solid #e63946;
 }
 
 nav a:hover {
@@ -169,7 +183,11 @@ footer {
     font-weight: bold;
     box-shadow: 0 0 10px #000;
 
+    opacity: 0;               /* wird per JS eingeblendet */
+    pointer-events: none;      /* solange unsichtbar nicht klickbar */
+
     transition:
+        opacity 0.3s ease,
         background 0.25s ease,
         transform 0.25s ease,
         box-shadow 0.25s ease;
@@ -284,7 +302,7 @@ a:active {
 }
 
 /* =========================================================
-   CHARAKTER-GRID (z.B. für spätere Erweiterung)
+   CHARAKTER-GRID
    ========================================================= */
 
 .grid-characters {
@@ -606,16 +624,3 @@ main ul li:hover {
         font-size: 1.4rem;
     }
 }
-/* ================================
-   NAV-SHADOW BEI SCROLL
-   ================================ */
-
-nav {
-    transition: box-shadow 0.3s ease, background 0.3s ease;
-}
-
-nav.nav-shadow {
-    box-shadow: 0 4px 15px rgba(0,0,0,0.5);
-    background: #101010f5; /* leicht dunkler + etwas durchsichtig */
-}
-

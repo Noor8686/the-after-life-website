@@ -2,68 +2,54 @@
 <html lang="de">
 <head>
     <meta charset="UTF-8">
-     <!-- WICHTIG für Handy & Tablet: -->
+    <!-- WICHTIG für Handy & Tablet: -->
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>The After Life – Charaktere</title>
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
 
-    <header>
-        <h1>The After Life</h1>
-        <p>Charaktere</p>
-    </header>
-
+    <!-- Navigation -->
     <nav>
         <a href="index.html">Überblick</a>
-        <a href="charaktere.html">Charaktere</a>
+        <a href="charaktere.html" class="active">Charaktere</a>
         <a href="orte.html">Orte</a>
         <a href="mechaniken.html">Spielmechaniken</a>
         <a href="story.html">Story &amp; Team</a>
     </nav>
 
-<main>
-    <h2 class="reveal">Wolfram</h2>
-    <p class="reveal">
-        Wolfram ist 43 Jahre alt ...
-    </p>
+    <!-- Kopfbereich -->
+    <header class="reveal">
+        <h1>The After Life</h1>
+        <p>Charaktere</p>
+    </header>
 
-    <img src="pictures/GDDWolfram4x.png"
-         alt="Charakter Wolfram"
-         class="full reveal reveal-zoom">
+    <!-- Hauptinhalt -->
+    <main>
+        <h2 class="reveal">Wolfram</h2>
+        <p class="reveal">
+            Wolfram ist 43 Jahre alt ...
+        </p>
 
-    <h2 class="reveal">Max – Begleithund</h2>
-    <p class="reveal">
-        Max ist der Hund von Manfred ...
-    </p>
+        <img src="pictures/GDDWolfram4x.png"
+             alt="Charakter Wolfram"
+             class="full reveal reveal-zoom">
 
-    <img src="pictures/GDDMax4x.png"
-         alt="Begleithund Max"
-         class="full reveal reveal-zoom">
-</main>
+        <h2 class="reveal">Max – Begleithund</h2>
+        <p class="reveal">
+            Max ist der Hund von Manfred ...
+        </p>
 
+        <img src="pictures/GDDMax4x.png"
+             alt="Begleithund Max"
+             class="full reveal reveal-zoom">
+    </main>
 
     <footer>
         &copy; 2025 The After Life – Game Projekt
     </footer>
-    <script>
-document.addEventListener('DOMContentLoaded', function () {
-    const elements = document.querySelectorAll('.reveal');
 
-    const observer = new IntersectionObserver((entries) => {
-        entries.forEach(entry => {
-            if (entry.isIntersecting) {
-                entry.target.classList.add('in-view');
-                // Optional: danach nicht mehr beobachten
-                observer.unobserve(entry.target);
-            }
-        });
-    }, { threshold: 0.15 });
-
-    elements.forEach(el => observer.observe(el));
-});
-</script>
+    <!-- Externe JavaScript-Datei -->
+    <script src="script.js"></script>
 </body>
 </html>
-
-

@@ -2,50 +2,54 @@
 <html lang="de">
 <head>
     <meta charset="UTF-8">
-     <!-- WICHTIG für Handy & Tablet: -->
+    <!-- WICHTIG für Handy & Tablet: -->
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>The After Life – Charaktere</title>
+    <title>The After Life – Spielmechaniken</title>
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
 
+    <!-- Navigation -->
     <nav>
         <a href="index.html">Überblick</a>
         <a href="charaktere.html">Charaktere</a>
         <a href="orte.html">Orte</a>
-        <a href="mechaniken.html">Spielmechaniken</a>
+        <a href="mechaniken.html" class="active">Spielmechaniken</a>
         <a href="story.html">Story &amp; Team</a>
     </nav>
 
-    <header>
+    <!-- Kopfbereich -->
+    <header class="reveal">
         <h1>The After Life</h1>
-        <p>Charaktere</p>
+        <p>Spielmechaniken</p>
     </header>
 
+    <!-- Hauptinhalt -->
     <main>
 
-        <h2>Hauptcharaktere</h2>
+        <h2 class="reveal">Hauptmechaniken</h2>
 
         <!-- GRID WRAPPER -->
         <div class="grid-characters">
 
             <!-- WOLFRAM -->
-            <div class="char-box">
+            <div class="char-box reveal reveal-zoom">
                 <img src="pictures/GDDWolfram4x.png" alt="Charakter Wolfram">
                 <h3>Wolfram</h3>
                 <p>
-                    Wolfram ist 43 Jahre alt und einer der letzten Überlebenden.  
-                    Er beginnt im Camp und entwickelt dort die erste Siedlung.  
-                    Im Laufe des Spiels wächst er vom einfachen Überlebenden zum Anführer einer neuen Gemeinschaft.
+                    Wolfram ist 43 Jahre alt und einer der letzten Überlebenden.
+                    Er beginnt im Camp und entwickelt dort die erste Siedlung.
+                    Im Laufe des Spiels wächst er vom einfachen Überlebenden
+                    zum Anführer einer neuen Gemeinschaft.
                 </p>
             </div>
 
             <!-- MAX -->
-            <div class="char-box">
+            <div class="char-box reveal reveal-zoom">
                 <img src="pictures/GDDMax4x.png" alt="Begleithund Max">
                 <h3>Max – Begleithund</h3>
                 <p>
-                    Max ist der treue Hund von Manfred und begleitet Wolfram nach den Ereignissen im Camp.  
+                    Max ist der treue Hund von Manfred und begleitet Wolfram nach den Ereignissen im Camp.
                     Er warnt vor Gefahren, kann Gegner ablenken und ist ein emotionaler Anker für Wolfram.
                 </p>
             </div>
@@ -58,22 +62,7 @@
         &copy; 2025 The After Life – Game Projekt
     </footer>
 
-    <script>
-document.addEventListener('DOMContentLoaded', function () {
-    const elements = document.querySelectorAll('.reveal');
-
-    const observer = new IntersectionObserver((entries) => {
-        entries.forEach(entry => {
-            if (entry.isIntersecting) {
-                entry.target.classList.add('in-view');
-                // Optional: danach nicht mehr beobachten
-                observer.unobserve(entry.target);
-            }
-        });
-    }, { threshold: 0.15 });
-
-    elements.forEach(el => observer.observe(el));
-});
-</script>
+    <!-- Externe JavaScript-Datei -->
+    <script src="script.js"></script>
 </body>
 </html>

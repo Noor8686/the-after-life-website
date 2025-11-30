@@ -2,7 +2,7 @@
 <html lang="de">
 <head>
     <meta charset="UTF-8">
-     <!-- WICHTIG für Handy & Tablet: -->
+    <!-- WICHTIG für Handy & Tablet: -->
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>The After Life – Game Projekt</title>
     <link rel="stylesheet" href="style.css">
@@ -11,7 +11,7 @@
 
     <!-- Navigation zu deinen Unterseiten -->
     <nav>
-        <a href="index.html">Überblick</a>
+        <a href="index.html" class="active">Überblick</a>
         <a href="charaktere.html">Charaktere</a>
         <a href="orte.html">Orte</a>
         <a href="mechaniken.html">Spielmechaniken</a>
@@ -19,7 +19,7 @@
     </nav>
 
     <!-- Kopfbereich -->
-    <header>
+    <header class="reveal">
         <h1>The After Life</h1>
         <p>Platformer – Survival Adventure – Indie Game</p>
     </header>
@@ -27,13 +27,12 @@
     <!-- Hero-Bereich -->
     <div class="hero">
         <div class="hero-content">
-            <h2>Willkommen in der Welt von The After Life</h2>
+            <h2 class="reveal">Willkommen in der Welt von The After Life</h2>
             <p class="reveal typewriter">
-               Ein Survival-Adventure in einer zerstörten Zukunft.
+                Ein Survival-Adventure in einer zerstörten Zukunft.
             </p>
 
-
-            <div class="hero-buttons">
+            <div class="hero-buttons reveal">
                 <a href="charaktere.html" class="button primary">Charaktere</a>
                 <a href="orte.html" class="button secondary">Orte ansehen</a>
             </div>
@@ -41,26 +40,25 @@
     </div>
 
     <!-- Hauptinhalt -->
-<main>
-    <h2>Charaktere</h2>
+    <main>
+        <h2 class="reveal">Charaktere</h2>
 
-    <div class="grid-characters">
+        <div class="grid-characters">
 
-        <div class="char-box">
-            <img src="pictures/GDDWolfram4x.png" alt="Wolfram">
-            <h3>Wolfram</h3>
-            <p>43 Jahre alt, Überlebender und zukünftiger Siedlungsführer.</p>
+            <div class="char-box reveal reveal-zoom">
+                <img src="pictures/GDDWolfram4x.png" alt="Wolfram">
+                <h3>Wolfram</h3>
+                <p>43 Jahre alt, Überlebender und zukünftiger Siedlungsführer.</p>
+            </div>
+
+            <div class="char-box reveal reveal-zoom">
+                <img src="pictures/GDDMax4x.png" alt="Hund Max">
+                <h3>Max</h3>
+                <p>Der treue Begleiter und Beschützer.</p>
+            </div>
+
         </div>
-
-        <div class="char-box">
-            <img src="pictures/GDDMax4x.png" alt="Hund Max">
-            <h3>Max</h3>
-            <p>Der treue Begleiter und Beschützer.</p>
-        </div>
-
-    </div>
-</main>
-
+    </main>
 
     <footer>
         &copy; 2025 The After Life – Game Projekt · Noorollah Mousavi
@@ -69,22 +67,7 @@
     <!-- Zur-Top-Schaltfläche -->
     <a href="#top" class="top-btn">⬆ Top</a>
 
-    <script>
-document.addEventListener('DOMContentLoaded', function () {
-    const elements = document.querySelectorAll('.reveal');
-
-    const observer = new IntersectionObserver((entries) => {
-        entries.forEach(entry => {
-            if (entry.isIntersecting) {
-                entry.target.classList.add('in-view');
-                // Optional: danach nicht mehr beobachten
-                observer.unobserve(entry.target);
-            }
-        });
-    }, { threshold: 0.15 });
-
-    elements.forEach(el => observer.observe(el));
-});
-</script>
+    <!-- Externe JavaScript-Datei -->
+    <script src="script.js"></script>
 </body>
 </html>

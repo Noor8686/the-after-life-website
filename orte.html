@@ -2,65 +2,66 @@
 <html lang="de">
 <head>
     <meta charset="UTF-8">
-     <!-- WICHTIG für Handy & Tablet: -->
+    <!-- WICHTIG für Handy & Tablet: -->
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>The After Life – Orte</title>
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
 
-    <header>
-        <h1>The After Life</h1>
-        <p>Wichtige Orte der Spielwelt</p>
-    </header>
-
+    <!-- Navigation -->
     <nav>
         <a href="index.html">Überblick</a>
         <a href="charaktere.html">Charaktere</a>
-        <a href="orte.html">Orte</a>
+        <a href="orte.html" class="active">Orte</a>
         <a href="mechaniken.html">Spielmechaniken</a>
         <a href="story.html">Story &amp; Team</a>
     </nav>
 
-<main>
-    <h2 class="reveal">Camp – Startgebiet</h2>
-    <p class="reveal">Das Camp ist der Startpunkt des Spiels ...</p>
-    <img src="pictures/Camp.jpg" alt="Camp" class="full reveal reveal-zoom">
+    <!-- Kopfbereich -->
+    <header class="reveal">
+        <h1>The After Life</h1>
+        <p>Wichtige Orte der Spielwelt</p>
+    </header>
 
-    <h2 class="reveal">Militärstützpunkt Dänholm</h2>
-    <p class="reveal">Ein verlassener Militärposten ...</p>
-    <img src="pictures/GDDDaenholm4x.png" alt="Dänholm" class="full reveal reveal-zoom">
+    <!-- Hauptinhalt -->
+    <main>
+        <h2 class="reveal">Camp – Startgebiet</h2>
+        <p class="reveal">
+            Das Camp ist der Startpunkt des Spiels. Hier lernt Wolfram die Grundlagen
+            des Überlebens, sammelt erste Ressourcen und trifft wichtige Entscheidungen
+            für den Aufbau der neuen Siedlung.
+        </p>
+        <img src="pictures/Camp.jpg" alt="Camp" class="full reveal reveal-zoom">
 
-    <h2 class="reveal">Greifswalder Oie</h2>
-    <p class="reveal">Eine windige Insel mit Leuchtturm ...</p>
-    <img src="pictures/GDDGreifswalder_Oie4x.png" alt="Oie" class="full reveal reveal-zoom">
+        <h2 class="reveal">Militärstützpunkt Dänholm</h2>
+        <p class="reveal">
+            Ein verlassener Militärposten, in dem noch Ausrüstung, Munition
+            und Geheimnisse der Vergangenheit zu finden sind. Hohe Gefahr,
+            aber auch große Belohnungen.
+        </p>
+        <img src="pictures/GDDDaenholm4x.png" alt="Dänholm" class="full reveal reveal-zoom">
 
-    <h2 class="reveal">Weitere Orte</h2>
-    <p class="reveal">Weitere Regionen wie Göhren ...</p>
-    <img src="pictures/GDDGoehren4x.png" alt="Göhren" class="full reveal reveal-zoom">
-</main>
+        <h2 class="reveal">Greifswalder Oie</h2>
+        <p class="reveal">
+            Eine windige Insel mit Leuchtturm und rauer See. Ein wichtiger Ort
+            für Funkverbindungen, Handel und die Kontrolle über die umliegenden Gewässer.
+        </p>
+        <img src="pictures/GDDGreifswalder_Oie4x.png" alt="Greifswalder Oie" class="full reveal reveal-zoom">
 
+        <h2 class="reveal">Weitere Orte</h2>
+        <p class="reveal">
+            Weitere Regionen wie Göhren und andere Teile der Insel bieten neue
+            Herausforderungen, Ressourcen und Geschichten, die Wolframs Weg prägen.
+        </p>
+        <img src="pictures/GDDGoehren4x.png" alt="Göhren" class="full reveal reveal-zoom">
+    </main>
 
     <footer>
         &copy; 2025 The After Life – Game Projekt
     </footer>
 
-    <script>
-document.addEventListener('DOMContentLoaded', function () {
-    const elements = document.querySelectorAll('.reveal');
-
-    const observer = new IntersectionObserver((entries) => {
-        entries.forEach(entry => {
-            if (entry.isIntersecting) {
-                entry.target.classList.add('in-view');
-                // Optional: danach nicht mehr beobachten
-                observer.unobserve(entry.target);
-            }
-        });
-    }, { threshold: 0.15 });
-
-    elements.forEach(el => observer.observe(el));
-});
-</script>
+    <!-- Externe JavaScript-Datei -->
+    <script src="script.js"></script>
 </body>
 </html>

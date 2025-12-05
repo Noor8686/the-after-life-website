@@ -10,7 +10,7 @@
 <body>
 
     <!-- Navigation -->
-    <nav>
+    <nav aria-label="Hauptnavigation">
         <a href="index.html">Überblick</a>
         <a href="charaktere.html" class="active">Charaktere</a>
         <a href="orte.html">Orte</a>
@@ -21,32 +21,86 @@
     <!-- Kopfbereich -->
     <header class="reveal">
         <h1>The After Life</h1>
-        <p>Charaktere</p>
+        <p>Charaktere der Welt von The After Life</p>
     </header>
 
     <!-- Hauptinhalt -->
     <main>
-        <h2 class="reveal">Wolfram</h2>
+
+        <h2 class="reveal">Hauptcharaktere</h2>
         <p class="reveal">
-            Wolfram ist 43 Jahre alt ...
+            Die Figuren sind das Herz des Spiels. Jeder Charakter bringt eigene Fähigkeiten,
+            Schwächen und eine persönliche Geschichte mit, die den Verlauf von
+            <strong>The After Life</strong> prägen.
         </p>
 
-        <img src="pictures/GDDWolfram4x.png"
-             alt="Charakter Wolfram"
-             class="full reveal reveal-zoom">
+        <div class="grid-characters">
 
-        <h2 class="reveal">Max – Begleithund</h2>
-        <p class="reveal">
-            Max ist der Hund von Manfred ...
-        </p>
+            <!-- Wolfram -->
+            <article class="char-box reveal reveal-zoom">
+                <img src="pictures/GDDWolfram4x.png"
+                     alt="Wolfram, bärtiger Überlebender in grüner Jacke"
+                     loading="lazy">
+                <h3>Wolfram</h3>
+                <p>
+                    Wolfram ist 43 Jahre alt und der spielbare Hauptcharakter.
+                    Einst Informatikstudent, lebt er nun als einer der letzten
+                    Überlebenden auf Rügen und versucht, aus den Trümmern der
+                    alten Welt eine neue Gemeinschaft aufzubauen.
+                </p>
+                <p>
+                    Zu Beginn beherrscht er nur grundlegende Überlebensfähigkeiten
+                    wie Jagen, Sammeln und einfache Handwerksarbeiten. Im Laufe
+                    des Spiels kann er neue Fertigkeiten erlernen, bessere
+                    Ausrüstung herstellen und schließlich zur Führungsperson einer
+                    Siedlung werden.
+                </p>
+            </article>
 
-        <img src="pictures/GDDMax4x.png"
-             alt="Begleithund Max"
-             class="full reveal reveal-zoom">
+            <!-- Max -->
+            <article class="char-box reveal reveal-zoom">
+                <img src="pictures/GDDMax4x.png"
+                     alt="Max, rötlich-brauner Begleithund"
+                     loading="lazy">
+                <h3>Max – Begleithund</h3>
+                <p>
+                    Max ist der Hund von Manfred und wird nach dessen Tod
+                    zu Wolframs treuestem Begleiter. Er ist ruhig, aufmerksam
+                    und stark an seinen Menschen gebunden.
+                </p>
+                <p>
+                    Im Gameplay warnt Max vor Gefahren, kann Gegner ablenken
+                    oder Fährten aufnehmen. Gleichzeitig ist er ein wichtiger
+                    emotionaler Anker für Wolfram in einer Welt voller Verlust
+                    und Einsamkeit.
+                </p>
+            </article>
+
+            <!-- Manfred -->
+            <article class="char-box reveal reveal-zoom">
+                <img src="pictures/GDDManfred4x.png"
+                     alt="Manfred, älterer Mann mit Mütze als Mentorfigur"
+                     loading="lazy">
+                <h3>Manfred</h3>
+                <p>
+                    Manfred ist ein älterer Überlebender und lange Zeit
+                    Wolframs Mentor. Er bringt ihm grundlegende Fähigkeiten bei
+                    und vermittelt Werte wie Verantwortung und Gemeinschaft.
+                </p>
+                <p>
+                    Sein Tod zu Beginn der Geschichte ist der Auslöser dafür,
+                    dass Wolfram das vertraute Camp verlässt und den Entschluss fasst,
+                    eine eigene Siedlung zu gründen – und damit den Grundstein
+                    für eine neue Zivilisation zu legen.
+                </p>
+            </article>
+
+        </div>
+
     </main>
 
     <footer>
-        &copy; 2025 The After Life – Game Projekt
+        &copy; 2025 The After Life – Game Projekt · Noorollah Mousavi
     </footer>
 
     <!-- Externe JavaScript-Datei -->

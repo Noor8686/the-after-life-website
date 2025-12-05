@@ -4,13 +4,13 @@
     <meta charset="UTF-8">
     <!-- WICHTIG für Handy & Tablet: -->
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>The After Life – Story & Team</title>
+    <title>The After Life – Story &amp; Team</title>
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
 
     <!-- Navigation -->
-    <nav>
+    <nav aria-label="Hauptnavigation">
         <a href="index.html">Überblick</a>
         <a href="charaktere.html">Charaktere</a>
         <a href="orte.html">Orte</a>
@@ -21,46 +21,109 @@
     <!-- Kopfbereich -->
     <header class="reveal">
         <h1>The After Life</h1>
-        <p>Story &amp; Team</p>
+        <p>Story &amp; Team hinter dem Projekt</p>
     </header>
 
     <!-- Hauptinhalt -->
     <main>
 
-        <h2 class="reveal">Story – Kurzzusammenfassung</h2>
+        <!-- Story-Überblick -->
+        <section>
+            <h2 class="reveal">Story – Kurzzusammenfassung</h2>
 
-        <p class="reveal">
-            Wolfram lebt mit seinem Mentor Manfred und Hund Max in einem kleinen Camp.
-            Nach Manfreds Tod beginnt er seine Reise, die erste Siedlung aufzubauen,
-            um den Grundstein einer neuen Zivilisation zu legen.
-        </p>
+            <p class="reveal">
+                In einer zerstörten Zukunft lebt Wolfram mit seinem Mentor Manfred
+                und Hund Max in einem kleinen, abgelegenen Camp auf der Insel.
+                Der Alltag besteht aus Jagen, Sammeln und dem Versuch, den
+                Infizierten aus dem Weg zu gehen.
+            </p>
 
-        <p class="reveal">
-            Auf dem Weg trifft er auf verschiedene Fraktionen, gefährliche Mutationen der Zombies
-            und moralische Entscheidungen, die den Verlauf der Geschichte beeinflussen.
-        </p>
+            <p class="reveal">
+                Als Manfred stirbt, bricht für Wolfram eine Welt zusammen.
+                Aus dem sicheren, aber isolierten Leben im Camp wird eine Reise
+                ins Ungewisse. Wolfram fasst den Entschluss, nicht länger nur zu
+                überleben, sondern den Grundstein für eine neue Zivilisation zu legen –
+                in Form einer eigenen Siedlung.
+            </p>
+        </section>
 
-        <!-- GDD Button -->
-        <p class="reveal">Weitere Storypunkte findest du im vollständigen Game Design Document (GDD):</p>
+        <!-- Story in Abschnitten -->
+        <section>
+            <h2 class="reveal">Der Weg zur neuen Siedlung</h2>
 
-        <a href="GDD.pdf" target="_blank" class="button reveal">
-            Zum vollständigen GDD
-        </a>
+            <h3 class="reveal">Ausgangspunkt: Das Camp</h3>
+            <p class="reveal">
+                Im Camp lernt der Spieler die grundlegenden Mechaniken kennen:
+                Ressourcen sammeln, einfache Ausrüstung herstellen,
+                mit Max zusammenarbeiten und erste Entscheidungen treffen,
+                die zeigen, wie Wolfram mit dieser Welt umgeht.
+            </p>
 
-        <h2 class="reveal">Team</h2>
+            <h3 class="reveal">Konflikte unterwegs</h3>
+            <p class="reveal">
+                Auf seinem Weg trifft Wolfram auf verschiedene Fraktionen,
+                Überlebende mit eigenen Interessen und gefährliche Mutationen
+                der Zombies. Der Spieler entscheidet, wem er hilft, mit wem
+                er handelt – und welche Risiken er eingeht.
+            </p>
 
-        <ul class="reveal">
-            <li>Noorollah Mousavi – Game Design &amp; Webprojekt</li>
-        </ul>
+            <p class="reveal">
+                Moralische Entscheidungen beeinflussen Beziehungen,
+                Zugänge zu Ressourcen und den Verlauf der Geschichte:
+                Wird die Siedlung ein offener Zufluchtsort oder eine streng
+                geschützte Festung?
+            </p>
 
-        <img src="pictures/GDDManfred4x.png" 
-             alt="Manfred Konzeptbild" 
-             class="full reveal reveal-zoom">
+            <h3 class="reveal">Ziel: Eine neue Gemeinschaft</h3>
+            <p class="reveal">
+                Langfristig geht es nicht nur darum, zu überleben,
+                sondern eine funktionierende Gemeinschaft aufzubauen.
+                Jede abgeschlossene Siedlung steht für einen Schritt in Richtung
+                Zukunft – und für die Frage, welchen Preis man dafür zahlen will.
+            </p>
+        </section>
+
+        <!-- GDD-Button -->
+        <section>
+            <h2 class="reveal">Mehr Details zur Story</h2>
+
+            <p class="reveal">
+                Weitere Storypunkte, Nebencharaktere und Missionsideen findest du
+                im vollständigen Game Design Document (GDD):
+            </p>
+
+            <a href="GDD.pdf" target="_blank" class="button reveal">
+                Zum vollständigen GDD
+            </a>
+        </section>
+
+        <!-- Team -->
+        <section>
+            <h2 class="reveal">Team</h2>
+
+            <p class="reveal">
+                <strong>The After Life</strong> ist ein Projekt aus dem Wahlfach
+                Gamedesign und entstand als Kombination aus Game-Konzept
+                und Webentwicklung.
+            </p>
+
+            <ul class="reveal">
+                <li>Noorollah Mousavi – Game Design &amp; Webprojekt</li>
+            </ul>
+        </section>
+
+        <!-- Bild -->
+        <section>
+            <img src="pictures/GDDManfred4x.png"
+                 alt="Konzeptbild von Manfred, Wolframs Mentor"
+                 class="full reveal reveal-zoom"
+                 loading="lazy">
+        </section>
 
     </main>
 
     <footer>
-        &copy; 2025 The After Life – Game Projekt
+        &copy; 2025 The After Life – Game Projekt · Noorollah Mousavi
     </footer>
 
     <!-- Externe JavaScript-Datei -->

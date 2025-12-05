@@ -668,4 +668,26 @@ main ul li:hover {
     .hero p {
         font-size: 1.4rem;
     }
+
+    /* =========================================================
+   Bild-Lightbox
+   ========================================================= */
+
+#img-lightbox {
+    position: fixed;
+    inset: 0;
+    background: rgba(0, 0, 0, 0.85);
+    display: none;                 /* wird per JS auf flex gesetzt */
+    align-items: center;
+    justify-content: center;
+    z-index: 2000;
+}
+
+#img-lightbox img {
+    max-width: 90%;
+    max-height: 90%;
+    border-radius: 8px;
+    box-shadow: 0 20px 40px rgba(0,0,0,0.8);
+}
+
 }

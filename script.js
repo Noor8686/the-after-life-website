@@ -55,4 +55,51 @@ document.addEventListener('DOMContentLoaded', () => {
     // Direkt beim Laden einmal aufrufen
     handleScroll();
     window.addEventListener('scroll', handleScroll);
+
+    /* ============================
+       Rotierender Hero-Text
+       ============================ */
+    const heroTextEl = document.querySelector('#hero-text');
+
+    if (heroTextEl) {
+        const heroTexts = [
+            'Ein Survival-Adventure in einer zerstörten Zukunft.',
+            'Baue deine Siedlung auf den Ruinen der alten Welt.',
+            'Triff Entscheidungen, die über Leben und Tod entscheiden.',
+        ];
+
+        let index = 0;
+
+        setInterval(() => {
+            index = (index + 1) % heroTexts.length;
+            heroTextEl.textContent = heroTexts[index];
+        }, 5000); // alle 5 Sekunden wechseln
+    }
+
+    /* ============================
+       Bild-Lightbox für Charakter- und Ortsbilder
+       ============================ */
+    const lightbox = document.createElement('div');
+    lightbox.id = 'img-lightbox';
+    lightbox.innerHTML = '<img src="" alt="">';
+    document.body.appendChild(lightbox);
+
+    const lightboxImg = lightbox.querySelector('img');
+
+    // alle großen Bilder auf der Seite anklickbar machen
+    const zoomableImages = document.querySelectorAll('img.full, .char-box img');
+
+    zoomableImages.forEach(img => {
+        img.style.cursor = 'zoom-in';
+        img.addEventListener('click', () => {
+            lightboxImg.src = img.src;
+            lightboxImg.alt = img.alt || '';
+            lightbox.style.display = 'flex';
+        });
+    });
+
+    // Klick auf das Overlay schließt die Lightbox
+    lightbox.addEventListener('click', () => {
+        lightbox.style.display = 'none';
+    });
 });

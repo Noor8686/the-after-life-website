@@ -10,7 +10,7 @@
 <body>
 
     <!-- Navigation -->
-    <nav>
+    <nav aria-label="Hauptnavigation">
         <a href="index.html">Überblick</a>
         <a href="charaktere.html">Charaktere</a>
         <a href="orte.html">Orte</a>
@@ -21,45 +21,112 @@
     <!-- Kopfbereich -->
     <header class="reveal">
         <h1>The After Life</h1>
-        <p>Spielmechaniken</p>
+        <p>Kernsysteme &amp; Gameplay-Mechaniken</p>
     </header>
 
     <!-- Hauptinhalt -->
     <main>
 
-        <h2 class="reveal">Hauptmechaniken</h2>
+        <!-- Einleitung -->
+        <section class="reveal">
+            <h2>Hauptmechaniken</h2>
+            <p>
+                <strong>The After Life</strong> kombiniert klassische Survival-Elemente
+                mit Siedlungsaufbau. Der Spieler erkundet die Insel, sammelt Ressourcen,
+                baut Strukturen, bekämpft Infizierte und schützt nach und nach eine
+                wachsende Gemeinschaft von Überlebenden.
+            </p>
+        </section>
 
-        <!-- GRID WRAPPER -->
-        <div class="grid-characters">
+        <!-- Übersicht als Liste (nutzt .mechanik-liste aus deinem CSS) -->
+        <section class="reveal">
+            <h2>Überblick</h2>
+            <ul class="mechanik-liste">
+                <li>Siedlungsbau und Ausbau des Camps</li>
+                <li>Nester zerstören und Zombiepopulation verringern</li>
+                <li>Schnellreise zwischen wichtigen Orten</li>
+                <li>Strukturen mit unterschiedlichen Funktionen</li>
+                <li>NPC-Begleiter und ihre Fähigkeiten</li>
+                <li>Wellenangriffe auf die Siedlung</li>
+                <li>Erholen, Heilen und Vorräte auffrischen</li>
+                <li>Tauschen, Handeln und Ressourcenmanagement</li>
+                <li>Angreifen, Verteidigen und neue Fähigkeiten erlernen</li>
+            </ul>
+        </section>
 
-            <!-- WOLFRAM -->
-            <div class="char-box reveal reveal-zoom">
-                <img src="pictures/GDDWolfram4x.png" alt="Charakter Wolfram">
-                <h3>Wolfram</h3>
-                <p>
-                    Wolfram ist 43 Jahre alt und einer der letzten Überlebenden.
-                    Er beginnt im Camp und entwickelt dort die erste Siedlung.
-                    Im Laufe des Spiels wächst er vom einfachen Überlebenden
-                    zum Anführer einer neuen Gemeinschaft.
-                </p>
+        <!-- Details in Kartenform (nutzt grid-characters / char-box) -->
+        <section>
+            <h2 class="reveal">Mechaniken im Detail</h2>
+
+            <div class="grid-characters">
+
+                <!-- Siedlungsbau -->
+                <article class="char-box reveal reveal-zoom">
+                    <h3>🛖 Siedlungsbau</h3>
+                    <p>
+                        Aus einem kleinen Camp entwickelt sich Schritt für Schritt
+                        eine richtige Siedlung. Der Spieler errichtet Gebäude,
+                        platziert Verteidigungsanlagen und verbessert die Lebensqualität
+                        der Bewohner.
+                    </p>
+                    <p>
+                        Fertiggestellte Siedlungen schließen Gebiete ab und geben das
+                        Gefühl, wirklich etwas Bleibendes geschaffen zu haben.
+                    </p>
+                </article>
+
+                <!-- Nester & Wellenangriffe -->
+                <article class="char-box reveal reveal-zoom">
+                    <h3>💀 Nester &amp; Wellenangriffe</h3>
+                    <p>
+                        Über die Insel verteilt befinden sich Nester, aus denen ständig
+                        neue Infizierte nachkommen. Wenn der Spieler sie zerstört,
+                        verringert sich die Gefahr in der Umgebung.
+                    </p>
+                    <p>
+                        In bestimmten Abständen greifen Wellen von Gegnern die Siedlung an.
+                        Der Spieler muss Mauern, Fallen und eigene Kampffähigkeiten
+                        clever einsetzen, um alle zu schützen.
+                    </p>
+                </article>
+
+                <!-- NPC-Begleiter -->
+                <article class="char-box reveal reveal-zoom">
+                    <h3>🧑‍🤝‍🧑 NPC-Begleiter</h3>
+                    <p>
+                        Nach und nach schließen sich weitere Überlebende an. Sie bringen
+                        eigene Stärken mit – etwa Handwerk, Medizin oder Kampf –
+                        und können durch Quests oder Dialoge für bestimmte Aufgaben
+                        gewonnen werden.
+                    </p>
+                    <p>
+                        Begleiter wie Max unterstützen den Spieler aktiv im Kampf
+                        oder beim Erkunden und geben der Welt mehr Leben.
+                    </p>
+                </article>
+
+                <!-- Handel & Fähigkeiten -->
+                <article class="char-box reveal reveal-zoom">
+                    <h3>🛠️ Handel &amp; Fähigkeiten</h3>
+                    <p>
+                        Ressourcen sind knapp. Der Spieler muss abwägen, was er sammelt,
+                        herstellt oder tauscht. Händler oder andere Fraktionen bieten
+                        seltene Ausrüstung im Austausch für knappe Güter.
+                    </p>
+                    <p>
+                        Durch Erfahrung und bestimmte Ereignisse kann der Spieler
+                        neue Fähigkeiten erlernen – etwa bessere Waffenführung,
+                        effizienteres Bauen oder spezielle Überlebens-Skills.
+                    </p>
+                </article>
+
             </div>
-
-            <!-- MAX -->
-            <div class="char-box reveal reveal-zoom">
-                <img src="pictures/GDDMax4x.png" alt="Begleithund Max">
-                <h3>Max – Begleithund</h3>
-                <p>
-                    Max ist der treue Hund von Manfred und begleitet Wolfram nach den Ereignissen im Camp.
-                    Er warnt vor Gefahren, kann Gegner ablenken und ist ein emotionaler Anker für Wolfram.
-                </p>
-            </div>
-
-        </div> <!-- END GRID -->
+        </section>
 
     </main>
 
     <footer>
-        &copy; 2025 The After Life – Game Projekt
+        &copy; 2025 The After Life – Game Projekt · Noorollah Mousavi
     </footer>
 
     <!-- Externe JavaScript-Datei -->

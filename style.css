@@ -1,4 +1,24 @@
 /* =========================================================
+   FARb-VARIABLEN (THEME)
+   ========================================================= */
+
+:root {
+    --color-bg: #111;
+    --color-bg-header: #181818;
+    --color-bg-footer: #101010;
+    --color-nav: #151515;
+
+    --color-text: #eee;
+    --color-text-muted: #aaa;
+
+    --color-accent: #e63946;
+    --color-link: #4da3ff;
+
+    --color-card-bg: #181818;
+    --color-border: #333;
+}
+
+/* =========================================================
    GLOBAL GRUNDDESIGN
    ========================================================= */
 
@@ -6,16 +26,16 @@ body {
     margin: 0;
     padding-top: 70px;          /* Platz für die fixe Navigation */
     font-family: Arial, sans-serif;
-    background: #111;
-    color: #eee;
+    background: var(--color-bg);
+    color: var(--color-text);
 }
 
 /* ---------------- Header ---------------- */
 
 header {
-    background: #181818;
+    background: var(--color-bg-header);
     padding: 20px 40px;
-    border-bottom: 1px solid #333;
+    border-bottom: 1px solid var(--color-border);
     text-align: center;
 }
 
@@ -26,7 +46,7 @@ header h1 {
 
 header p {
     margin: 5px 0 0 0;
-    color: #aaa;
+    color: var(--color-text-muted);
 }
 
 /* ---------------- Navigation (fix oben) ---------------- */
@@ -36,9 +56,9 @@ nav {
     top: 0;
     left: 0;
     width: 100%;
-    background: #151515;
+    background: var(--color-nav);
     padding: 15px 40px;
-    border-bottom: 1px solid #333;
+    border-bottom: 1px solid var(--color-border);
     z-index: 1000;
 
     display: flex;
@@ -68,7 +88,7 @@ nav a {
 /* aktiver Menüpunkt */
 nav a.active {
     color: #ffffff;
-    border-bottom: 2px solid #e63946;
+    border-bottom: 2px solid var(--color-accent);
 }
 
 nav a:hover {
@@ -127,8 +147,8 @@ footer {
     color: #777;
     font-size: 13px;
     padding: 20px 0 30px 0;
-    border-top: 1px solid #333;
-    background: #101010;
+    border-top: 1px solid var(--color-border);
+    background: var(--color-bg-footer);
 }
 
 /* =========================================================
@@ -160,7 +180,7 @@ footer {
 }
 
 .button.primary {
-    background: #e63946;
+    background: var(--color-accent);
     color: #fff;
 }
 
@@ -175,7 +195,7 @@ footer {
     position: fixed;
     bottom: 25px;
     right: 25px;
-    background: #e63946;
+    background: var(--color-accent);
     padding: 12px 16px;
     border-radius: 8px;
     color: white;
@@ -259,45 +279,60 @@ footer {
     flex-wrap: wrap;
 }
 
+/* Typewriter-Effekt für Startseiten-Text (optional) */
+.typewriter {
+    overflow: hidden;
+    white-space: nowrap;
+    border-right: 2px solid #fff;
+    animation:
+        typing 3s steps(40, end),
+        blink 0.7s step-end infinite;
+    max-width: 100%;
+}
+
 /* =========================================================
-   LINKS & PSEUDO-SELEKTOREN
+   LINKS im Inhalt (nicht Navigation, nicht Buttons)
    ========================================================= */
 
-a {
-    color: #4da3ff;
+main a:not(.button),
+footer a:not(.button) {
+    color: var(--color-link);
     text-decoration: none;
     font-weight: 600;
     position: relative;
-
-    /* Farbe soll ebenfalls weich wechseln */
     transition: color 0.3s ease;
 }
 
 /* dünner Balken unter dem Link beim Hover */
-a::after {
+main a:not(.button)::after,
+footer a:not(.button)::after {
     content: "";
     position: absolute;
     left: 0;
     bottom: -3px;
     width: 0;
     height: 2px;
-    background: #4da3ff;
+    background: var(--color-link);
     transition: width 0.25s ease;
 }
 
-a:hover::after {
+main a:not(.button):hover::after,
+footer a:not(.button):hover::after {
     width: 100%;
 }
 
-a:hover {
+main a:not(.button):hover,
+footer a:not(.button):hover {
     color: #ffffff;
 }
 
-a:visited {
+main a:not(.button):visited,
+footer a:not(.button):visited {
     color: #9bb8ff;
 }
 
-a:active {
+main a:not(.button):active,
+footer a:not(.button):active {
     color: #ff6b6b;
 }
 
@@ -313,11 +348,11 @@ a:active {
 }
 
 .char-box {
-    background: #181818;
+    background: var(--color-card-bg);
     padding: 20px;
     border-radius: 8px;
     text-align: center;
-    border: 1px solid #333;
+    border: 1px solid var(--color-border);
     box-shadow: 0 0 10px rgba(0,0,0,0.3);
 
     transition: transform 0.25s ease, box-shadow 0.25s ease;
@@ -426,7 +461,7 @@ main ul li:hover {
 }
 
 /* =========================================================
-   KEYFRAMES FÜR HERO-ANIMATIONEN
+   KEYFRAMES FÜR HERO- UND TYPEWRITER-ANIMATIONEN
    ========================================================= */
 
 @keyframes heroContentUp {
@@ -443,6 +478,16 @@ main ul li:hover {
 @keyframes heroFloat {
     from { background-position: center top; }
     to   { background-position: center 20px; }
+}
+
+@keyframes typing {
+    from { width: 0; }
+    to   { width: 100%; }
+}
+
+@keyframes blink {
+    from, to { border-color: transparent; }
+    50%      { border-color: #fff; }
 }
 
 /* =========================================================

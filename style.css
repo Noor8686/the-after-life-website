@@ -354,7 +354,6 @@ footer a:not(.button):active {
     text-align: center;
     border: 1px solid var(--color-border);
     box-shadow: 0 0 10px rgba(0,0,0,0.3);
-
     transition: transform 0.25s ease, box-shadow 0.25s ease;
 }
 
@@ -363,7 +362,6 @@ footer a:not(.button):active {
     height: 320px;
     object-fit: cover;
     border-radius: 8px;
-
     transition: transform 0.3s ease;
 }
 
@@ -391,7 +389,6 @@ main ul li {
     padding: 6px 10px;
     margin-bottom: 5px;
     border-radius: 6px;
-
     transition: background 0.25s ease, transform 0.2s ease;
 }
 
@@ -668,8 +665,9 @@ main ul li:hover {
     .hero p {
         font-size: 1.4rem;
     }
+}
 
-    /* =========================================================
+/* =========================================================
    Bild-Lightbox
    ========================================================= */
 
@@ -688,6 +686,4 @@ main ul li:hover {
     max-height: 90%;
     border-radius: 8px;
     box-shadow: 0 20px 40px rgba(0,0,0,0.8);
-}
-
 }

@@ -10,7 +10,7 @@
 <body id="top">
 
     <!-- Navigation zu deinen Unterseiten -->
-    <nav>
+    <nav aria-label="Hauptnavigation">
         <a href="index.html" class="active">Überblick</a>
         <a href="charaktere.html">Charaktere</a>
         <a href="orte.html">Orte</a>
@@ -28,8 +28,9 @@
     <div class="hero">
         <div class="hero-content">
             <h2 class="reveal">Willkommen in der Welt von The After Life</h2>
-            <p class="reveal typewriter">
-                Ein Survival-Adventure in einer zerstörten Zukunft.
+            <p class="reveal">
+                Ein Survival-Adventure in einer zerstörten Zukunft, in der du
+                nicht nur überleben, sondern eine neue Gemeinschaft aufbauen sollst.
             </p>
 
             <div class="hero-buttons reveal">
@@ -41,23 +42,72 @@
 
     <!-- Hauptinhalt -->
     <main>
-        <h2 class="reveal">Charaktere</h2>
 
-        <div class="grid-characters">
+        <!-- Kurzüberblick -->
+        <section class="reveal">
+            <h2>Über das Projekt</h2>
+            <p>
+                <strong>The After Life</strong> ist ein Game-Design-Projekt aus dem
+                Wahlfach Gamedesign und wurde als Kombination aus Game-Konzept
+                und Webentwicklung umgesetzt. Im Mittelpunkt stehen Überleben,
+                Siedlungsbau und die Frage, wie eine neue Zivilisation nach dem
+                Zusammenbruch aussehen kann.
+            </p>
+        </section>
 
-            <div class="char-box reveal reveal-zoom">
-                <img src="pictures/GDDWolfram4x.png" alt="Wolfram">
-                <h3>Wolfram</h3>
-                <p>43 Jahre alt, Überlebender und zukünftiger Siedlungsführer.</p>
+        <!-- Charakter-Teaser -->
+        <section>
+            <h2 class="reveal">Charaktere</h2>
+
+            <div class="grid-characters">
+
+                <article class="char-box reveal reveal-zoom">
+                    <img src="pictures/GDDWolfram4x.png"
+                         alt="Wolfram, 43-jähriger Überlebender"
+                         loading="lazy">
+                    <h3>Wolfram</h3>
+                    <p>
+                        43 Jahre alt, einer der letzten Überlebenden und
+                        zukünftiger Siedlungsführer. Vom einfachen Camper
+                        zum Anführer einer neuen Gemeinschaft.
+                    </p>
+                    <a href="charaktere.html" class="button secondary">
+                        Mehr über Wolfram
+                    </a>
+                </article>
+
+                <article class="char-box reveal reveal-zoom">
+                    <img src="pictures/GDDMax4x.png"
+                         alt="Hund Max, Wolframs Begleiter"
+                         loading="lazy">
+                    <h3>Max</h3>
+                    <p>
+                        Der treue Begleiter und Beschützer, der Wolfram auf
+                        seinen Wegen begleitet, vor Gefahren warnt und
+                        ihm Halt gibt.
+                    </p>
+                    <a href="charaktere.html" class="button secondary">
+                        Zum Charakterprofil
+                    </a>
+                </article>
+
             </div>
+        </section>
 
-            <div class="char-box reveal reveal-zoom">
-                <img src="pictures/GDDMax4x.png" alt="Hund Max">
-                <h3>Max</h3>
-                <p>Der treue Begleiter und Beschützer.</p>
-            </div>
+        <!-- Link zur Story / GDD -->
+        <section class="reveal">
+            <h2>Mehr zur Story &amp; zum Game Design</h2>
+            <p>
+                Auf den Unterseiten findest du Details zur Story, den
+                Spielmechaniken und den wichtigsten Orten der Spielwelt.
+                Das vollständige Game Design Document (GDD) ist zusätzlich
+                auf der Story-Seite verlinkt.
+            </p>
+            <a href="story.html" class="button">
+                Zur Story &amp; Team
+            </a>
+        </section>
 
-        </div>
     </main>
 
     <footer>

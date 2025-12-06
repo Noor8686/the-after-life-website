@@ -2,7 +2,6 @@
 <html lang="de">
 <head>
     <meta charset="UTF-8">
-    <!-- WICHTIG für Handy & Tablet: -->
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>The After Life – Spielmechaniken</title>
     <link rel="stylesheet" href="style.css">
@@ -16,6 +15,11 @@
         <a href="orte.html">Orte</a>
         <a href="mechaniken.html" class="active">Spielmechaniken</a>
         <a href="story.html">Story &amp; Team</a>
+
+        <!-- Theme-Umschalter -->
+        <button class="theme-toggle" aria-label="Design umschalten">
+            🌓
+        </button>
     </nav>
 
     <!-- Kopfbereich -->
@@ -38,7 +42,7 @@
             </p>
         </section>
 
-        <!-- Übersicht als Liste (nutzt .mechanik-liste aus deinem CSS) -->
+        <!-- Übersicht als Liste -->
         <section class="reveal">
             <h2>Überblick</h2>
             <ul class="mechanik-liste">
@@ -54,13 +58,12 @@
             </ul>
         </section>
 
-        <!-- Details in Kartenform (nutzt grid-characters / char-box) -->
+        <!-- Details in Karten -->
         <section>
             <h2 class="reveal">Mechaniken im Detail</h2>
 
             <div class="grid-characters">
 
-                <!-- Siedlungsbau -->
                 <article class="char-box reveal reveal-zoom">
                     <h3>🛖 Siedlungsbau</h3>
                     <p>
@@ -75,7 +78,6 @@
                     </p>
                 </article>
 
-                <!-- Nester & Wellenangriffe -->
                 <article class="char-box reveal reveal-zoom">
                     <h3>💀 Nester &amp; Wellenangriffe</h3>
                     <p>
@@ -90,7 +92,6 @@
                     </p>
                 </article>
 
-                <!-- NPC-Begleiter -->
                 <article class="char-box reveal reveal-zoom">
                     <h3>🧑‍🤝‍🧑 NPC-Begleiter</h3>
                     <p>
@@ -105,7 +106,6 @@
                     </p>
                 </article>
 
-                <!-- Handel & Fähigkeiten -->
                 <article class="char-box reveal reveal-zoom">
                     <h3>🛠️ Handel &amp; Fähigkeiten</h3>
                     <p>
@@ -114,9 +114,8 @@
                         seltene Ausrüstung im Austausch für knappe Güter.
                     </p>
                     <p>
-                        Durch Erfahrung und bestimmte Ereignisse kann der Spieler
-                        neue Fähigkeiten erlernen – etwa bessere Waffenführung,
-                        effizienteres Bauen oder spezielle Überlebens-Skills.
+                        Durch Erfahrung kann der Spieler neue Fähigkeiten erlernen –
+                        etwa bessere Waffenführung oder effizienteres Bauen.
                     </p>
                 </article>
 
@@ -129,7 +128,6 @@
         &copy; 2025 The After Life – Game Projekt · Noorollah Mousavi
     </footer>
 
-    <!-- Externe JavaScript-Datei -->
     <script src="script.js"></script>
 </body>
 </html>

@@ -2,21 +2,8 @@
    FARb-VARIABLEN (THEME)
    ========================================================= */
 
+/* Standard: Dark Theme */
 :root {
-    /* Light-Theme-Variante: wird per JS über .light-theme auf <html> aktiviert */
-   :root.light-theme {
-    --color-bg: #f4f4f4;
-    --color-bg-header: #ffffff;
-    --color-bg-footer: #eaeaea;
-    --color-nav: #ffffff;
-
-    --color-text: #111;
-    --color-text-muted: #555;
-
-    --color-card-bg: #ffffff;
-    --color-border: #cccccc;
-    }
-
     --color-bg: #111;
     --color-bg-header: #181818;
     --color-bg-footer: #101010;
@@ -31,6 +18,21 @@
     --color-card-bg: #181818;
     --color-border: #333;
 }
+
+/* Light Theme (aktiv durch .light-theme auf <html>) */
+:root.light-theme {
+    --color-bg: #f4f4f4;
+    --color-bg-header: #ffffff;
+    --color-bg-footer: #eaeaea;
+    --color-nav: #ffffff;
+
+    --color-text: #111;
+    --color-text-muted: #555;
+
+    --color-card-bg: #ffffff;
+    --color-border: #cccccc;
+}
+
 
 /* =========================================================
    GLOBAL GRUNDDESIGN

@@ -86,54 +86,21 @@ nav {
     transition: box-shadow 0.3s ease, background 0.3s ease;
 }
 
-/* Links in der Navigation */
-nav a {
-    color: var(--color-text);
-    text-decoration: none;
-    margin-right: 20px;
-    font-size: 15px;
-
-    /* sanfter Übergang für Farbe/Bewegung */
-    transition: color 0.3s ease, transform 0.2s ease;
-}
-
-/* aktiver Menüpunkt */
-nav a.active {
-    color: #ffffff;
-    border-bottom: 2px solid var(--color-accent);
-}
-
-nav a:hover {
-    color: #ffffff;
-    transform: translateY(-1px);
-}
-
-nav.nav-shadow {
-    box-shadow: 0 4px 15px rgba(0,0,0,0.5);
-    background: #101010f5; /* leicht dunkler + etwas durchsichtig */
-}
-
-/* Mobile-Menü-Button (☰) */
+/* Hamburger-Button (Desktop: versteckt) */
 .nav-toggle {
-    display: none; /* nur auf Handy sichtbar, siehe Media Query */
-    margin-right: 10px;
-    font-size: 22px;
-    background: transparent;
+    display: none;
+    background: none;
     border: none;
     color: var(--color-text);
+    font-size: 24px;
     cursor: pointer;
-
-    transition: transform 0.2s ease, color 0.25s ease;
 }
 
-.nav-toggle:hover {
-    transform: scale(1.08);
-    color: var(--color-accent);
-}
-
-.nav-toggle:focus-visible {
-    outline: 2px solid var(--color-accent);
-    outline-offset: 2px;
+/* Container für die Links */
+.nav-links {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 15px;
 }
 
 /* Theme-Toggle-Button in der Navigation */
@@ -143,7 +110,7 @@ nav.nav-shadow {
     border-radius: 999px;
     border: 1px solid var(--color-border);
     background: transparent;
-    color: var(--color-text);
+    color: #ddd;
     cursor: pointer;
     font-size: 14px;
 
@@ -170,6 +137,29 @@ nav.nav-shadow {
     box-shadow: 0 2px 6px rgba(0,0,0,0.4);
 }
 
+nav.nav-shadow {
+    box-shadow: 0 4px 15px rgba(0,0,0,0.5);
+    background: #101010f5; /* leicht dunkler + etwas durchsichtig */
+}
+
+nav a {
+    color: #ddd;
+    text-decoration: none;
+    margin-right: 20px;
+    font-size: 15px;
+    transition: color 0.3s ease, transform 0.2s ease;
+}
+
+/* aktiver Menüpunkt */
+nav a.active {
+    color: #ffffff;
+    border-bottom: 2px solid var(--color-accent);
+}
+
+nav a:hover {
+    color: #ffffff;
+    transform: translateY(-1px);
+}
 
 /* ---------------- Hauptbereich ---------------- */
 
@@ -599,11 +589,11 @@ main ul li:hover {
 }
 
 /* =========================================================
-   RESPONSIVE MEDIA QUERIES + HANDY-MENÜ
+   RESPONSIVE MEDIA QUERIES
    ========================================================= */
 
-/* Smartphones klein (bis 480px) */
-@media (max-width: 480px) {
+/* Smartphones / kleine Tablets (bis 768px) */
+@media (max-width: 768px) {
 
     body {
         padding-top: 70px;
@@ -612,34 +602,35 @@ main ul li:hover {
 
     nav {
         padding: 10px 12px;
+        flex-direction: column;
+        align-items: flex-start;
         gap: 8px;
-        justify-content: space-between;
-        flex-wrap: wrap;
     }
 
-    /* ☰ Button sichtbar auf Handy */
+    /* Hamburger bei Handy aktivieren */
     .nav-toggle {
         display: block;
     }
 
-    /* Links standardmäßig verstecken auf Handy */
-    nav a {
+    /* Links standardmäßig verstecken */
+    .nav-links {
         display: none;
+        flex-direction: column;
         width: 100%;
-        margin: 0;
-        padding: 8px 0;
-        border-top: 1px solid var(--color-border);
     }
 
-    /* Wenn JS-Klasse nav-open auf body, Links anzeigen */
-    body.nav-open nav a {
-        display: block;
+    nav.nav-open .nav-links {
+        display: flex;
     }
 
-    /* Theme-Button auf Handy nach rechts, ohne großen Abstand */
+    .nav-links a {
+        margin-right: 0;
+        padding: 4px 0;
+    }
+
     .theme-toggle {
         margin-left: 0;
-        margin-right: 0;
+        align-self: flex-end;
     }
 
     header {
@@ -687,40 +678,15 @@ main ul li:hover {
     }
 }
 
-/* Smartphones / kleine Tablets (480px – 768px) */
-@media (min-width: 480px) and (max-width: 768px) {
+/* Tablets (768px – 1024px) */
+@media (min-width: 768px) and (max-width: 1024px) {
 
     nav {
-        padding: 10px 20px;
-        justify-content: space-between;
-    }
-
-    .nav-toggle {
-        display: block;
-    }
-
-    nav a {
-        display: none;
-        width: 100%;
-        margin: 0;
-        padding: 8px 0;
-        border-top: 1px solid var(--color-border);
-    }
-
-    body.nav-open nav a {
-        display: block;
-    }
-
-    .theme-toggle {
-        margin-left: 0;
-    }
-
-    header h1 {
-        font-size: 26px;
+        justify-content: flex-start;
     }
 
     main {
-        max-width: 95%;
+        max-width: 900px;
     }
 
     .hero {
@@ -734,54 +700,8 @@ main ul li:hover {
     }
 }
 
-/* Tablets (768px – 1024px)
-   -> Hier wieder „normales“ Desktop-Menü: Links immer sichtbar */
-@media (min-width: 768px) and (max-width: 1024px) {
-
-    nav {
-        padding: 15px 40px;
-        justify-content: flex-start;
-    }
-
-    .nav-toggle {
-        display: none;
-    }
-
-    nav a {
-        display: inline-block;
-    }
-
-    .theme-toggle {
-        margin-left: auto;
-    }
-
-    main {
-        max-width: 900px;
-    }
-
-    .hero {
-        padding: 3rem;
-    }
-
-    .hero h2 {
-        font-size: 2.6rem;
-    }
-}
-
 /* Desktop normal (1024px – 1400px) */
 @media (min-width: 1024px) and (max-width: 1400px) {
-
-    .nav-toggle {
-        display: none;
-    }
-
-    nav a {
-        display: inline-block;
-    }
-
-    .theme-toggle {
-        margin-left: auto;
-    }
 
     main {
         max-width: 900px;
@@ -790,18 +710,6 @@ main ul li:hover {
 
 /* Große Bildschirme (ab 1400px) */
 @media (min-width: 1400px) {
-
-    .nav-toggle {
-        display: none;
-    }
-
-    nav a {
-        display: inline-block;
-    }
-
-    .theme-toggle {
-        margin-left: auto;
-    }
 
     body {
         font-size: 18px;

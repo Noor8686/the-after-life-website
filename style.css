@@ -595,11 +595,6 @@ main ul li:hover {
 /* Smartphones / kleine Tablets (bis 768px) */
 @media (max-width: 768px) {
 
-    body {
-        padding-top: 70px;
-        font-size: 15px;
-    }
-
     nav {
         padding: 10px 12px;
         flex-direction: column;
@@ -619,6 +614,7 @@ main ul li:hover {
         width: 100%;
     }
 
+    /* wenn JS .nav-open setzt → Links anzeigen */
     nav.nav-open .nav-links {
         display: flex;
     }
@@ -632,51 +628,8 @@ main ul li:hover {
         margin-left: 0;
         align-self: flex-end;
     }
-
-    header {
-        padding: 10px 15px;
-        text-align: center;
-    }
-
-    header h1 {
-        font-size: 22px;
-    }
-
-    header p {
-        font-size: 14px;
-    }
-
-    .hero {
-        min-height: 65vh;
-        padding: 2rem 1rem;
-        text-align: center;
-        justify-content: center;
-    }
-
-    .hero h2 {
-        font-size: 1.8rem;
-    }
-
-    .hero p {
-        font-size: 1rem;
-    }
-
-    main {
-        max-width: 100%;
-        padding: 0 15px;
-        margin-top: 20px;
-    }
-
-    img.full {
-        max-width: 100%;
-        margin: 10px 0;
-        border-radius: 0;
-    }
-
-    .char-box img {
-        height: auto;
-    }
 }
+
 
 /* Tablets (768px – 1024px) */
 @media (min-width: 768px) and (max-width: 1024px) {

@@ -32,6 +32,19 @@
     --color-card-bg: #ffffff;
     --color-border: #cccccc;
 }
+    /* Alles inkl. Padding in die Breite einrechnen */
+    *,
+    *::before,
+    *::after {
+        box-sizing: border-box;
+    }
+
+    /* Sicherheitshalber horizontales Scrollen verhindern */
+    html,
+    body {
+        max-width: 100%;
+        overflow-x: hidden;
+}
 
 
 /* =========================================================

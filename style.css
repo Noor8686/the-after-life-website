@@ -85,6 +85,57 @@ nav {
     /* für Scroll-Schatten (nav-shadow) */
     transition: box-shadow 0.3s ease, background 0.3s ease;
 }
+
+/* Links in der Navigation */
+nav a {
+    color: var(--color-text);
+    text-decoration: none;
+    margin-right: 20px;
+    font-size: 15px;
+
+    /* sanfter Übergang für Farbe/Bewegung */
+    transition: color 0.3s ease, transform 0.2s ease;
+}
+
+/* aktiver Menüpunkt */
+nav a.active {
+    color: #ffffff;
+    border-bottom: 2px solid var(--color-accent);
+}
+
+nav a:hover {
+    color: #ffffff;
+    transform: translateY(-1px);
+}
+
+nav.nav-shadow {
+    box-shadow: 0 4px 15px rgba(0,0,0,0.5);
+    background: #101010f5; /* leicht dunkler + etwas durchsichtig */
+}
+
+/* Mobile-Menü-Button (☰) */
+.nav-toggle {
+    display: none; /* nur auf Handy sichtbar, siehe Media Query */
+    margin-right: 10px;
+    font-size: 22px;
+    background: transparent;
+    border: none;
+    color: var(--color-text);
+    cursor: pointer;
+
+    transition: transform 0.2s ease, color 0.25s ease;
+}
+
+.nav-toggle:hover {
+    transform: scale(1.08);
+    color: var(--color-accent);
+}
+
+.nav-toggle:focus-visible {
+    outline: 2px solid var(--color-accent);
+    outline-offset: 2px;
+}
+
 /* Theme-Toggle-Button in der Navigation */
 .theme-toggle {
     margin-left: auto;
@@ -92,7 +143,7 @@ nav {
     border-radius: 999px;
     border: 1px solid var(--color-border);
     background: transparent;
-    color: #ddd;
+    color: var(--color-text);
     cursor: pointer;
     font-size: 14px;
 
@@ -119,32 +170,6 @@ nav {
     box-shadow: 0 2px 6px rgba(0,0,0,0.4);
 }
 
-
-nav.nav-shadow {
-    box-shadow: 0 4px 15px rgba(0,0,0,0.5);
-    background: #101010f5; /* leicht dunkler + etwas durchsichtig */
-}
-
-nav a {
-    color: #ddd;
-    text-decoration: none;
-    margin-right: 20px;
-    font-size: 15px;
-
-    /* sanfter Übergang für Farbe/Bewegung */
-    transition: color 0.3s ease, transform 0.2s ease;
-}
-
-/* aktiver Menüpunkt */
-nav a.active {
-    color: #ffffff;
-    border-bottom: 2px solid var(--color-accent);
-}
-
-nav a:hover {
-    color: #ffffff;
-    transform: translateY(-1px);
-}
 
 /* ---------------- Hauptbereich ---------------- */
 
@@ -420,7 +445,6 @@ footer a:not(.button):active {
     color: var(--color-text);
 }
 
-
 /* Karte beim Hover leicht anheben */
 .char-box:hover {
     transform: translateY(-6px);
@@ -575,7 +599,7 @@ main ul li:hover {
 }
 
 /* =========================================================
-   RESPONSIVE MEDIA QUERIES
+   RESPONSIVE MEDIA QUERIES + HANDY-MENÜ
    ========================================================= */
 
 /* Smartphones klein (bis 480px) */
@@ -587,20 +611,36 @@ main ul li:hover {
     }
 
     nav {
-        padding: 10px 8px;
-        gap: 10px;
-        justify-content: center;
+        padding: 10px 12px;
+        gap: 8px;
+        justify-content: space-between;
         flex-wrap: wrap;
     }
 
-  nav a {
-    color: var(--color-text);
-    text-decoration: none;
-    margin-right: 20px;
-    font-size: 15px;
-    transition: color 0.3s ease, transform 0.2s ease;
-}
+    /* ☰ Button sichtbar auf Handy */
+    .nav-toggle {
+        display: block;
+    }
 
+    /* Links standardmäßig verstecken auf Handy */
+    nav a {
+        display: none;
+        width: 100%;
+        margin: 0;
+        padding: 8px 0;
+        border-top: 1px solid var(--color-border);
+    }
+
+    /* Wenn JS-Klasse nav-open auf body, Links anzeigen */
+    body.nav-open nav a {
+        display: block;
+    }
+
+    /* Theme-Button auf Handy nach rechts, ohne großen Abstand */
+    .theme-toggle {
+        margin-left: 0;
+        margin-right: 0;
+    }
 
     header {
         padding: 10px 15px;
@@ -651,8 +691,28 @@ main ul li:hover {
 @media (min-width: 480px) and (max-width: 768px) {
 
     nav {
-        justify-content: center;
-        gap: 12px;
+        padding: 10px 20px;
+        justify-content: space-between;
+    }
+
+    .nav-toggle {
+        display: block;
+    }
+
+    nav a {
+        display: none;
+        width: 100%;
+        margin: 0;
+        padding: 8px 0;
+        border-top: 1px solid var(--color-border);
+    }
+
+    body.nav-open nav a {
+        display: block;
+    }
+
+    .theme-toggle {
+        margin-left: 0;
     }
 
     header h1 {
@@ -674,11 +734,25 @@ main ul li:hover {
     }
 }
 
-/* Tablets (768px – 1024px) */
+/* Tablets (768px – 1024px)
+   -> Hier wieder „normales“ Desktop-Menü: Links immer sichtbar */
 @media (min-width: 768px) and (max-width: 1024px) {
 
     nav {
-        justify-content: center;
+        padding: 15px 40px;
+        justify-content: flex-start;
+    }
+
+    .nav-toggle {
+        display: none;
+    }
+
+    nav a {
+        display: inline-block;
+    }
+
+    .theme-toggle {
+        margin-left: auto;
     }
 
     main {
@@ -697,6 +771,18 @@ main ul li:hover {
 /* Desktop normal (1024px – 1400px) */
 @media (min-width: 1024px) and (max-width: 1400px) {
 
+    .nav-toggle {
+        display: none;
+    }
+
+    nav a {
+        display: inline-block;
+    }
+
+    .theme-toggle {
+        margin-left: auto;
+    }
+
     main {
         max-width: 900px;
     }
@@ -704,6 +790,18 @@ main ul li:hover {
 
 /* Große Bildschirme (ab 1400px) */
 @media (min-width: 1400px) {
+
+    .nav-toggle {
+        display: none;
+    }
+
+    nav a {
+        display: inline-block;
+    }
+
+    .theme-toggle {
+        margin-left: auto;
+    }
 
     body {
         font-size: 18px;

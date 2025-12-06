@@ -1,6 +1,7 @@
 // script.js
 
 document.addEventListener('DOMContentLoaded', () => {
+
     /* ============================
        SCROLL-REVEAL (Klasse .reveal)
        ============================ */
@@ -102,4 +103,40 @@ document.addEventListener('DOMContentLoaded', () => {
     lightbox.addEventListener('click', () => {
         lightbox.style.display = 'none';
     });
+
+    /* ============================
+       Theme-Umschalter (Dark/Light)
+       ============================ */
+    const themeToggle = document.querySelector('.theme-toggle');
+    const root        = document.documentElement; // <html>
+
+    // gespeichertes Theme aus localStorage laden
+    const savedTheme = localStorage.getItem('taf-theme');
+
+    if (savedTheme === 'light') {
+        root.classList.add('light-theme');
+    }
+
+    if (themeToggle) {
+        const updateToggleLabel = () => {
+            if (root.classList.contains('light-theme')) {
+                themeToggle.textContent = '🌒';
+                themeToggle.title = 'Dunkles Design aktivieren';
+            } else {
+                themeToggle.textContent = '🌓';
+                themeToggle.title = 'Helles Design aktivieren';
+            }
+        };
+
+        updateToggleLabel();
+
+        themeToggle.addEventListener('click', () => {
+            root.classList.toggle('light-theme');
+
+            const mode = root.classList.contains('light-theme') ? 'light' : 'dark';
+            localStorage.setItem('taf-theme', mode);
+
+            updateToggleLabel();
+        });
+    }
 });

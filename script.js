@@ -58,7 +58,27 @@ document.addEventListener('DOMContentLoaded', () => {
     window.addEventListener('scroll', handleScroll);
 
     /* ============================
+       Mobile-Navigation (☰ Menü)
+       ============================ */
+    const navToggle = document.querySelector('.nav-toggle');
+
+    if (nav && navToggle) {
+        navToggle.addEventListener('click', () => {
+            nav.classList.toggle('nav-open');
+        });
+
+        // Menü schließt sich, wenn ein Link geklickt wird (auf Handy angenehm)
+        const navLinks = nav.querySelectorAll('a');
+        navLinks.forEach(link => {
+            link.addEventListener('click', () => {
+                nav.classList.remove('nav-open');
+            });
+        });
+    }
+
+    /* ============================
        Rotierender Hero-Text
+       (nur auf index.html vorhanden)
        ============================ */
     const heroTextEl = document.querySelector('#hero-text');
 
@@ -80,29 +100,31 @@ document.addEventListener('DOMContentLoaded', () => {
     /* ============================
        Bild-Lightbox für Charakter- und Ortsbilder
        ============================ */
-    const lightbox = document.createElement('div');
-    lightbox.id = 'img-lightbox';
-    lightbox.innerHTML = '<img src="" alt="">';
-    document.body.appendChild(lightbox);
-
-    const lightboxImg = lightbox.querySelector('img');
-
-    // alle großen Bilder auf der Seite anklickbar machen
     const zoomableImages = document.querySelectorAll('img.full, .char-box img');
 
-    zoomableImages.forEach(img => {
-        img.style.cursor = 'zoom-in';
-        img.addEventListener('click', () => {
-            lightboxImg.src = img.src;
-            lightboxImg.alt = img.alt || '';
-            lightbox.style.display = 'flex';
-        });
-    });
+    if (zoomableImages.length > 0) {
+        const lightbox = document.createElement('div');
+        lightbox.id = 'img-lightbox';
+        lightbox.innerHTML = '<img src="" alt="">';
+        document.body.appendChild(lightbox);
 
-    // Klick auf das Overlay schließt die Lightbox
-    lightbox.addEventListener('click', () => {
-        lightbox.style.display = 'none';
-    });
+        const lightboxImg = lightbox.querySelector('img');
+
+        // alle großen Bilder auf der Seite anklickbar machen
+        zoomableImages.forEach(img => {
+            img.style.cursor = 'zoom-in';
+            img.addEventListener('click', () => {
+                lightboxImg.src = img.src;
+                lightboxImg.alt = img.alt || '';
+                lightbox.style.display = 'flex';
+            });
+        });
+
+        // Klick auf das Overlay schließt die Lightbox
+        lightbox.addEventListener('click', () => {
+            lightbox.style.display = 'none';
+        });
+    }
 
     /* ============================
        Theme-Umschalter (Dark/Light)

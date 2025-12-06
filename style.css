@@ -417,8 +417,9 @@ footer a:not(.button):active {
 
 .char-box h3 {
     margin-top: 15px;
-    color: #fff;
+    color: var(--color-text);
 }
+
 
 /* Karte beim Hover leicht anheben */
 .char-box:hover {
@@ -592,10 +593,14 @@ main ul li:hover {
         flex-wrap: wrap;
     }
 
-    nav a {
-        margin: 0;
-        font-size: 13px;
-    }
+  nav a {
+    color: var(--color-text);
+    text-decoration: none;
+    margin-right: 20px;
+    font-size: 15px;
+    transition: color 0.3s ease, transform 0.2s ease;
+}
+
 
     header {
         padding: 10px 15px;

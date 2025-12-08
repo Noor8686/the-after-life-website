@@ -1,4 +1,4 @@
-/* =========================================================
+﻿/* =========================================================
    FARb-VARIABLEN (THEME)
    ========================================================= */
 
@@ -53,7 +53,7 @@
 
 body {
     margin: 0;
-    padding-top: 70px;          /* Platz für die fixe Navigation */
+    padding-top: 70px;          /* Platz fuer die fixe Navigation */
     font-family: Arial, sans-serif;
     background: var(--color-bg);
     color: var(--color-text);
@@ -95,7 +95,7 @@ nav {
     gap: 15px;
     align-items: center;
 
-    /* für Scroll-Schatten (nav-shadow) */
+    /* fuer Scroll-Schatten (nav-shadow) */
     transition: box-shadow 0.3s ease, background 0.3s ease;
 }
 
@@ -109,7 +109,7 @@ nav {
     cursor: pointer;
 }
 
-/* Container für die Links */
+/* Container fuer die Links */
 .nav-links {
     display: flex;
     flex-wrap: wrap;
@@ -163,7 +163,7 @@ nav a {
     transition: color 0.3s ease, transform 0.2s ease;
 }
 
-/* aktiver Menüpunkt */
+/* aktiver Menuepunkt */
 nav a.active {
     color: #ffffff;
     border-bottom: 2px solid var(--color-accent);
@@ -244,7 +244,7 @@ footer {
     font-size: 14px;
     font-weight: 600;
 
-    /* Animation für Hover: Farbe + Scale + Schatten */
+    /* Animation fuer Hover: Farbe + Scale + Schatten */
     transition:
         background 0.25s ease,
         transform 0.2s ease,
@@ -267,7 +267,7 @@ footer {
     color: #fff;
 }
 
-/* Zur-Top-Schaltfläche */
+/* Zur-Top-Schaltflaeche */
 
 .top-btn {
     position: fixed;
@@ -338,7 +338,7 @@ footer {
 
     /* Text separat von unten hineinfliegen lassen */
     animation: heroContentUp 1.1s ease-out 0.2s forwards;
-    opacity: 0; /* Startzustand für Animation */
+    opacity: 0; /* Startzustand fuer Animation */
 }
 
 .hero h2 {
@@ -357,7 +357,7 @@ footer {
     flex-wrap: wrap;
 }
 
-/* Typewriter-Effekt für Startseiten-Text (optional) */
+/* Typewriter-Effekt fuer Startseiten-Text (optional) */
 .typewriter {
     overflow: hidden;
     white-space: nowrap;
@@ -381,7 +381,7 @@ footer a:not(.button) {
     transition: color 0.3s ease;
 }
 
-/* dünner Balken unter dem Link beim Hover */
+/* duenner Balken unter dem Link beim Hover */
 main a:not(.button)::after,
 footer a:not(.button)::after {
     content: "";
@@ -462,7 +462,7 @@ footer a:not(.button):active {
    LISTEN / MECHANIK-LISTE MIT PSEUDO-SELEKTOREN
    ========================================================= */
 
-/* Grundstil für normale ULs im main */
+/* Grundstil fuer normale ULs im main */
 main ul li {
     padding: 6px 10px;
     margin-bottom: 5px;
@@ -494,12 +494,12 @@ main ul li:nth-child(even) {
     background: #24486e;
 }
 
-/* kleines Hover-Feedback für alle Listeneinträge */
+/* kleines Hover-Feedback fuer alle Listeneintraege */
 main ul li:hover {
     transform: translateX(4px);
 }
 
-/* Spezielle Mechanik-Liste (überschreibt obige Regeln) */
+/* Spezielle Mechanik-Liste (ueberschreibt obige Regeln) */
 
 .mechanik-liste {
     list-style: none;
@@ -536,7 +536,7 @@ main ul li:hover {
 }
 
 /* =========================================================
-   KEYFRAMES FÜR HERO- UND TYPEWRITER-ANIMATIONEN
+   KEYFRAMES FUER HERO- UND TYPEWRITER-ANIMATIONEN
    ========================================================= */
 
 @keyframes heroContentUp {
@@ -566,7 +566,7 @@ main ul li:hover {
 }
 
 /* =========================================================
-   SCROLL-ANIMATIONEN (für Handy, Tablet & Desktop)
+   SCROLL-ANIMATIONEN (fuer Handy, Tablet & Desktop)
    ========================================================= */
 
 /* Ausgangszustand: unsichtbar + leicht verschoben */
@@ -620,14 +620,14 @@ main ul li:hover {
         display: block;
     }
 
-    /* Links standardmäßig verstecken */
+    /* Links standardmaessig verstecken */
     .nav-links {
         display: none;
         flex-direction: column;
         width: 100%;
     }
 
-    /* wenn JS .nav-open setzt → Links anzeigen */
+    /* wenn JS .nav-open setzt -> Links anzeigen */
     nav.nav-open .nav-links {
         display: flex;
     }
@@ -644,7 +644,7 @@ main ul li:hover {
 }
 
 
-/* Tablets (768px – 1024px) */
+/* Tablets (768px - 1024px) */
 @media (min-width: 768px) and (max-width: 1024px) {
 
     nav {
@@ -666,7 +666,7 @@ main ul li:hover {
     }
 }
 
-/* Desktop normal (1024px – 1400px) */
+/* Desktop normal (1024px - 1400px) */
 @media (min-width: 1024px) and (max-width: 1400px) {
 
     main {
@@ -674,7 +674,7 @@ main ul li:hover {
     }
 }
 
-/* Große Bildschirme (ab 1400px) */
+/* Grosse Bildschirme (ab 1400px) */
 @media (min-width: 1400px) {
 
     body {
@@ -714,3 +714,9 @@ main ul li:hover {
     border-radius: 8px;
     box-shadow: 0 20px 40px rgba(0,0,0,0.8);
 }
+
+
+
+
+
+

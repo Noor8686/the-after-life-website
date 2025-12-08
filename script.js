@@ -58,7 +58,7 @@ document.addEventListener('DOMContentLoaded', () => {
     window.addEventListener('scroll', handleScroll);
 
     /* ============================
-       Mobile-Navigation (☰ Menü)
+       Mobile-Navigation (Hamburger-Menü)
        ============================ */
     const navToggle = document.querySelector('.nav-toggle');
 
@@ -142,10 +142,10 @@ document.addEventListener('DOMContentLoaded', () => {
     if (themeToggle) {
         const updateToggleLabel = () => {
             if (root.classList.contains('light-theme')) {
-                themeToggle.textContent = '🌒';
+                themeToggle.textContent = '🌙';
                 themeToggle.title = 'Dunkles Design aktivieren';
             } else {
-                themeToggle.textContent = '🌓';
+                themeToggle.textContent = '☀';
                 themeToggle.title = 'Helles Design aktivieren';
             }
         };

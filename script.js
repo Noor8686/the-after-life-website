@@ -58,16 +58,20 @@ document.addEventListener('DOMContentLoaded', () => {
     window.addEventListener('scroll', handleScroll);
 
     /* ============================
-       Mobile-Navigation (Hamburger-Menü)
+       Mobile Navigation (Hamburger)
        ============================ */
     const navToggle = document.querySelector('.nav-toggle');
 
-    if (nav && navToggle) {
+    if (navToggle) {
         navToggle.addEventListener('click', () => {
-            nav.classList.toggle('nav-open');
+            const parentNav = navToggle.closest('nav') || nav;
+            if (parentNav) {
+                parentNav.classList.toggle('nav-open');
+            }
         });
+    }
 
-        // Menü schließt sich, wenn ein Link geklickt wird (auf Handy angenehm)
+    if (nav) {
         const navLinks = nav.querySelectorAll('a');
         navLinks.forEach(link => {
             link.addEventListener('click', () => {

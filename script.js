@@ -30,7 +30,6 @@ document.addEventListener('DOMContentLoaded', () => {
     setupScrollReveal();
 
 
-
     /* =========================================================
        Smooth Scroll to Top
        ========================================================= */
@@ -45,7 +44,6 @@ document.addEventListener('DOMContentLoaded', () => {
             scrollToTop();
         });
     }
-
 
 
     /* =========================================================
@@ -78,22 +76,25 @@ document.addEventListener('DOMContentLoaded', () => {
     setupLightbox();
 
 
-
     /* =========================================================
        Typewriter Effekt (Story, Texte)
        ========================================================= */
-    function typeWriter(element, text, speed = 40) {
-        element.textContent = "";
-        let i = 0;
-        function write() {
-            if (i < text.length) {
-                element.textContent += text[i++];
-                setTimeout(write, speed);
-            }
-        }
-        write();
-    }
+    function typeWriter(element, text, speed = 35) {
+        return new Promise(resolve => {
+            element.textContent = "";
+            let i = 0;
 
+            function write() {
+                if (i < text.length) {
+                    element.textContent += text[i++];
+                    setTimeout(write, speed);
+                } else {
+                    resolve();
+                }
+            }
+            write();
+        });
+    }
 
 
     /* =========================================================
@@ -117,22 +118,44 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 
 
-
     /* =========================================================
-       NPC-Dialog-System
+       NPC-DIALOG mit Typewriter + Klick
        ========================================================= */
-    function npcDialog(element, lines) {
-        let current = 0;
-        element.textContent = lines[current];
+    async function startDialog(element, lines, speed = 35) {
+        let index = 0;
+        let locked = false;
 
-        element.addEventListener("click", () => {
-            current++;
-            if (current < lines.length) {
-                element.textContent = lines[current];
+        async function showLine() {
+            locked = true;
+            await typeWriter(element, lines[index], speed);
+            locked = false;
+        }
+
+        await showLine();
+
+        element.addEventListener("click", async () => {
+            if (locked) return;
+
+            index++;
+            if (index < lines.length) {
+                await showLine();
+            } else {
+                element.textContent = "";
             }
         });
     }
 
+
+    /* =========================================================
+       CUTSCENE SYSTEM (automatische Story-Sequenzen)
+       ========================================================= */
+    async function playScene(lines, element, delay = 1500) {
+        for (let line of lines) {
+            await typeWriter(element, line, 35);
+            await wait(delay);
+        }
+        element.textContent = "";
+    }
 
 
     /* =========================================================
@@ -153,7 +176,6 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 
 
-
     /* =========================================================
        Zufällige Auswahl (Loot, Dialog, Random Events)
        ========================================================= */
@@ -162,39 +184,12 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 
 
-
     /* =========================================================
-       Dynamische Elementerstellung
-       ========================================================= */
-    function createElement(tag, text, parent) {
-        const el = document.createElement(tag);
-        el.textContent = text;
-        parent.appendChild(el);
-        return el;
-    }
-
-
-
-    /* =========================================================
-       Theme speichern / laden
-       ========================================================= */
-    function saveTheme(mode) {
-        localStorage.setItem("taf-theme", mode);
-    }
-
-    function loadTheme() {
-        return localStorage.getItem("taf-theme");
-    }
-
-
-
-    /* =========================================================
-       wait() für Story-Timing / Animationen
+       wait() für Timing
        ========================================================= */
     function wait(ms) {
         return new Promise(resolve => setTimeout(resolve, ms));
     }
-
 
 
     /* =========================================================
@@ -236,14 +231,13 @@ document.addEventListener('DOMContentLoaded', () => {
     });
 
 
-
     /* =========================================================
-       Theme-Toggle Button
+       Theme Toggle & Speicher
        ========================================================= */
     const themeToggle = $(".theme-toggle");
     const root = document.documentElement;
 
-    const savedTheme = loadTheme();
+    const savedTheme = localStorage.getItem("taf-theme");
     if (savedTheme === "light") root.classList.add("light-theme");
 
     function updateThemeIcon() {
@@ -254,7 +248,12 @@ document.addEventListener('DOMContentLoaded', () => {
         updateThemeIcon();
         themeToggle.addEventListener("click", () => {
             root.classList.toggle("light-theme");
-            saveTheme(root.classList.contains("light-theme") ? "light" : "dark");
+
+            localStorage.setItem(
+                "taf-theme",
+                root.classList.contains("light-theme") ? "light" : "dark"
+            );
+
             updateThemeIcon();
         });
     }

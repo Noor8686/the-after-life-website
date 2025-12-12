@@ -368,3 +368,75 @@ main ul li:hover { transform: translateX(4px); border-color: rgba(230,57,70,0.35
 }
 @keyframes typing { from { width: 0; } to { width: 100%; } }
 @keyframes blink { 50% { border-color: transparent; } }
+
+/* -------------------------------------------------
+   THEME-TOGGLE ICON (Sonne/Mond animiert)
+------------------------------------------------- */
+.theme-toggle {
+  width: 42px;
+  height: 42px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 50%;
+  padding: 0;
+  font-size: 20px;
+  transition: transform 0.3s ease, background 0.3s ease;
+}
+
+.theme-toggle:hover {
+  transform: scale(1.1);
+  background: rgba(255,255,255,0.08);
+}
+
+/* -------------------------------------------------
+   MOBILE NAVIGATION VERBESSERT
+------------------------------------------------- */
+@media (max-width: 768px) {
+
+  /* Hintergrund-Dim beim Öffnen */
+  nav.nav-open::after {
+    content: "";
+    position: fixed;
+    inset: 0;
+    background: rgba(0,0,0,0.6);
+    z-index: -1;
+  }
+
+  /* Animiertes Einfahren */
+  .nav-links {
+    opacity: 0;
+    transform: translateY(-10px);
+    transition: opacity 0.35s ease, transform 0.35s ease;
+  }
+
+  nav.nav-open .nav-links {
+    opacity: 1;
+    transform: translateY(0);
+  }
+
+  /* Hamburger-Icon → X */
+  .nav-toggle {
+    transition: transform 0.3s ease;
+  }
+
+  nav.nav-open .nav-toggle {
+    transform: rotate(90deg);
+  }
+}
+
+/* -------------------------------------------------
+   HANDY-BUTTONS -> Größer, runder, besser
+------------------------------------------------- */
+@media (max-width: 768px) {
+  .button {
+    padding: 14px 22px;
+    border-radius: 14px;
+    font-size: 1rem;
+  }
+
+  .hero-buttons {
+    flex-direction: column;
+    gap: 14px;
+  }
+}

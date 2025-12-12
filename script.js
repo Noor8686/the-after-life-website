@@ -240,9 +240,13 @@ document.addEventListener('DOMContentLoaded', () => {
     const savedTheme = localStorage.getItem("taf-theme");
     if (savedTheme === "light") root.classList.add("light-theme");
 
-    function updateThemeIcon() {
-        themeToggle.textContent = root.classList.contains("light-theme") ? "🌙" : "☀";
-    }
+function updateThemeIcon() {
+    const isLight = root.classList.contains("light-theme");
+    themeToggle.innerHTML = isLight ? "🌙" : "☀";
+    themeToggle.style.transform = "scale(1.3)";
+    setTimeout(() => themeToggle.style.transform = "scale(1)", 200);
+}
+
 
     if (themeToggle) {
         updateThemeIcon();

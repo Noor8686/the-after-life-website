@@ -1,4 +1,4 @@
-ï»¿/* =========================================
+/* =========================================
    THEME & TOKENS
    ========================================= */
 :root {
@@ -394,7 +394,7 @@ main ul li:hover { transform: translateX(4px); border-color: rgba(230,57,70,0.35
 ------------------------------------------------- */
 @media (max-width: 768px) {
 
-  /* Hintergrund-Dim beim Ã–ffnen */
+  /* Hintergrund-Dim beim Öffnen */
   nav.nav-open::after {
     content: "";
     position: fixed;
@@ -415,7 +415,7 @@ main ul li:hover { transform: translateX(4px); border-color: rgba(230,57,70,0.35
     transform: translateY(0);
   }
 
-  /* Hamburger-Icon â†’ X */
+  /* Hamburger-Icon ? X */
   .nav-toggle {
     transition: transform 0.3s ease;
   }
@@ -426,7 +426,7 @@ main ul li:hover { transform: translateX(4px); border-color: rgba(230,57,70,0.35
 }
 
 /* -------------------------------------------------
-   HANDY-BUTTONS -> GrÃ¶ÃŸer, runder, besser
+   HANDY-BUTTONS -> Größer, runder, besser
 ------------------------------------------------- */
 @media (max-width: 768px) {
   .button {
@@ -441,12 +441,13 @@ main ul li:hover { transform: translateX(4px); border-color: rgba(230,57,70,0.35
   }
 }
 /* =========================================
-   TOP HEADER â€“ korrekt ausgerichtet
+   TOP HEADER – korrekt ausgerichtet
    ========================================= */
 header {
   width: 100%;
   margin: 0;
-  padding: 28px clamp(24px, 4vw, 56px) 18px;
+  /* enger an den linken Rand rücken */
+  padding: 24px 28px 16px;
   text-align: left;
 }
 
@@ -455,3 +456,4 @@ header {
     width: 100%;
   }
 }
+

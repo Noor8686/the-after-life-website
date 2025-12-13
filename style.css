@@ -430,6 +430,10 @@ main ul li:hover { transform: translateX(4px); border-color: rgba(230,57,70,0.35
   border-color: var(--color-accent);
 }
 
+.fade-in {
+  animation: fadeSlideIn 260ms ease;
+}
+
 /* =========================================
    MEDIA QUERIES
    ========================================= */
@@ -459,6 +463,10 @@ main ul li:hover { transform: translateX(4px); border-color: rgba(230,57,70,0.35
    ========================================= */
 @keyframes fadeUp {
   from { opacity: 0; transform: translateY(18px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+@keyframes fadeSlideIn {
+  from { opacity: 0; transform: translateY(8px); }
   to { opacity: 1; transform: translateY(0); }
 }
 @keyframes typing { from { width: 0; } to { width: 100%; } }

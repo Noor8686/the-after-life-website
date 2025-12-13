@@ -291,7 +291,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
                 btn.disabled = true;
                 btn.textContent = "Lade...";
-                target.innerHTML = `<p class="muted">Lade Details...</p>`;
+                target.textContent = "Lade Daten...";
 
                 try {
                     const data = await fetchJSON("charaktere.json");
@@ -302,9 +302,10 @@ document.addEventListener('DOMContentLoaded', () => {
                         <p class="muted">${char.rolle} - ${char.alter} Jahre</p>
                         <p>${char.details}</p>
                     `;
+                    target.classList.add("fade-in");
                 } catch (error) {
                     console.error(error);
-                    target.innerHTML = `<p class="error-text">Konnte Charakterdaten nicht laden.</p>`;
+                    target.textContent = "Fehler beim Laden der Daten";
                 } finally {
                     btn.disabled = false;
                     btn.textContent = defaultLabel;
@@ -327,7 +328,7 @@ document.addEventListener('DOMContentLoaded', () => {
             const defaultLabel = btn.textContent;
             btn.disabled = true;
             btn.textContent = "Laedt...";
-            container.innerHTML = `<p class="muted">Story wird geladen...</p>`;
+            container.textContent = "Lade Daten...";
 
             try {
                 const data = await fetchJSON("story.json");
@@ -335,7 +336,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
                 data.abschnitte.forEach(abschnitt => {
                     const card = document.createElement("article");
-                    card.className = "story-card";
+                    card.className = "story-card fade-in";
                     card.innerHTML = `
                         <h3>${abschnitt.titel}</h3>
                         <p>${abschnitt.text}</p>
@@ -347,7 +348,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 loaded = true;
             } catch (error) {
                 console.error(error);
-                container.innerHTML = `<p class="error-text">Story konnte nicht geladen werden.</p>`;
+                container.textContent = "Fehler beim Laden der Daten";
                 btn.disabled = false;
                 btn.textContent = defaultLabel;
             }
@@ -364,7 +365,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
         const renderOrt = (ort) => {
             detail.innerHTML = `
-                <article class="ort-card-inner">
+                <article class="ort-card-inner fade-in">
                     <img src="${ort.bild}" alt="${ort.name}" loading="lazy">
                     <div>
                         <h3>${ort.name}</h3>
@@ -374,6 +375,8 @@ document.addEventListener('DOMContentLoaded', () => {
             `;
         };
 
+        nav.textContent = "Lade Daten...";
+        detail.textContent = "Ort wird geladen...";
         fetchJSON("orte.json")
             .then(orte => {
                 nav.innerHTML = "";
@@ -399,7 +402,8 @@ document.addEventListener('DOMContentLoaded', () => {
             })
             .catch(error => {
                 console.error(error);
-                nav.innerHTML = `<p class="error-text">Orte konnten nicht geladen werden.</p>`;
+                nav.textContent = "Fehler beim Laden der Daten";
+                detail.textContent = "";
             });
     }
 
@@ -410,10 +414,11 @@ document.addEventListener('DOMContentLoaded', () => {
         const feed = $("#news-feed");
         if (!feed) return;
 
+        feed.textContent = "Lade Daten...";
         fetchJSON("updates.json")
             .then(items => {
                 feed.innerHTML = items.map(item => `
-                    <article class="news-card">
+                    <article class="news-card fade-in">
                         <p class="muted">${item.datum}</p>
                         <h3>${item.titel}</h3>
                         <p>${item.text}</p>
@@ -422,7 +427,7 @@ document.addEventListener('DOMContentLoaded', () => {
             })
             .catch(error => {
                 console.error(error);
-                feed.innerHTML = `<p class="error-text">Updates konnten nicht geladen werden.</p>`;
+                feed.textContent = "Fehler beim Laden der Daten";
             });
     }
 

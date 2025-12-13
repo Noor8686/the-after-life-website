@@ -1,4 +1,4 @@
-ï»¿/* =========================================
+/* =========================================
    THEME & TOKENS
    ========================================= */
 :root {
@@ -84,7 +84,7 @@ nav {
   display: flex;
   gap: 12px;
   align-items: center;
-  padding: 0 12px;
+  padding: 0 28px;
   background: rgba(15,17,25,0.8);
   backdrop-filter: blur(12px);
   border-bottom: 1px solid var(--color-border);
@@ -398,7 +398,7 @@ main ul li:hover { transform: translateX(4px); border-color: rgba(230,57,70,0.35
 ------------------------------------------------- */
 @media (max-width: 768px) {
 
-  /* Hintergrund-Dim beim Ã–ffnen */
+  /* Hintergrund-Dim beim Öffnen */
   nav.nav-open::after {
     content: "";
     position: fixed;
@@ -430,7 +430,7 @@ main ul li:hover { transform: translateX(4px); border-color: rgba(230,57,70,0.35
 }
 
 /* -------------------------------------------------
-   HANDY-BUTTONS -> GrÃ¶ÃŸer, runder, besser
+   HANDY-BUTTONS -> Größer, runder, besser
 ------------------------------------------------- */
 @media (max-width: 768px) {
   .button {
@@ -454,13 +454,13 @@ main ul li:hover { transform: translateX(4px); border-color: rgba(230,57,70,0.35
   .hero p { font-size: 1rem; }
 }
 /* =========================================
-   TOP HEADER â€“ korrekt ausgerichtet
+   TOP HEADER – korrekt ausgerichtet
    ========================================= */
 header {
   width: 100%;
   margin: 0;
-  /* enger an den linken Rand rÃ¼cken */
-  padding: 20px 12px 12px;
+  /* enger an den linken Rand rücken */
+  padding: 24px 28px 16px;
   text-align: left;
 }
 
@@ -469,6 +469,7 @@ header {
     width: 100%;
   }
 }
+
 
 
 

@@ -44,8 +44,8 @@
 html, body {
   margin: 0;
   padding: 0;
-  width: 100%;
-  max-width: 100%;
+  width: 100vw;
+  max-width: 100vw;
   min-height: 100%;
   overflow-x: hidden;
   background: radial-gradient(circle at 20% 20%, rgba(230,57,70,0.08), transparent 35%),
@@ -142,6 +142,8 @@ nav a.active { color: var(--color-text); border-color: var(--color-accent); }
    HERO
    ========================================= */
 .hero {
+  width: 100vw;
+  margin-left: calc(50% - 50vw);
   min-height: 78vh;
   background: linear-gradient(var(--color-hero-overlay), var(--color-hero-overlay)),
               url("pictures/image.jpg") center/cover no-repeat;

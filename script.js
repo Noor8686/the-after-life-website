@@ -172,7 +172,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
 
     /* =========================================================
-       Countdown (z. B. für Wellenangriffe)
+       Countdown (z. B. fuer Wellenangriffe)
        ========================================================= */
     function countdown(element, seconds) {
         let counter = seconds;
@@ -190,7 +190,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
 
     /* =========================================================
-       Zufällige Auswahl (Loot, Dialog, Random Events)
+       Zufaellige Auswahl (Loot, Dialog, Random Events)
        ========================================================= */
     function randomItem(list) {
         return list[Math.floor(Math.random() * list.length)];
@@ -198,7 +198,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
 
     /* =========================================================
-       wait() für Timing
+       wait() fuer Timing
        ========================================================= */
     function wait(ms) {
         return new Promise(resolve => setTimeout(resolve, ms));
@@ -464,6 +464,11 @@ document.addEventListener('DOMContentLoaded', () => {
     initFeedbackForm();
 
 });
+
+
+
+
+
 
 
 

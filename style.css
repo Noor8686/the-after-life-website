@@ -1,4 +1,4 @@
-﻿/* =========================================
+/* =========================================
    THEME & TOKENS
    ========================================= */
 :root {
@@ -497,7 +497,7 @@ main ul li:hover { transform: translateX(4px); border-color: rgba(230,57,70,0.35
 ------------------------------------------------- */
 @media (max-width: 768px) {
 
-  /* Hintergrund-Dim beim Öffnen */
+  /* Hintergrund-Dim beim ?ffnen */
   nav.nav-open::after {
     content: "";
     position: fixed;
@@ -529,7 +529,7 @@ main ul li:hover { transform: translateX(4px); border-color: rgba(230,57,70,0.35
 }
 
 /* -------------------------------------------------
-   HANDY-BUTTONS -> Größer, runder, besser
+   HANDY-BUTTONS -> Gr??er, runder, besser
 ------------------------------------------------- */
 @media (max-width: 768px) {
   .button {
@@ -553,12 +553,12 @@ main ul li:hover { transform: translateX(4px); border-color: rgba(230,57,70,0.35
   .hero p { font-size: 1rem; }
 }
 /* =========================================
-   TOP HEADER – korrekt ausgerichtet
+   TOP HEADER ? korrekt ausgerichtet
    ========================================= */
 header {
   width: 100%;
   margin: 0;
-  /* enger an den linken Rand rücken */
+  /* enger an den linken Rand r?cken */
   padding: 24px 28px 16px;
   text-align: left;
 }

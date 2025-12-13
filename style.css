@@ -444,16 +444,15 @@ main ul li:hover { transform: translateX(4px); border-color: rgba(230,57,70,0.35
    TOP HEADER – korrekt ausgerichtet
    ========================================= */
 header {
-  max-width: 1400px;
+  max-width: 1200px;
   width: 100%;
-  /* nach rechts rücken: größere linke Marge */
-  margin: 0 clamp(24px, 6vw, 120px) 0 clamp(140px, 18vw, 320px);
-  padding: 28px clamp(32px, 6vw, 72px) 18px;
+  margin: 0 auto;
+  padding: 28px clamp(24px, 4vw, 56px) 18px;
   text-align: left;
 }
 
 @media (min-width: 1400px) {
   header {
-    max-width: 1440px;
+    max-width: 1280px;
   }
 }

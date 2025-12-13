@@ -1,0 +1,17 @@
+[
+  {
+    "datum": "2025-12-01",
+    "titel": "Patch 0.3 – Basislager",
+    "text": "Bau-UI ueberarbeitet, neue Verteidigungsstruktur 'Palissade' hinzugefuegt und Spawnraten der Infizierten angepasst."
+  },
+  {
+    "datum": "2025-12-08",
+    "titel": "Patch 0.31 – Begleiter",
+    "text": "Max kann jetzt Faehrten aufnehmen, bellende Warnungen geben und Gegner kurzzeitig ablenken."
+  },
+  {
+    "datum": "2025-12-12",
+    "titel": "Hotfix – Funk",
+    "text": "Funkgeraete verbrauchen weniger Energie, neue Dialogzeilen fuer Funksprueche hinzugefuegt."
+  }
+]

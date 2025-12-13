@@ -1,0 +1,26 @@
+[
+  {
+    "id": "camp",
+    "name": "Camp",
+    "bild": "pictures/Camp.jpg",
+    "beschreibung": "Startgebiet. Hier lernt der Spieler die Basics, ruht sich aus und plant den weiteren Ausbau."
+  },
+  {
+    "id": "daenholm",
+    "name": "Militaerposten Daenholm",
+    "bild": "pictures/GDDDaenholm4x.png",
+    "beschreibung": "Verlassene Verteidigungsanlagen mit versteckter Ausruestung. Risiko: hoch, Belohnung: hoch."
+  },
+  {
+    "id": "oie",
+    "name": "Greifswalder Oie",
+    "bild": "pictures/GDDGreifswalder_Oie4x.png",
+    "beschreibung": "Leuchtturm und Funkstation. Wer die Insel haelt, kontrolliert Kommunikation und Handel."
+  },
+  {
+    "id": "goehren",
+    "name": "Goehren",
+    "bild": "pictures/GDDGoehren4x.png",
+    "beschreibung": "Kueste, kleine Siedlungen und Ruinen. Gute Ressource fuer Wasser und Holz, aber nah an Infizierten-Nestern."
+  }
+]

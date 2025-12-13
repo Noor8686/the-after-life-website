@@ -3,106 +3,107 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>The After Life – Story &amp; Team</title>
+    <title>The After Life - Story &amp; Team</title>
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
 
-    <!-- Navigation -->
     <nav aria-label="Hauptnavigation">
-        <button class="nav-toggle" aria-label="Menü öffnen oder schließen">☰</button>
+        <button class="nav-toggle" aria-label="Menue oeffnen oder schliessen">Menu</button>
 
         <div class="nav-links">
-            <a href="index.html">Überblick</a>
+            <a href="index.html">Ueberblick</a>
             <a href="charaktere.html">Charaktere</a>
             <a href="orte.html">Orte</a>
             <a href="mechaniken.html">Spielmechaniken</a>
             <a href="story.html" class="active">Story &amp; Team</a>
         </div>
 
-        <button class="theme-toggle" aria-label="Design umschalten">☀</button>
+        <button class="theme-toggle" aria-label="Design umschalten">MOON</button>
     </nav>
 
-    <!-- Kopfbereich -->
     <header class="reveal">
         <h1>The After Life</h1>
         <p>Story &amp; Team hinter dem Projekt</p>
     </header>
 
-    <!-- Hauptinhalt -->
     <main>
 
-        <!-- Story-Überblick -->
         <section>
-            <h2 class="reveal">Story – Kurzzusammenfassung</h2>
+            <h2 class="reveal">Story - Kurzzusammenfassung</h2>
 
             <p class="reveal">
-                In einer zerstörten Zukunft lebt Wolfram mit seinem Mentor Manfred
-                und Hund Max in einem kleinen, abgelegenen Camp auf der Insel.
-                Der Alltag besteht aus Jagen, Sammeln und dem Versuch, den
-                Infizierten aus dem Weg zu gehen.
+                In einer zerstoerten Zukunft lebt Wolfram mit Mentor Manfred und Hund Max
+                in einem kleinen Camp auf Ruegen. Der Alltag: Jagen, Sammeln, den
+                Infizierten aus dem Weg gehen.
             </p>
 
             <p class="reveal">
-                Als Manfred stirbt, bricht für Wolfram eine Welt zusammen.
-                Aus dem sicheren, aber isolierten Leben im Camp wird eine Reise
-                ins Ungewisse. Wolfram fasst den Entschluss, nicht länger nur zu
-                überleben, sondern den Grundstein für eine neue Zivilisation zu legen –
-                in Form einer eigenen Siedlung.
+                Nach Manfreds Tod fasst Wolfram den Entschluss, mehr als nur zu
+                ueberleben. Er will eine neue Siedlung gruenden und eine
+                Gemeinschaft aufbauen, die Hoffnung gibt.
             </p>
         </section>
 
-        <!-- Story in Abschnitten -->
+        <section class="reveal">
+            <h2>Mehr Story laden (AJAX)</h2>
+            <p>
+                Klick auf den Button, um weitere Kapitel direkt aus der JSON-Datei zu
+                holen. Die Seite laedt nicht neu - perfekt fuer schnelle Lore-Drops.
+            </p>
+            <button class="button secondary" id="story-load-btn">Mehr Story</button>
+            <div id="story-dynamic" class="story-dynamic"></div>
+        </section>
+
         <section>
             <h2 class="reveal">Der Weg zur neuen Siedlung</h2>
 
             <h3 class="reveal">Ausgangspunkt: Das Camp</h3>
             <p class="reveal">
-                Im Camp lernt der Spieler die grundlegenden Mechaniken kennen:
-                Ressourcen sammeln, einfache Ausrüstung herstellen,
-                mit Max zusammenarbeiten und erste Entscheidungen treffen,
-                die zeigen, wie Wolfram mit dieser Welt umgeht.
+                Im Camp lernt der Spieler die Grundlagen: Ressourcen sammeln,
+                Ausruestung bauen, mit Max zusammenarbeiten und erste Entscheidungen
+                treffen, wie Wolfram mit der Welt umgeht.
             </p>
 
             <h3 class="reveal">Konflikte unterwegs</h3>
             <p class="reveal">
-                Auf seinem Weg trifft Wolfram auf verschiedene Fraktionen,
-                Überlebende mit eigenen Interessen und gefährliche Mutationen
-                der Zombies. Der Spieler entscheidet, wem er hilft, mit wem
-                er handelt – und welche Risiken er eingeht.
+                Wolfram trifft Fraktionen, andere Ueberlebende und mutierte Zombies.
+                Spieler entscheiden, wem sie helfen, mit wem sie handeln und welche
+                Risiken sie eingehen.
             </p>
 
             <p class="reveal">
-                Moralische Entscheidungen beeinflussen Beziehungen,
-                Zugänge zu Ressourcen und den Verlauf der Geschichte:
-                Wird die Siedlung ein offener Zufluchtsort oder eine streng
-                geschützte Festung?
+                Moralische Entscheidungen beeinflussen Beziehungen, Ressourcen und
+                Verlauf: Wird die Siedlung offener Zufluchtsort oder geschuetzte
+                Festung?
             </p>
 
             <h3 class="reveal">Ziel: Eine neue Gemeinschaft</h3>
             <p class="reveal">
-                Langfristig geht es nicht nur darum, zu überleben,
-                sondern eine funktionierende Gemeinschaft aufzubauen.
-                Jede abgeschlossene Siedlung steht für einen Schritt in Richtung
-                Zukunft – und für die Frage, welchen Preis man dafür zahlen will.
+                Langfristig geht es darum, eine funktionierende Gemeinschaft zu
+                bauen. Jede abgeschlossene Siedlung ist ein Schritt Richtung Zukunft.
             </p>
         </section>
 
-        <!-- GDD-Button -->
         <section>
             <h2 class="reveal">Mehr Details zur Story</h2>
 
             <p class="reveal">
                 Weitere Storypunkte, Nebencharaktere und Missionsideen findest du
-                im vollständigen Game Design Document (GDD):
+                im vollstaendigen Game Design Document (GDD):
             </p>
 
             <a href="GDD.pdf" target="_blank" class="button reveal">
-                Zum vollständigen GDD
+                Zum vollstaendigen GDD
             </a>
         </section>
 
-        <!-- Team -->
+        <section class="reveal">
+            <h2>Letzte Updates (Fake-News)</h2>
+            <p class="reveal">Wird automatisch aus <code>updates.json</code> geladen.</p>
+            <div id="news-feed" class="news-grid"></div>
+        </section>
+
         <section>
             <h2 class="reveal">Team</h2>
 
@@ -113,11 +114,10 @@
             </p>
 
             <ul class="reveal">
-                <li>Noorollah Mousavi – Game Design &amp; Webprojekt</li>
+                <li>Noorollah Mousavi - Game Design &amp; Webprojekt</li>
             </ul>
         </section>
 
-        <!-- Bild -->
         <section>
             <img src="pictures/GDDManfred4x.png"
                  alt="Konzeptbild von Manfred, Wolframs Mentor"
@@ -125,10 +125,31 @@
                  loading="lazy">
         </section>
 
+        <section class="reveal">
+            <h2>Feedback</h2>
+            <p class="reveal">Formular sendet ohne Seitenreload und zeigt eine sofortige Meldung.</p>
+            <form id="feedback-form" class="feedback-form">
+                <label>
+                    Name
+                    <input type="text" name="name" placeholder="Dein Name" required>
+                </label>
+                <label>
+                    E-Mail
+                    <input type="email" name="email" placeholder="name@example.com" required>
+                </label>
+                <label>
+                    Nachricht
+                    <textarea name="message" rows="3" placeholder="Dein Feedback" required></textarea>
+                </label>
+                <button type="submit" class="button primary">Senden</button>
+                <p id="feedback-status" class="muted" aria-live="polite"></p>
+            </form>
+        </section>
+
     </main>
 
     <footer>
-        &copy; 2025 The After Life – Game Projekt · Noorollah Mousavi
+        &copy; 2025 The After Life - Game Projekt (c) Noorollah Mousavi
     </footer>
 
     <script src="script.js"></script>

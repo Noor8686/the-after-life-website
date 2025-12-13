@@ -2,114 +2,88 @@
 <html lang="de">
 <head>
     <meta charset="UTF-8">
-    <!-- WICHTIG für Handy & Tablet: -->
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>The After Life – Charaktere</title>
+    <title>The After Life - Charaktere</title>
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
 
-    <!-- Navigation -->
     <nav aria-label="Hauptnavigation">
-        <button class="nav-toggle" aria-label="Menü öffnen oder schließen">☰</button>
+        <button class="nav-toggle" aria-label="Menue oeffnen oder schliessen">Menu</button>
 
         <div class="nav-links">
-            <a href="index.html">Überblick</a>
+            <a href="index.html">Ueberblick</a>
             <a href="charaktere.html" class="active">Charaktere</a>
             <a href="orte.html">Orte</a>
             <a href="mechaniken.html">Spielmechaniken</a>
             <a href="story.html">Story &amp; Team</a>
         </div>
 
-        <button class="theme-toggle" aria-label="Design umschalten">☀</button>
+        <button class="theme-toggle" aria-label="Design umschalten">MOON</button>
     </nav>
 
-    <!-- Kopfbereich -->
     <header class="reveal">
         <h1>The After Life</h1>
         <p>Charaktere der Welt von The After Life</p>
     </header>
 
-    <!-- Hauptinhalt -->
     <main>
 
-        <h2 class="reveal">Hauptcharaktere</h2>
-        <p class="reveal">
-            Die Figuren sind das Herz des Spiels. Jeder Charakter bringt eigene Fähigkeiten,
-            Schwächen und eine persönliche Geschichte mit, die den Verlauf von
-            <strong>The After Life</strong> prägen.
-        </p>
+        <section class="reveal">
+            <h2>Hauptcharaktere</h2>
+            <p class="reveal">
+                Klick auf eine Figur, um die vollstaendigen Details live aus der
+                JSON-Datei zu laden. So bleibt die Seite schnell und wirkt wie ein
+                In-Game-Kodex.
+            </p>
 
-        <div class="grid-characters">
+            <div class="grid-characters" id="charakter-grid">
 
-            <!-- Wolfram -->
-            <article class="char-box reveal reveal-zoom">
-                <img src="pictures/GDDWolfram4x.png"
-                     alt="Wolfram, bärtiger Überlebender in grüner Jacke"
-                     loading="lazy">
-                <h3>Wolfram</h3>
-                <p>
-                    Wolfram ist 43 Jahre alt und der spielbare Hauptcharakter.
-                    Einst Informatikstudent, lebt er nun als einer der letzten
-                    Überlebenden auf Rügen und versucht, aus den Trümmern der
-                    alten Welt eine neue Gemeinschaft aufzubauen.
-                </p>
-                <p>
-                    Zu Beginn beherrscht er nur grundlegende Überlebensfähigkeiten
-                    wie Jagen, Sammeln und einfache Handwerksarbeiten. Im Laufe
-                    des Spiels kann er neue Fertigkeiten erlernen, bessere
-                    Ausrüstung herstellen und schließlich zur Führungsperson einer
-                    Siedlung werden.
-                </p>
-            </article>
+                <article class="char-box reveal reveal-zoom" data-char-id="wolfram">
+                    <img src="pictures/GDDWolfram4x.png"
+                         alt="Wolfram, bartiger Ueberlebender in gruener Jacke"
+                         loading="lazy">
+                    <h3>Wolfram</h3>
+                    <p class="char-kurz">Vom Camper zum Siedlungsbauer.</p>
+                    <button class="button secondary load-char" data-char-id="wolfram">
+                        Details laden
+                    </button>
+                    <div class="char-details" aria-live="polite"></div>
+                </article>
 
-            <!-- Max -->
-            <article class="char-box reveal reveal-zoom">
-                <img src="pictures/GDDMax4x.png"
-                     alt="Max, rötlich-brauner Begleithund"
-                     loading="lazy">
-                <h3>Max – Begleithund</h3>
-                <p>
-                    Max ist der Hund von Manfred und wird nach dessen Tod
-                    zu Wolframs treuestem Begleiter. Er ist ruhig, aufmerksam
-                    und stark an seinen Menschen gebunden.
-                </p>
-                <p>
-                    Im Gameplay warnt Max vor Gefahren, kann Gegner ablenken
-                    oder Fährten aufnehmen. Gleichzeitig ist er ein wichtiger
-                    emotionaler Anker für Wolfram in einer Welt voller Verlust
-                    und Einsamkeit.
-                </p>
-            </article>
+                <article class="char-box reveal reveal-zoom" data-char-id="max">
+                    <img src="pictures/GDDMax4x.png"
+                         alt="Max, ruetlich-brauner Begleithund"
+                         loading="lazy">
+                    <h3>Max</h3>
+                    <p class="char-kurz">Treuer Begleiter, Spaeher und Alarm.</p>
+                    <button class="button secondary load-char" data-char-id="max">
+                        Details laden
+                    </button>
+                    <div class="char-details" aria-live="polite"></div>
+                </article>
 
-            <!-- Manfred -->
-            <article class="char-box reveal reveal-zoom">
-                <img src="pictures/GDDManfred4x.png"
-                     alt="Manfred, älterer Mann mit Mütze als Mentorfigur"
-                     loading="lazy">
-                <h3>Manfred</h3>
-                <p>
-                    Manfred ist ein älterer Überlebender und lange Zeit
-                    Wolframs Mentor. Er bringt ihm grundlegende Fähigkeiten bei
-                    und vermittelt Werte wie Verantwortung und Gemeinschaft.
-                </p>
-                <p>
-                    Sein Tod zu Beginn der Geschichte ist der Auslöser dafür,
-                    dass Wolfram das vertraute Camp verlässt und den Entschluss fasst,
-                    eine eigene Siedlung zu gründen – und damit den Grundstein
-                    für eine neue Zivilisation zu legen.
-                </p>
-            </article>
+                <article class="char-box reveal reveal-zoom" data-char-id="manfred">
+                    <img src="pictures/GDDManfred4x.png"
+                         alt="Manfred, aelterer Mann mit Muetze als Mentorfigur"
+                         loading="lazy">
+                    <h3>Manfred</h3>
+                    <p class="char-kurz">Mentor, Wertegeber, Funke fuer den Aufbruch.</p>
+                    <button class="button secondary load-char" data-char-id="manfred">
+                        Details laden
+                    </button>
+                    <div class="char-details" aria-live="polite"></div>
+                </article>
 
-        </div>
+            </div>
+        </section>
 
     </main>
 
     <footer>
-        &copy; 2025 The After Life – Game Projekt · Noorollah Mousavi
+        &copy; 2025 The After Life - Game Projekt (c) Noorollah Mousavi
     </footer>
 
-    <!-- Externe JavaScript-Datei -->
     <script src="script.js"></script>
 </body>
 </html>

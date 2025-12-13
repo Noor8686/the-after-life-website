@@ -1,4 +1,4 @@
-/* =========================================
+ï»¿/* =========================================
    THEME & TOKENS
    ========================================= */
 :root {
@@ -340,6 +340,97 @@ main ul li:hover { transform: translateX(4px); border-color: rgba(230,57,70,0.35
 }
 
 /* =========================================
+   AJAX-KOMPONENTEN
+   ========================================= */
+.muted { color: var(--color-text-muted); font-size: 0.95rem; }
+.error-text { color: #ff6b6b; font-weight: 700; }
+
+.char-details { margin-top: 10px; text-align: left; font-size: 0.95rem; }
+.char-details p { margin: 6px 0; }
+
+.story-dynamic, .news-grid {
+  display: grid;
+  gap: 12px;
+  margin-top: 12px;
+}
+
+.story-card, .news-card {
+  background: var(--color-surface);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius);
+  padding: 14px;
+  box-shadow: var(--shadow-soft);
+}
+.news-card { background: var(--color-surface-2); }
+.news-card h3 { margin-top: 4px; margin-bottom: 8px; }
+
+.pill-list {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  margin: 12px 0;
+}
+.pill {
+  padding: 8px 12px;
+  border-radius: 999px;
+  border: 1px solid var(--color-border);
+  background: var(--color-surface-2);
+  color: var(--color-text);
+  cursor: pointer;
+  transition: background var(--ease), color var(--ease), transform var(--ease), border-color var(--ease);
+}
+.pill:hover { transform: translateY(-1px); }
+.pill.active {
+  background: var(--color-accent);
+  border-color: var(--color-accent);
+  color: #fff;
+}
+
+.ort-card { margin-top: 12px; }
+.ort-card-inner {
+  display: flex;
+  gap: 14px;
+  align-items: flex-start;
+  background: var(--color-surface);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius);
+  padding: 12px;
+  box-shadow: var(--shadow-soft);
+}
+.ort-card-inner img {
+  width: 180px;
+  max-width: 40vw;
+  border-radius: var(--radius);
+  object-fit: cover;
+}
+.ort-card-inner h3 { margin-top: 0; }
+
+.feedback-form {
+  display: grid;
+  gap: 10px;
+  max-width: 520px;
+}
+.feedback-form label {
+  display: grid;
+  gap: 4px;
+  font-weight: 600;
+}
+.feedback-form input,
+.feedback-form textarea {
+  width: 100%;
+  padding: 10px;
+  border-radius: var(--radius);
+  border: 1px solid var(--color-border);
+  background: var(--color-surface-2);
+  color: var(--color-text);
+}
+.feedback-form input:focus,
+.feedback-form textarea:focus {
+  outline: 1px solid var(--color-accent);
+  border-color: var(--color-accent);
+}
+
+/* =========================================
    MEDIA QUERIES
    ========================================= */
 @media (max-width: 900px) {
@@ -398,7 +489,7 @@ main ul li:hover { transform: translateX(4px); border-color: rgba(230,57,70,0.35
 ------------------------------------------------- */
 @media (max-width: 768px) {
 
-  /* Hintergrund-Dim beim Öffnen */
+  /* Hintergrund-Dim beim Ã–ffnen */
   nav.nav-open::after {
     content: "";
     position: fixed;
@@ -430,7 +521,7 @@ main ul li:hover { transform: translateX(4px); border-color: rgba(230,57,70,0.35
 }
 
 /* -------------------------------------------------
-   HANDY-BUTTONS -> Größer, runder, besser
+   HANDY-BUTTONS -> GrÃ¶ÃŸer, runder, besser
 ------------------------------------------------- */
 @media (max-width: 768px) {
   .button {
@@ -454,12 +545,12 @@ main ul li:hover { transform: translateX(4px); border-color: rgba(230,57,70,0.35
   .hero p { font-size: 1rem; }
 }
 /* =========================================
-   TOP HEADER – korrekt ausgerichtet
+   TOP HEADER â€“ korrekt ausgerichtet
    ========================================= */
 header {
   width: 100%;
   margin: 0;
-  /* enger an den linken Rand rücken */
+  /* enger an den linken Rand rÃ¼cken */
   padding: 24px 28px 16px;
   text-align: left;
 }
@@ -469,6 +560,7 @@ header {
     width: 100%;
   }
 }
+
 
 
 

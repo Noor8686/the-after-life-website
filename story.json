@@ -1,0 +1,19 @@
+{
+  "abschnitte": [
+    {
+      "id": "kapitel-1",
+      "titel": "Nach dem Abschied",
+      "text": "Manfreds Tod reisst ein Loch ins Camp. Wolfram begruesst die ersten Gaeste am Feuer und merkt, dass er allein nicht ueberleben wird. Er beginnt, Grundmauern fuer eine neue Siedlung zu ziehen."
+    },
+    {
+      "id": "kapitel-2",
+      "titel": "Strasse nach Daenholm",
+      "text": "Der Weg zum alten Militaerposten ist gefaehrlich. Wolfram findet Vorratskisten, aber auch Spuren von anderen Gruppen. Vertraut er ihnen oder markiert er das Gelaende als Feindzone?"
+    },
+    {
+      "id": "kapitel-3",
+      "titel": "Funkspruch von der Oie",
+      "text": "Ein schwacher Funkspruch erreicht das Camp. Auf der Greifswalder Oie soll ein alter Sender noch laufen. Wolfram muss entscheiden, ob er seine besten Leute dorthin schickt oder das Camp verteidigt."
+    }
+  ]
+}

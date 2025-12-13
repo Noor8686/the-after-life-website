@@ -1,0 +1,29 @@
+[
+  {
+    "id": "wolfram",
+    "name": "Wolfram",
+    "rolle": "Ueberlebender & Anfuehrer",
+    "alter": 43,
+    "bild": "pictures/GDDWolfram4x.png",
+    "kurz": "Vom Camper zum Siedlungsgruender auf Ruegen.",
+    "details": "Wolfram traegt die Verantwortung fuer den Aufbau einer sicheren Siedlung. Er startet mit einfachen Survival-Skills, lernt aber schnell neue Rezepte, verbessert Ausruestung und wird zum Gesicht der neuen Gemeinschaft."
+  },
+  {
+    "id": "max",
+    "name": "Max",
+    "rolle": "Begleithund",
+    "alter": 7,
+    "bild": "pictures/GDDMax4x.png",
+    "kurz": "Treuer Hueter und Faehrtenleser.",
+    "details": "Max warnt vor Gefahren, lenkt Gegner ab und hilft beim Spurenlesen. Als emotionaler Anker haelt er Wolfram in der Spur und gibt der Welt mehr Menschlichkeit."
+  },
+  {
+    "id": "manfred",
+    "name": "Manfred",
+    "rolle": "Mentor",
+    "alter": 61,
+    "bild": "pictures/GDDManfred4x.png",
+    "kurz": "Lehrer der alten Welt, Funke der neuen.",
+    "details": "Manfred brachte Wolfram die Grundlagen des Ueberlebens bei. Sein Tod ist der Ausloeser fuer Wolframs Reise und motiviert, eine Gemeinschaft zu bauen, die mehr ist als nur ein Lagerfeuer."
+  }
+]

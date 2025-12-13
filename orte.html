@@ -3,138 +3,57 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>The After Life – Orte</title>
+    <title>The After Life - Orte</title>
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
 
-    <!-- Navigation -->
     <nav aria-label="Hauptnavigation">
-        <button class="nav-toggle" aria-label="Menü öffnen oder schließen">☰</button>
+        <button class="nav-toggle" aria-label="Menue oeffnen oder schliessen">Menu</button>
 
         <div class="nav-links">
-            <a href="index.html">Überblick</a>
+            <a href="index.html">Ueberblick</a>
             <a href="charaktere.html">Charaktere</a>
             <a href="orte.html" class="active">Orte</a>
             <a href="mechaniken.html">Spielmechaniken</a>
             <a href="story.html">Story &amp; Team</a>
         </div>
 
-        <button class="theme-toggle" aria-label="Design umschalten">☀</button>
+        <button class="theme-toggle" aria-label="Design umschalten">MOON</button>
     </nav>
 
-    <!-- Kopfbereich -->
     <header class="reveal">
         <h1>The After Life</h1>
         <p>Wichtige Orte der Spielwelt</p>
     </header>
 
-    <!-- Hauptinhalt -->
     <main>
 
-        <!-- Einleitung -->
         <section class="reveal">
             <h2>Die Welt von The After Life</h2>
             <p>
-                Die Spielwelt von <strong>The After Life</strong> spielt auf und um eine Insel,
-                die von der Katastrophe gezeichnet ist. Verlassene Militärstützpunkte,
-                einsame Inseln und kleine Siedlungen erzählen die Geschichte einer
-                untergegangenen Zivilisation – und bieten Chancen für einen Neuanfang.
+                Die Spielwelt spielt auf und um eine Insel, die von der Katastrophe
+                gezeichnet ist. Verlassene Militaerstuetzpunkte, einsame Inseln und
+                kleine Siedlungen erzaehlen die Geschichte einer untergegangenen
+                Zivilisation - und bieten Chancen fuer einen Neuanfang.
             </p>
         </section>
 
-        <!-- Orte als Karten-Grid -->
-        <section>
-            <h2 class="reveal">Zentrale Schauplätze</h2>
+        <section class="reveal">
+            <h2>Orte dynamisch laden</h2>
+            <p>
+                Klicke einen Ort an, um Beschreibung und Bild live aus
+                <code>orte.json</code> zu laden. So fuehlt es sich wie ein Ingame-Logbuch an.
+            </p>
 
-            <div class="grid-characters">
-
-                <!-- Camp -->
-                <article class="char-box reveal reveal-zoom">
-                    <img src="pictures/Camp.jpg"
-                         alt="Camp im Wald, Startgebiet von Wolfram"
-                         class="full"
-                         loading="lazy">
-                    <h3>Camp – Startgebiet</h3>
-                    <p>
-                        Das Camp ist der Startpunkt des Spiels und Wolframs Zuhause
-                        zu Beginn der Geschichte. Hier lernt der Spieler die Grundlagen
-                        des Überlebens: Ressourcen sammeln, einfache Ausrüstung herstellen
-                        und mit Hund Max zusammenarbeiten.
-                    </p>
-                    <p>
-                        Nach Manfreds Tod wird das Camp zum emotionalen Ausgangspunkt
-                        der Reise – und zur Erinnerung daran, was bereits verloren ging.
-                    </p>
-                </article>
-
-                <!-- Dänholm -->
-                <article class="char-box reveal reveal-zoom">
-                    <img src="pictures/GDDDaenholm4x.png"
-                         alt="Verlassener Militärstützpunkt Dänholm"
-                         class="full"
-                         loading="lazy">
-                    <h3>Militärstützpunkt Dänholm</h3>
-                    <p>
-                        Dänholm ist ein verlassener Militärposten, in dem noch
-                        Ausrüstung, Munition und Fragmente alter Geheimnisse lagern.
-                        Die Gebäude sind stark beschädigt, aber die Verteidigungsanlagen
-                        lassen erahnen, wie heftig hier früher gekämpft wurde.
-                    </p>
-                    <p>
-                        Hohe Gefahr, aber auch große Belohnungen: Wer es schafft,
-                        Dänholm zu sichern, verschafft sich einen wichtigen taktischen
-                        Vorteil auf der Insel.
-                    </p>
-                </article>
-
-                <!-- Greifswalder Oie -->
-                <article class="char-box reveal reveal-zoom">
-                    <img src="pictures/GDDGreifswalder_Oie4x.png"
-                         alt="Leuchtturm auf der Greifswalder Oie"
-                         class="full"
-                         loading="lazy">
-                    <h3>Greifswalder Oie</h3>
-                    <p>
-                        Eine windige Insel mit Leuchtturm, steilen Küsten
-                        und rauer See. Die Greifswalder Oie ist ein wichtiger
-                        Ort für Funkverbindungen, Handel und die Kontrolle
-                        über die umliegenden Gewässer.
-                    </p>
-                    <p>
-                        Wer die Oie erreicht und sichern kann, öffnet sich
-                        neue Möglichkeiten für Kommunikation und langfristigen
-                        Ausbau der eigenen Siedlungen.
-                    </p>
-                </article>
-
-                <!-- Weitere Orte -->
-                <article class="char-box reveal reveal-zoom">
-                    <img src="pictures/GDDGoehren4x.png"
-                         alt="Konzeptbild des Ortes Göhren"
-                         class="full"
-                         loading="lazy">
-                    <h3>Weitere Orte</h3>
-                    <p>
-                        Weitere Regionen wie Göhren und andere Teile der Insel
-                        bieten neue Herausforderungen und Geschichten.
-                        Verlassene Dörfer, Waldgebiete oder Küstenabschnitte
-                        können sowohl Bedrohung als auch Chance sein.
-                    </p>
-                    <p>
-                        Jeder neue Ort erweitert die Spielwelt, bringt andere
-                        Ressourcen, Feinde und mögliche Verbündete mit sich –
-                        und prägt Wolframs Weg beim Aufbau einer neuen Zivilisation.
-                    </p>
-                </article>
-
-            </div>
+            <div id="orte-nav" class="pill-list" aria-label="Orte Auswahl"></div>
+            <div id="ort-detail" class="ort-card"></div>
         </section>
 
     </main>
 
     <footer>
-        &copy; 2025 The After Life – Game Projekt · Noorollah Mousavi
+        &copy; 2025 The After Life - Game Projekt (c) Noorollah Mousavi
     </footer>
 
     <script src="script.js"></script>

@@ -44,8 +44,8 @@
 html, body {
   margin: 0;
   padding: 0;
-  width: 100vw;
-  max-width: 100vw;
+  width: 100%;
+  max-width: 100%;
   min-height: 100%;
   overflow-x: hidden;
   background: radial-gradient(circle at 20% 20%, rgba(230,57,70,0.08), transparent 35%),
@@ -142,8 +142,6 @@ nav a.active { color: var(--color-text); border-color: var(--color-accent); }
    HERO
    ========================================= */
 .hero {
-  width: 100vw;
-  margin-left: calc(50% - 50vw);
   min-height: 78vh;
   background: linear-gradient(var(--color-hero-overlay), var(--color-hero-overlay)),
               url("pictures/image.jpg") center/cover no-repeat;
@@ -152,6 +150,7 @@ nav a.active { color: var(--color-text); border-color: var(--color-accent); }
   padding: clamp(2.5rem, 4vw, 4rem);
   position: relative;
   overflow: hidden;
+  width: 100%;
 }
 
 .hero::after {
@@ -443,7 +442,16 @@ main ul li:hover { transform: translateX(4px); border-color: rgba(230,57,70,0.35
   .hero-buttons {
     flex-direction: column;
     gap: 14px;
+    width: 100%;
   }
+
+  .hero {
+    min-height: 70vh;
+    padding: 2.5rem 1.5rem;
+  }
+
+  .hero h2 { font-size: clamp(1.9rem, 6vw, 2.6rem); }
+  .hero p { font-size: 1rem; }
 }
 /* =========================================
    TOP HEADER – korrekt ausgerichtet

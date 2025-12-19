@@ -574,3 +574,17 @@ header {
 
 
 
+/* =========================================
+   MOBILE LAYOUT OPTIMIERUNGEN
+   ========================================= */
+@media (max-width: 640px) {
+  main { padding: 0 14px; }
+  .grid-characters { grid-template-columns: 1fr; }
+  .char-box { padding: 12px; }
+  .char-box img { height: 200px; }
+  .story-card, .news-card, .ort-card-inner { padding: 12px; }
+  .ort-card-inner { flex-direction: column; align-items: flex-start; }
+  .ort-card-inner img { width: 100%; max-width: 100%; height: 180px; }
+  .hero { min-height: 60vh; padding: 2rem 1.25rem; }
+  .hero-buttons { width: 100%; }
+}

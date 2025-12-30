@@ -1,0 +1,23 @@
+async function register() {
+  const res = await fetch("https://localhost:44357/api/auth/register", {
+    method: "POST",
+    headers: { "Content-Type": "application/json" },
+    credentials: "include", // 🔴 sehr wichtig
+    body: JSON.stringify({
+      name: document.getElementById("name").value,
+      email: document.getElementById("email").value,
+      password: document.getElementById("password").value,
+      confirmPassword: document.getElementById("confirmPassword").value
+    })
+  });
+
+  const data = await res.json().catch(() => ({}));
+
+  if (!res.ok) {
+    alert(data.error || "Registrierung fehlgeschlagen");
+    return;
+  }
+
+  // ✅ Erfolg
+  window.location.href = "profil.html";
+}

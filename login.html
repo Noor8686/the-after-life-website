@@ -1,0 +1,21 @@
+async function login() {
+  const res = await fetch("https://localhost:44357/api/auth/login", {
+    method: "POST",
+    headers: { "Content-Type": "application/json" },
+    credentials: "include",
+    body: JSON.stringify({
+      email: document.getElementById("email").value,
+      password: document.getElementById("password").value,
+      rememberMe: true
+    })
+  });
+
+  const data = await res.json().catch(() => ({}));
+
+  if (!res.ok) {
+    alert(data.error || "Login fehlgeschlagen");
+    return;
+  }
+
+  window.location.href = "profil.html";
+}

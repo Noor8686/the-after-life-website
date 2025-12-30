@@ -472,3 +472,23 @@ document.addEventListener('DOMContentLoaded', () => {
 
 
 
+
+async function checkMe() {
+  const res = await fetch("https://localhost:44357/api/auth/me", {
+    credentials: "include"
+  });
+
+  if (!res.ok) {
+    // nicht eingeloggt -> zurueck zum Login
+    window.location.href = "login.html";
+    return;
+  }
+
+  const me = await res.json();
+  const infoTarget = document.getElementById("meInfo");
+  if (infoTarget) {
+    infoTarget.innerText = `Eingeloggt als: ${me.name} (${me.email})`;
+  } else {
+    console.log("Eingeloggt als:", me.name, me.email);
+  }
+}

@@ -7,6 +7,143 @@ document.addEventListener('DOMContentLoaded', () => {
     const $$ = (selector) => document.querySelectorAll(selector);
 
     /* =========================================================
+       Sprachen / i18n (DE/EN)
+       ========================================================= */
+    const translations = {
+        de: {
+            "nav.menu": "Menu",
+            "nav.overview": "Ueberblick",
+            "nav.characters": "Charaktere",
+            "nav.places": "Orte",
+            "nav.mechanics": "Spielmechaniken",
+            "nav.story": "Story & Team",
+            "nav.privacy": "Datenschutz",
+            "hero.headline": "Willkommen in der Welt von The After Life",
+            "hero.texts": [
+                "Ein Survival-Adventure in einer zerstoerten Zukunft.",
+                "Baue deine Siedlung auf den Ruinen der alten Welt.",
+                "Triff Entscheidungen, die ueber Leben und Tod entscheiden."
+            ],
+            "hero.btn.characters": "Charaktere",
+            "hero.btn.places": "Orte ansehen",
+            "profile.loading": "Lade Profil...",
+            "profile.loggedIn": "Eingeloggt als: {name} ({email})"
+        },
+        en: {
+            "nav.menu": "Menu",
+            "nav.overview": "Overview",
+            "nav.characters": "Characters",
+            "nav.places": "Locations",
+            "nav.mechanics": "Game Mechanics",
+            "nav.story": "Story & Team",
+            "nav.privacy": "Privacy",
+            "hero.headline": "Welcome to the world of The After Life",
+            "hero.texts": [
+                "A survival adventure in a ruined future.",
+                "Build your settlement on the ruins of the old world.",
+                "Make choices that decide over life and death."
+            ],
+            "hero.btn.characters": "Characters",
+            "hero.btn.places": "Explore locations",
+            "profile.loading": "Loading profile...",
+            "profile.loggedIn": "Logged in as: {name} ({email})"
+        }
+    };
+    let currentLang = localStorage.getItem("taf-lang") === "en" ? "en" : "de";
+    const i18nSelectors = {
+        ".nav-toggle": "nav.menu",
+        ".nav-links a[href$='index.html']": "nav.overview",
+        ".nav-links a[href$='charaktere.html']": "nav.characters",
+        ".nav-links a[href$='orte.html']": "nav.places",
+        ".nav-links a[href$='mechaniken.html']": "nav.mechanics",
+        ".nav-links a[href$='story.html']": "nav.story",
+        ".nav-links a[href$='datenschutz.html']": "nav.privacy",
+        ".hero h2": "hero.headline",
+        ".hero .hero-buttons .primary": "hero.btn.characters",
+        ".hero .hero-buttons .secondary": "hero.btn.places",
+        "#meInfo": "profile.loading"
+    };
+    const heroTextEl = $("#hero-text");
+    let heroRotationId = null;
+    let langSwitcher;
+
+    function translateKey(key, fallback) {
+        const dict = translations[currentLang] || translations.de;
+        if (dict[key] !== undefined) return dict[key];
+        if (translations.de[key] !== undefined) return translations.de[key];
+        return fallback;
+    }
+
+    function formatTemplate(template, vars = {}) {
+        if (typeof template !== "string") return template;
+        return template.replace(/\{(\w+)\}/g, (match, key) => vars[key] ?? match);
+    }
+
+    function applyStaticTranslations() {
+        Object.entries(i18nSelectors).forEach(([selector, key]) => {
+            document.querySelectorAll(selector).forEach(el => {
+                const value = translateKey(key);
+                if (typeof value === "string") {
+                    el.textContent = value;
+                }
+            });
+        });
+    }
+
+    function startHeroRotation() {
+        if (!heroTextEl) return;
+        if (heroRotationId) clearInterval(heroRotationId);
+        const texts = translateKey("hero.texts");
+        if (!Array.isArray(texts) || texts.length === 0) return;
+        heroRotationId = rotatingText(heroTextEl, texts, 5000);
+    }
+
+    function updateLanguageButtons() {
+        if (!langSwitcher) return;
+        langSwitcher.querySelectorAll("button[data-lang]").forEach(btn => {
+            const active = btn.dataset.lang === currentLang;
+            btn.classList.toggle("active", active);
+            btn.setAttribute("aria-pressed", active ? "true" : "false");
+        });
+    }
+
+    function applyTranslations(lang = currentLang) {
+        if (!translations[lang]) lang = "de";
+        currentLang = lang;
+        localStorage.setItem("taf-lang", currentLang);
+        document.documentElement.lang = currentLang;
+        applyStaticTranslations();
+        startHeroRotation();
+        updateLanguageButtons();
+    }
+
+    function setupLanguageSwitcher() {
+        const nav = document.querySelector("nav");
+        if (!nav) return;
+        langSwitcher = nav.querySelector(".lang-switch");
+        if (!langSwitcher) {
+            langSwitcher = document.createElement("div");
+            langSwitcher.className = "lang-switch";
+            langSwitcher.innerHTML = `
+                <button type="button" data-lang="de">DE</button>
+                <button type="button" data-lang="en">EN</button>
+            `;
+            const themeToggleEl = nav.querySelector(".theme-toggle");
+            if (themeToggleEl) {
+                themeToggleEl.insertAdjacentElement("beforebegin", langSwitcher);
+            } else {
+                nav.appendChild(langSwitcher);
+            }
+        }
+
+        langSwitcher.querySelectorAll("button[data-lang]").forEach(btn => {
+            btn.addEventListener("click", () => applyTranslations(btn.dataset.lang || "de"));
+        });
+
+        updateLanguageButtons();
+    }
+
+    /* =========================================================
        AJAX-Helper mit einfachem Cache
        ========================================================= */
     const fetchCache = {};
@@ -115,19 +252,11 @@ document.addEventListener('DOMContentLoaded', () => {
        ========================================================= */
     function rotatingText(element, texts, interval = 5000) {
         let index = 0;
-        setInterval(() => {
+        element.textContent = texts[0] || "";
+        return setInterval(() => {
             index = (index + 1) % texts.length;
             element.textContent = texts[index];
         }, interval);
-    }
-
-    const heroTextEl = $("#hero-text");
-    if (heroTextEl) {
-        rotatingText(heroTextEl, [
-            "Ein Survival-Adventure in einer zerstoerten Zukunft.",
-            "Baue deine Siedlung auf den Ruinen der alten Welt.",
-            "Triff Entscheidungen, die ueber Leben und Tod entscheiden."
-        ]);
     }
 
 
@@ -463,6 +592,15 @@ document.addEventListener('DOMContentLoaded', () => {
     initNewsFeed();
     initFeedbackForm();
 
+    setupLanguageSwitcher();
+    applyTranslations(currentLang);
+    window.tafI18n = {
+        get lang() { return currentLang; },
+        t: (key, fallback) => translateKey(key, fallback),
+        format: formatTemplate,
+        setLang: (lang) => applyTranslations(lang)
+    };
+
 });
 
 
@@ -486,8 +624,15 @@ async function checkMe() {
 
   const me = await res.json();
   const infoTarget = document.getElementById("meInfo");
+  const i18n = window.tafI18n;
   if (infoTarget) {
-    infoTarget.innerText = `Eingeloggt als: ${me.name} (${me.email})`;
+    const template = i18n?.t
+      ? i18n.t("profile.loggedIn", "Eingeloggt als: {name} ({email})")
+      : "Eingeloggt als: {name} ({email})";
+    const text = i18n?.format
+      ? i18n.format(template, { name: me.name, email: me.email })
+      : `Eingeloggt als: ${me.name} (${me.email})`;
+    infoTarget.innerText = text;
   } else {
     console.log("Eingeloggt als:", me.name, me.email);
   }

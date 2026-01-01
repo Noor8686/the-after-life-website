@@ -18,6 +18,8 @@ document.addEventListener('DOMContentLoaded', () => {
             "nav.mechanics": "Spielmechaniken",
             "nav.story": "Story & Team",
             "nav.privacy": "Datenschutz",
+            "nav.login": "Login",
+            "nav.register": "Registrieren",
             "hero.headline": "Willkommen in der Welt von The After Life",
             "hero.texts": [
                 "Ein Survival-Adventure in einer zerstoerten Zukunft.",
@@ -37,6 +39,8 @@ document.addEventListener('DOMContentLoaded', () => {
             "nav.mechanics": "Game Mechanics",
             "nav.story": "Story & Team",
             "nav.privacy": "Privacy",
+            "nav.login": "Login",
+            "nav.register": "Sign up",
             "hero.headline": "Welcome to the world of The After Life",
             "hero.texts": [
                 "A survival adventure in a ruined future.",
@@ -58,6 +62,8 @@ document.addEventListener('DOMContentLoaded', () => {
         ".nav-links a[href$='mechaniken.html']": "nav.mechanics",
         ".nav-links a[href$='story.html']": "nav.story",
         ".nav-links a[href$='datenschutz.html']": "nav.privacy",
+        ".auth-links .login": "nav.login",
+        ".auth-links .register": "nav.register",
         ".hero h2": "hero.headline",
         ".hero .hero-buttons .primary": "hero.btn.characters",
         ".hero .hero-buttons .secondary": "hero.btn.places",
@@ -141,6 +147,25 @@ document.addEventListener('DOMContentLoaded', () => {
         });
 
         updateLanguageButtons();
+    }
+
+    function setupAuthLinks() {
+        const nav = document.querySelector("nav");
+        if (!nav || nav.querySelector(".auth-links")) return;
+
+        const auth = document.createElement("div");
+        auth.className = "auth-links";
+        auth.innerHTML = `
+            <a href="login.html" class="button secondary login">Login</a>
+            <a href="register.html" class="button primary register">Registrieren</a>
+        `;
+
+        const themeToggleEl = nav.querySelector(".theme-toggle");
+        if (themeToggleEl) {
+            themeToggleEl.insertAdjacentElement("afterend", auth);
+        } else {
+            nav.appendChild(auth);
+        }
     }
 
     /* =========================================================
@@ -593,6 +618,7 @@ document.addEventListener('DOMContentLoaded', () => {
     initFeedbackForm();
 
     setupLanguageSwitcher();
+    setupAuthLinks();
     applyTranslations(currentLang);
     window.tafI18n = {
         get lang() { return currentLang; },

@@ -1,23 +1,75 @@
-async function register() {
-  const res = await fetch("https://localhost:44357/api/auth/register", {
-    method: "POST",
-    headers: { "Content-Type": "application/json" },
-    credentials: "include", // 🔴 sehr wichtig
-    body: JSON.stringify({
-      name: document.getElementById("name").value,
-      email: document.getElementById("email").value,
-      password: document.getElementById("password").value,
-      confirmPassword: document.getElementById("confirmPassword").value
-    })
-  });
+<!DOCTYPE html>
+<html lang="de">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Registrierung - The After Life</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <nav aria-label="Hauptnavigation">
+        <button class="nav-toggle" aria-label="Menue oeffnen oder schliessen">Menu</button>
 
-  const data = await res.json().catch(() => ({}));
+        <div class="nav-links">
+            <a href="index.html">Ueberblick</a>
+            <a href="charaktere.html">Charaktere</a>
+            <a href="orte.html">Orte</a>
+            <a href="mechaniken.html">Spielmechaniken</a>
+            <a href="story.html">Story &amp; Team</a>
+            <a href="datenschutz.html">Datenschutz</a>
+        </div>
 
-  if (!res.ok) {
-    alert(data.error || "Registrierung fehlgeschlagen");
-    return;
-  }
+        <button class="theme-toggle" aria-label="Design umschalten">MOON</button>
+    </nav>
 
-  // ✅ Erfolg
-  window.location.href = "profil.html";
-}
+    <header class="reveal">
+        <h1>Registrierung</h1>
+        <p>Erstelle ein Konto, um dein Profil zu nutzen.</p>
+    </header>
+
+    <main class="reveal">
+        <form id="register-form" class="auth-form" onsubmit="event.preventDefault(); registerUser();">
+            <label for="name">Name</label>
+            <input id="name" name="name" type="text" required>
+
+            <label for="email">E-Mail</label>
+            <input id="email" name="email" type="email" required>
+
+            <label for="password">Passwort</label>
+            <input id="password" name="password" type="password" required>
+
+            <label for="confirmPassword">Passwort bestaetigen</label>
+            <input id="confirmPassword" name="confirmPassword" type="password" required>
+
+            <button type="submit" class="button primary">Registrieren</button>
+            <p class="muted">Bereits ein Konto? <a href="login.html">Zum Login</a></p>
+        </form>
+    </main>
+
+    <script>
+    async function registerUser() {
+      const res = await fetch("https://localhost:44357/api/auth/register", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        credentials: "include",
+        body: JSON.stringify({
+          name: document.getElementById("name").value,
+          email: document.getElementById("email").value,
+          password: document.getElementById("password").value,
+          confirmPassword: document.getElementById("confirmPassword").value
+        })
+      });
+
+      const data = await res.json().catch(() => ({}));
+
+      if (!res.ok) {
+        alert(data.error || "Registrierung fehlgeschlagen");
+        return;
+      }
+
+      window.location.href = "profil.html";
+    }
+    </script>
+    <script src="script.js"></script>
+</body>
+</html>

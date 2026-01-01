@@ -1,21 +1,68 @@
-async function login() {
-  const res = await fetch("https://localhost:44357/api/auth/login", {
-    method: "POST",
-    headers: { "Content-Type": "application/json" },
-    credentials: "include",
-    body: JSON.stringify({
-      email: document.getElementById("email").value,
-      password: document.getElementById("password").value,
-      rememberMe: true
-    })
-  });
+<!DOCTYPE html>
+<html lang="de">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login - The After Life</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <nav aria-label="Hauptnavigation">
+        <button class="nav-toggle" aria-label="Menue oeffnen oder schliessen">Menu</button>
 
-  const data = await res.json().catch(() => ({}));
+        <div class="nav-links">
+            <a href="index.html">Ueberblick</a>
+            <a href="charaktere.html">Charaktere</a>
+            <a href="orte.html">Orte</a>
+            <a href="mechaniken.html">Spielmechaniken</a>
+            <a href="story.html">Story &amp; Team</a>
+            <a href="datenschutz.html">Datenschutz</a>
+        </div>
 
-  if (!res.ok) {
-    alert(data.error || "Login fehlgeschlagen");
-    return;
-  }
+        <button class="theme-toggle" aria-label="Design umschalten">MOON</button>
+    </nav>
 
-  window.location.href = "profil.html";
-}
+    <header class="reveal">
+        <h1>Login</h1>
+        <p>Melde dich an, um dein Profil zu sehen.</p>
+    </header>
+
+    <main class="reveal">
+        <form id="login-form" class="auth-form" onsubmit="event.preventDefault(); login();">
+            <label for="email">E-Mail</label>
+            <input id="email" name="email" type="email" required>
+
+            <label for="password">Passwort</label>
+            <input id="password" name="password" type="password" required>
+
+            <button type="submit" class="button primary">Einloggen</button>
+            <p class="muted">Noch kein Konto? <a href="register.html">Jetzt registrieren</a></p>
+        </form>
+    </main>
+
+    <script>
+    async function login() {
+      const res = await fetch("https://localhost:44357/api/auth/login", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        credentials: "include",
+        body: JSON.stringify({
+          email: document.getElementById("email").value,
+          password: document.getElementById("password").value,
+          rememberMe: true
+        })
+      });
+
+      const data = await res.json().catch(() => ({}));
+
+      if (!res.ok) {
+        alert(data.error || "Login fehlgeschlagen");
+        return;
+      }
+
+      window.location.href = "profil.html";
+    }
+    </script>
+    <script src="script.js"></script>
+</body>
+</html>

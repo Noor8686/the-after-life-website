@@ -138,6 +138,48 @@ nav a.active { color: var(--color-text); border-color: var(--color-accent); }
 .theme-toggle:hover { transform: translateY(-1px); box-shadow: var(--shadow-soft); }
 .theme-toggle:active { transform: translateY(0); }
 
+.account-menu {
+  position: relative;
+}
+
+.account-toggle {
+  background: #1d3557;
+  color: #fff;
+  border-radius: 12px;
+  border: 1px solid #28466f;
+}
+
+.account-dropdown {
+  position: absolute;
+  right: 0;
+  top: calc(100% + 8px);
+  min-width: 180px;
+  background: rgba(20, 24, 33, 0.96);
+  border: 1px solid var(--color-border);
+  border-radius: 12px;
+  box-shadow: var(--shadow-strong);
+  padding: 8px 0;
+  display: none;
+  z-index: 1200;
+}
+
+.account-menu.open .account-dropdown { display: block; }
+
+.account-dropdown a {
+  display: block;
+  padding: 10px 16px;
+  color: var(--color-text);
+  text-decoration: none;
+  font-weight: 600;
+  transition: background var(--ease), color var(--ease), padding var(--ease);
+}
+
+.account-dropdown a:hover {
+  background: rgba(230,57,70,0.12);
+  color: #fff;
+  padding-left: 20px;
+}
+
 /* =========================================
    HERO
    ========================================= */
@@ -430,6 +472,42 @@ main ul li:hover { transform: translateX(4px); border-color: rgba(230,57,70,0.35
   border-color: var(--color-accent);
 }
 
+/* =========================================
+   AUTH-FORMS (Login/Registrieren)
+   ========================================= */
+.auth-form {
+  max-width: 520px;
+  margin: 0 auto 64px;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.auth-form label {
+  font-weight: 600;
+  font-size: 0.95rem;
+  color: var(--color-text);
+}
+
+.auth-form input {
+  width: 100%;
+  padding: 12px 14px;
+  border-radius: var(--radius);
+  border: 1px solid var(--color-border);
+  background: var(--color-surface-2);
+  color: var(--color-text);
+}
+
+.auth-form input:focus {
+  outline: 2px solid rgba(106,176,255,0.55);
+  border-color: rgba(106,176,255,0.7);
+}
+
+.auth-form button[type="submit"] {
+  align-self: flex-start;
+  margin-top: 6px;
+}
+
 .fade-in {
   animation: fadeSlideIn 260ms ease;
 }
@@ -449,6 +527,8 @@ main ul li:hover { transform: translateX(4px); border-color: rgba(230,57,70,0.35
   nav.nav-open .nav-links { display: flex; }
   .theme-toggle { margin-left: 0; align-self: flex-end; }
   body { padding-top: 0; }
+  main { margin-top: 32px; }
+  .auth-form { max-width: 100%; }
 }
 
 @media (min-width: 1400px) {

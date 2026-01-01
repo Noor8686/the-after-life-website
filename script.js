@@ -25,6 +25,8 @@ document.addEventListener('DOMContentLoaded', () => {
             "nav.privacy": "Datenschutz",
             "nav.login": "Login",
             "nav.register": "Registrieren",
+            "nav.account": "Konto",
+            "nav.profile": "Profil",
             "hero.headline": "Willkommen in der Welt von The After Life",
             "hero.texts": [
                 "Ein Survival-Adventure in einer zerstoerten Zukunft.",
@@ -46,6 +48,8 @@ document.addEventListener('DOMContentLoaded', () => {
             "nav.privacy": "Privacy",
             "nav.login": "Login",
             "nav.register": "Sign up",
+            "nav.account": "Account",
+            "nav.profile": "Profile",
             "hero.headline": "Welcome to the world of The After Life",
             "hero.texts": [
                 "A survival adventure in a ruined future.",
@@ -67,8 +71,10 @@ document.addEventListener('DOMContentLoaded', () => {
         ".nav-links a[href$='mechaniken.html']": "nav.mechanics",
         ".nav-links a[href$='story.html']": "nav.story",
         ".nav-links a[href$='datenschutz.html']": "nav.privacy",
-        ".auth-links .login": "nav.login",
-        ".auth-links .register": "nav.register",
+        ".account-toggle": "nav.account",
+        ".account-dropdown .login": "nav.login",
+        ".account-dropdown .register": "nav.register",
+        ".account-dropdown .profile": "nav.profile",
         ".hero h2": "hero.headline",
         ".hero .hero-buttons .primary": "hero.btn.characters",
         ".hero .hero-buttons .secondary": "hero.btn.places",
@@ -156,21 +162,42 @@ document.addEventListener('DOMContentLoaded', () => {
 
     function setupAuthLinks() {
         const nav = document.querySelector("nav");
-        if (!nav || nav.querySelector(".auth-links")) return;
+        if (!nav || nav.querySelector(".account-menu")) return;
 
-        const auth = document.createElement("div");
-        auth.className = "auth-links";
-        auth.innerHTML = `
-            <a href="login.html" class="button secondary login">Login</a>
-            <a href="register.html" class="button primary register">Registrieren</a>
+        const menu = document.createElement("div");
+        menu.className = "account-menu";
+        menu.innerHTML = `
+            <button type="button" class="account-toggle button secondary">Konto</button>
+            <div class="account-dropdown">
+                <a href="login.html" class="login">Anmelden</a>
+                <a href="register.html" class="register">Konto erstellen</a>
+                <a href="profil.html" class="profile">Profil</a>
+            </div>
         `;
 
         const themeToggleEl = nav.querySelector(".theme-toggle");
         if (themeToggleEl) {
-            themeToggleEl.insertAdjacentElement("afterend", auth);
+            themeToggleEl.insertAdjacentElement("afterend", menu);
         } else {
-            nav.appendChild(auth);
+            nav.appendChild(menu);
         }
+
+        const toggle = menu.querySelector(".account-toggle");
+        const dropdown = menu.querySelector(".account-dropdown");
+
+        function closeMenu() {
+            menu.classList.remove("open");
+        }
+
+        toggle.addEventListener("click", (e) => {
+            e.stopPropagation();
+            menu.classList.toggle("open");
+        });
+
+        dropdown.addEventListener("click", (e) => e.stopPropagation());
+        document.addEventListener("click", (e) => {
+            if (!menu.contains(e.target)) closeMenu();
+        });
     }
 
     /* =========================================================

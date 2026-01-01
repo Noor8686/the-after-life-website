@@ -52,26 +52,35 @@
     <script>
     const API_BASE = window.API_BASE || "https://localhost:44357/api/auth";
     async function registerUser() {
-      const res = await fetch(`${API_BASE}/register`, {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        credentials: "include",
-        body: JSON.stringify({
-          name: document.getElementById("name").value,
-          email: document.getElementById("email").value,
-          password: document.getElementById("password").value,
-          confirmPassword: document.getElementById("confirmPassword").value
-        })
-      });
+      const submitBtn = document.querySelector("#register-form button[type='submit']");
+      submitBtn && (submitBtn.disabled = true);
+      try {
+        const res = await fetch(`${API_BASE}/register`, {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          credentials: "include",
+          body: JSON.stringify({
+            name: document.getElementById("name").value,
+            email: document.getElementById("email").value,
+            password: document.getElementById("password").value,
+            confirmPassword: document.getElementById("confirmPassword").value
+          })
+        });
 
-      const data = await res.json().catch(() => ({}));
+        const data = await res.json().catch(() => ({}));
 
-      if (!res.ok) {
-        alert(data.error || "Registrierung fehlgeschlagen");
-        return;
+        if (!res.ok) {
+          alert(data.error || "Registrierung fehlgeschlagen");
+          return;
+        }
+
+        window.location.href = "profil.html";
+      } catch (error) {
+        console.error(error);
+        alert("Netzwerkfehler oder CORS blockiert. Details in der Konsole.");
+      } finally {
+        submitBtn && (submitBtn.disabled = false);
       }
-
-      window.location.href = "profil.html";
     }
     </script>
     <script src="script.js"></script>

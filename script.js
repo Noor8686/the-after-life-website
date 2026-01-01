@@ -7,6 +7,11 @@ document.addEventListener('DOMContentLoaded', () => {
     const $$ = (selector) => document.querySelectorAll(selector);
 
     /* =========================================================
+       API Basis-URL (Frontend konfigurierbar)
+       ========================================================= */
+    window.API_BASE = window.API_BASE || "https://localhost:44357/api/auth";
+
+    /* =========================================================
        Sprachen / i18n (DE/EN)
        ========================================================= */
     const translations = {
@@ -638,7 +643,8 @@ document.addEventListener('DOMContentLoaded', () => {
 
 
 async function checkMe() {
-  const res = await fetch("https://localhost:44357/api/auth/me", {
+  const api = window.API_BASE || "https://localhost:44357/api/auth";
+  const res = await fetch(`${api}/me`, {
     credentials: "include"
   });
 

@@ -41,8 +41,9 @@
     </main>
 
     <script>
+    const API_BASE = window.API_BASE || "https://localhost:44357/api/auth";
     async function login() {
-      const res = await fetch("https://localhost:44357/api/auth/login", {
+      const res = await fetch(`${API_BASE}/login`, {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         credentials: "include",

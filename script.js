@@ -162,25 +162,31 @@ document.addEventListener('DOMContentLoaded', () => {
 
     function setupAuthLinks() {
         const nav = document.querySelector("nav");
-        if (!nav || nav.querySelector(".account-menu")) return;
+        if (!nav) return;
 
-        const menu = document.createElement("div");
-        menu.className = "account-menu";
-        menu.innerHTML = `
-            <button type="button" class="account-toggle button secondary">Konto</button>
-            <div class="account-dropdown">
-                <a href="login.html" class="login">Anmelden</a>
-                <a href="register.html" class="register">Konto erstellen</a>
-                <a href="profil.html" class="profile">Profil</a>
-            </div>
-        `;
+        let menu = nav.querySelector(".account-menu");
+        if (!menu) {
+            menu = document.createElement("div");
+            menu.className = "account-menu";
+            menu.innerHTML = `
+                <button type="button" class="account-toggle button secondary">Konto</button>
+                <div class="account-dropdown">
+                    <a href="login.html" class="login">Anmelden</a>
+                    <a href="register.html" class="register">Konto erstellen</a>
+                    <a href="profil.html" class="profile">Profil</a>
+                </div>
+            `;
 
-        const themeToggleEl = nav.querySelector(".theme-toggle");
-        if (themeToggleEl) {
-            themeToggleEl.insertAdjacentElement("afterend", menu);
-        } else {
-            nav.appendChild(menu);
+            const themeToggleEl = nav.querySelector(".theme-toggle");
+            if (themeToggleEl) {
+                themeToggleEl.insertAdjacentElement("afterend", menu);
+            } else {
+                nav.appendChild(menu);
+            }
         }
+
+        // avoid double-binding
+        if (menu.dataset.bound === "true") return;
 
         const toggle = menu.querySelector(".account-toggle");
         const dropdown = menu.querySelector(".account-dropdown");
@@ -189,15 +195,23 @@ document.addEventListener('DOMContentLoaded', () => {
             menu.classList.remove("open");
         }
 
-        toggle.addEventListener("click", (e) => {
-            e.stopPropagation();
-            menu.classList.toggle("open");
-        });
+        if (toggle) {
+            toggle.setAttribute("aria-expanded", "false");
 
-        dropdown.addEventListener("click", (e) => e.stopPropagation());
+            toggle.addEventListener("click", (e) => {
+                e.stopPropagation();
+                const isOpen = menu.classList.toggle("open");
+                toggle.setAttribute("aria-expanded", isOpen ? "true" : "false");
+            });
+        }
+        if (dropdown) {
+            dropdown.addEventListener("click", (e) => e.stopPropagation());
+        }
         document.addEventListener("click", (e) => {
             if (!menu.contains(e.target)) closeMenu();
         });
+
+        menu.dataset.bound = "true";
     }
 
     /* =========================================================

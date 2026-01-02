@@ -185,6 +185,12 @@ nav a.active {
 
 .account-menu.open .account-dropdown { display: block; }
 
+/* Fallback: open dropdown on hover/focus to avoid JS hiccups */
+.account-menu:focus-within .account-dropdown,
+.account-menu:hover .account-dropdown {
+  display: block;
+}
+
 .account-dropdown a {
   display: block;
   padding: 10px 16px;

@@ -6,7 +6,8 @@
     <title>Registrierung - The After Life</title>
     <link rel="stylesheet" href="style.css">
     <script>
-        window.API_BASE = "https://localhost:44357/api/auth";
+        // API-Basis passt sich automatisch an (localhost oder 127.0.0.1)
+        window.API_BASE = "/api";
     </script>
 </head>
 <body>
@@ -39,7 +40,7 @@
     </header>
 
     <main class="reveal">
-        <form id="register-form" class="auth-form" onsubmit="event.preventDefault(); registerUser();">
+        <form id="register-form" class="auth-form">
             <label for="name">Name</label>
             <input id="name" name="name" type="text" required>
 
@@ -57,40 +58,7 @@
         </form>
     </main>
 
-    <script>
-    const API_BASE = window.API_BASE || "https://localhost:44357/api/auth";
-    async function registerUser() {
-      const submitBtn = document.querySelector("#register-form button[type='submit']");
-      submitBtn && (submitBtn.disabled = true);
-      try {
-        const res = await fetch(`${API_BASE}/register`, {
-          method: "POST",
-          headers: { "Content-Type": "application/json" },
-          credentials: "include",
-          body: JSON.stringify({
-            name: document.getElementById("name").value,
-            email: document.getElementById("email").value,
-            password: document.getElementById("password").value,
-            confirmPassword: document.getElementById("confirmPassword").value
-          })
-        });
-
-        const data = await res.json().catch(() => ({}));
-
-        if (!res.ok) {
-          alert(data.error || "Registrierung fehlgeschlagen");
-          return;
-        }
-
-        window.location.href = "profil.html";
-      } catch (error) {
-        console.error(error);
-        alert("Netzwerkfehler oder CORS blockiert. Details in der Konsole.");
-      } finally {
-        submitBtn && (submitBtn.disabled = false);
-      }
-    }
-    </script>
+    <script src="app.js"></script>
     <script src="script.js"></script>
 </body>
 </html>

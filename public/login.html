@@ -6,7 +6,8 @@
     <title>Login - The After Life</title>
     <link rel="stylesheet" href="style.css">
     <script>
-        window.API_BASE = "https://localhost:44357/api/auth";
+        // API-Basis passt sich automatisch an (localhost oder 127.0.0.1)
+        window.API_BASE = "/api";
     </script>
 </head>
 <body>
@@ -39,7 +40,7 @@
     </header>
 
     <main class="reveal">
-        <form id="login-form" class="auth-form" onsubmit="event.preventDefault(); login();">
+        <form id="login-form" class="auth-form">
             <label for="email">E-Mail</label>
             <input id="email" name="email" type="email" required>
 
@@ -51,30 +52,7 @@
         </form>
     </main>
 
-    <script>
-    const API_BASE = window.API_BASE || "https://localhost:44357/api/auth";
-    async function login() {
-      const res = await fetch(`${API_BASE}/login`, {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        credentials: "include",
-        body: JSON.stringify({
-          email: document.getElementById("email").value,
-          password: document.getElementById("password").value,
-          rememberMe: true
-        })
-      });
-
-      const data = await res.json().catch(() => ({}));
-
-      if (!res.ok) {
-        alert(data.error || "Login fehlgeschlagen");
-        return;
-      }
-
-      window.location.href = "profil.html";
-    }
-    </script>
+    <script src="app.js"></script>
     <script src="script.js"></script>
 </body>
 </html>

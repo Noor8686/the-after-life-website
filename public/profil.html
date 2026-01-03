@@ -6,10 +6,10 @@
     <title>Profil - The After Life</title>
     <link rel="stylesheet" href="style.css">
     <script>
-        window.API_BASE = "https://localhost:44357/api/auth";
+        window.API_BASE = "/api";
     </script>
 </head>
-<body onload="checkMe()">
+<body>
     <header class="reveal">
         <h1>Profil</h1>
         <p>Hier siehst du deine Session. Wenn du nicht eingeloggt bist, wirst du weitergeleitet.</p>
@@ -19,9 +19,7 @@
         <h2 id="meInfo">Lade Profil...</h2>
     </main>
 
-    <script>
-      const API_BASE = window.API_BASE || "https://localhost:44357/api/auth";
-    </script>
+    <script src="app.js"></script>
     <script src="script.js"></script>
 </body>
 </html>

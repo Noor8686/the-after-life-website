@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+    <meta charset="UTF-8">
+    <!-- WICHTIG fuer Handy & Tablet: -->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="The After Life: Survival-Adventure auf einer Insel. Baue deine Siedlung, triff Entscheidungen und erlebe die Story von Wolfram und Max.">
+    <meta name="keywords" content="The After Life, Survival Game, Indie Game, Siedlungsbau, Adventure, Game Design Document, Wolfram, Max">
+    <meta name="robots" content="index,follow">
+    <meta property="og:title" content="The After Life - Game Projekt">
+    <meta property="og:description" content="Survival-Adventure in einer zerstoerten Zukunft: Erkunde, baue eine Siedlung und schreibe deine Story.">
+    <meta property="og:type" content="website">
+    <meta property="og:locale" content="de_DE">
+    <meta property="og:image" content="pictures/image.jpg">
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="The After Life - Game Projekt">
+    <meta name="twitter:description" content="Erlebe das Survival-Adventure, baue deine Basis und entscheide ueber das Schicksal der Insel.">
+    <title>The After Life - Game Projekt</title>
+    <link rel="stylesheet" href="style.css">
+    <script>
+        // API-Basis passt sich automatisch an (localhost oder 127.0.0.1)
+        window.API_BASE = "/api";
+    </script>
+</head>
+<body id="top">
+
+    <!-- Navigation -->
+    <nav aria-label="Hauptnavigation">
+        <!-- Hamburger-Icon fuer Handy -->
+        <button class="nav-toggle" aria-label="Menue oeffnen oder schliessen">Menu</button>
+
+        <!-- Link-Bereich -->
+        <div class="nav-links">
+            <a href="index.html" class="active">Ueberblick</a>
+            <a href="charaktere.html">Charaktere</a>
+            <a href="orte.html">Orte</a>
+            <a href="mechaniken.html">Spielmechaniken</a>
+            <a href="story.html">Story &amp; Team</a>
+            <a href="datenschutz.html">Datenschutz</a>
+        </div>
+
+        <!-- Theme-Umschalter -->
+        <button class="theme-toggle" aria-label="Design umschalten">MOON</button>
+        <div class="account-menu">
+            <button type="button" class="account-toggle button secondary">Konto</button>
+            <div class="account-dropdown">
+                <a href="login.html" class="login">Anmelden</a>
+                <a href="register.html" class="register">Konto erstellen</a>
+                <a href="profil.html" class="profile">Profil</a>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Kopfbereich -->
+    <header class="reveal">
+        <h1>The After Life</h1>
+        <p>Platformer - Survival Adventure - Indie Game</p>
+    </header>
+
+    <!-- Hero-Bereich -->
+    <div class="hero">
+        <div class="hero-content">
+            <h2 class="reveal">Willkommen in der Welt von The After Life</h2>
+            <p id="hero-text" class="reveal typewriter">
+              Ein Survival-Adventure in einer zerstoerten Zukunft.
+            </p>
+
+            <div class="hero-buttons reveal">
+                <a href="charaktere.html" class="button primary">Charaktere</a>
+                <a href="orte.html" class="button secondary">Orte ansehen</a>
+            </div>
+        </div>
+    </div>
+
+    <!-- Hauptinhalt -->
+    <main>
+
+        <!-- Kurzueberblick -->
+        <section class="reveal">
+            <h2>Ueber das Projekt</h2>
+            <p>
+                <strong>The After Life</strong> ist ein Game-Design-Projekt aus dem
+                Wahlfach Gamedesign und wurde als Kombination aus Game-Konzept
+                und Webentwicklung umgesetzt. Im Mittelpunkt stehen Ueberleben,
+                Siedlungsbau und die Frage, wie eine neue Zivilisation nach dem
+                Zusammenbruch aussehen kann.
+            </p>
+        </section>
+
+        <!-- Charakter-Teaser -->
+        <section>
+            <h2 class="reveal">Charaktere</h2>
+
+            <div class="grid-characters">
+
+                <article class="char-box reveal reveal-zoom">
+                    <img src="pictures/GDDWolfram4x.png"
+                         alt="Wolfram, 43-jaehriger Ueberlebender"
+                         loading="lazy">
+                    <h3>Wolfram</h3>
+                    <p>
+                        43 Jahre alt, einer der letzten Ueberlebenden und
+                        zukuenftiger Siedlungsfuehrer. Vom einfachen Camper
+                        zum Anfuehrer einer neuen Gemeinschaft.
+                    </p>
+                    <a href="charaktere.html" class="button secondary">
+                        Mehr ueber Wolfram
+                    </a>
+                </article>
+
+                <article class="char-box reveal reveal-zoom">
+                    <img src="pictures/GDDMax4x.png"
+                         alt="Hund Max, Wolframs Begleiter"
+                         loading="lazy">
+                    <h3>Max</h3>
+                    <p>
+                        Der treue Begleiter und Beschuetzer, der Wolfram auf
+                        seinen Wegen begleitet, vor Gefahren warnt und
+                        ihm Halt gibt.
+                    </p>
+                    <a href="charaktere.html" class="button secondary">
+                        Zum Charakterprofil
+                    </a>
+                </article>
+
+            </div>
+        </section>
+
+        <!-- Link zur Story / GDD -->
+        <section class="reveal">
+            <h2>Mehr zur Story &amp; zum Game Design</h2>
+            <p>
+                Auf den Unterseiten findest du Details zur Story, den
+                Spielmechaniken und den wichtigsten Orten der Spielwelt.
+                Das vollstaendige Game Design Document (GDD) ist zusaetzlich
+                auf der Story-Seite verlinkt.
+            </p>
+            <a href="story.html" class="button">
+                Zur Story &amp; Team
+            </a>
+        </section>
+
+    </main>
+
+    <footer>
+        &copy; 2025 The After Life - Game Projekt (c) Noorollah Mousavi
+    </footer>
+
+    <!-- Zur-Top-Schaltflaeche -->
+    <a href="#top" class="top-btn">Top</a>
+
+    <!-- Externe JavaScript-Datei -->
+    <script src="script.js"></script>
+</body>
+</html>

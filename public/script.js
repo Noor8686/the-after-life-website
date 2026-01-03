@@ -9,7 +9,7 @@ document.addEventListener('DOMContentLoaded', () => {
     /* =========================================================
        API Basis-URL (Frontend konfigurierbar)
        ========================================================= */
-    window.API_BASE = window.API_BASE || "https://localhost:44357/api/auth";
+    window.API_BASE = window.API_BASE || "/api";
 
     /* =========================================================
        Sprachen / i18n (DE/EN)
@@ -219,11 +219,14 @@ document.addEventListener('DOMContentLoaded', () => {
        ========================================================= */
     const fetchCache = {};
     async function fetchJSON(url) {
-        if (fetchCache[url]) return fetchCache[url];
-        const res = await fetch(url);
+        const fullUrl = url.startsWith("http") || url.startsWith("/")
+            ? url
+            : url; // relative fetch from current page (public/)
+        if (fetchCache[fullUrl]) return fetchCache[fullUrl];
+        const res = await fetch(fullUrl);
         if (!res.ok) throw new Error(`HTTP ${res.status} beim Laden von ${url}`);
         const data = await res.json();
-        fetchCache[url] = data;
+        fetchCache[fullUrl] = data;
         return data;
     }
 
@@ -684,29 +687,32 @@ document.addEventListener('DOMContentLoaded', () => {
 
 
 async function checkMe() {
-  const api = window.API_BASE || "https://localhost:44357/api/auth";
-  const res = await fetch(`${api}/me`, {
-    credentials: "include"
-  });
+  const api = window.API_BASE || "/api";
+  try {
+    const res = await fetch(`${api}/me.php`, {
+      credentials: "include"
+    });
 
-  if (!res.ok) {
-    // nicht eingeloggt -> zurueck zum Login
+    if (!res.ok) {
+      window.location.href = "login.html";
+      return;
+    }
+
+    const me = await res.json();
+    const infoTarget = document.getElementById("meInfo");
+    const i18n = window.tafI18n;
+    if (infoTarget) {
+      const template = i18n?.t
+        ? i18n.t("profile.loggedIn", "Eingeloggt als: {name} ({email})")
+        : "Eingeloggt als: {name} ({email})";
+      const text = i18n?.format
+        ? i18n.format(template, { name: me.name, email: me.email })
+        : `Eingeloggt als: ${me.name} (${me.email})`;
+      infoTarget.innerText = text;
+    } else {
+      console.log("Eingeloggt als:", me.name, me.email);
+    }
+  } catch (err) {
     window.location.href = "login.html";
-    return;
-  }
-
-  const me = await res.json();
-  const infoTarget = document.getElementById("meInfo");
-  const i18n = window.tafI18n;
-  if (infoTarget) {
-    const template = i18n?.t
-      ? i18n.t("profile.loggedIn", "Eingeloggt als: {name} ({email})")
-      : "Eingeloggt als: {name} ({email})";
-    const text = i18n?.format
-      ? i18n.format(template, { name: me.name, email: me.email })
-      : `Eingeloggt als: ${me.name} (${me.email})`;
-    infoTarget.innerText = text;
-  } else {
-    console.log("Eingeloggt als:", me.name, me.email);
   }
 }

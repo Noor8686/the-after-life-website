@@ -43,11 +43,12 @@ if (strlen($passwordPlain) < 6) {
 $passwordHash = password_hash($passwordPlain, PASSWORD_DEFAULT);
 
 try {
-    $stmt = $db->prepare('INSERT INTO users (name, email, password) VALUES (:name, :email, :password)');
+    $stmt = $db->prepare('INSERT INTO users (name, email, password, role) VALUES (:name, :email, :password, :role)');
     $stmt->execute([
         ':name' => $name,
         ':email' => $email,
         ':password' => $passwordHash,
+        ':role' => 'user',
     ]);
 
     $_SESSION['user_id'] = (int) $db->lastInsertId();

@@ -26,8 +26,8 @@ if (!$name || !$email || !$password) {
 $hashedPassword = password_hash($password, PASSWORD_DEFAULT);
 
 // User hinzufügen
-$stmt = $pdo->prepare("INSERT INTO users (name, email, password) VALUES (?, ?, ?)");
-$stmt->execute([$name, $email, $hashedPassword]);
+$stmt = $pdo->prepare("INSERT INTO users (name, email, password, role) VALUES (?, ?, ?, ?)");
+$stmt->execute([$name, $email, $hashedPassword, 'user']);
 
 echo json_encode(["success" => true, "id" => $pdo->lastInsertId()]);
 ?>

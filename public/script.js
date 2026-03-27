@@ -262,7 +262,7 @@ document.addEventListener('DOMContentLoaded', () => {
             profileLink && (profileLink.style.display = 'block');
             logoutLink && (logoutLink.style.display = 'block');
             if (adminLink) {
-                adminLink.style.display = me.id === 1 ? 'block' : 'none';
+                adminLink.style.display = me.role === 'admin' ? 'block' : 'none';
             }
 
             if (toggle) {

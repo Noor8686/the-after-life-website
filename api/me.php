@@ -23,7 +23,7 @@ if (!isset($_SESSION['user_id'])) {
     respond(['error' => 'Nicht eingeloggt'], 401);
 }
 
-$stmt = $db->prepare('SELECT id, name, email FROM users WHERE id = :id LIMIT 1');
+$stmt = $db->prepare('SELECT id, name, email, role FROM users WHERE id = :id LIMIT 1');
 $stmt->execute([':id' => $_SESSION['user_id']]);
 $user = $stmt->fetch();
 
@@ -36,4 +36,5 @@ respond([
     'id' => (int) $user['id'],
     'name' => $user['name'],
     'email' => $user['email'],
+    'role' => $user['role'],
 ]);

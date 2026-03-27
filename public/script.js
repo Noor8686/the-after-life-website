@@ -185,6 +185,38 @@ document.addEventListener('DOMContentLoaded', () => {
             } else {
                 nav.appendChild(menu);
             }
+        } else {
+            const dropdown = menu.querySelector('.account-dropdown');
+            if (!dropdown) {
+                const html = `
+                    <a href="login.html" class="login">Anmelden</a>
+                    <a href="register.html" class="register">Konto erstellen</a>
+                    <a href="profil.html" class="profile">Profil</a>
+                    <a href="users.html" class="admin" style="display:none;">Admin-Bereich</a>
+                    <a href="#" class="logout" style="display:none;">Logout</a>
+                `;
+                const div = document.createElement('div');
+                div.className = 'account-dropdown';
+                div.innerHTML = html;
+                menu.appendChild(div);
+            } else {
+                const ensureLink = (selector, href, text) => {
+                    let link = dropdown.querySelector(selector);
+                    if (!link) {
+                        link = document.createElement('a');
+                        link.href = href;
+                        link.className = selector.replace('.', '');
+                        link.textContent = text;
+                        if (selector === '.admin' || selector === '.logout') link.style.display = 'none';
+                        dropdown.appendChild(link);
+                    }
+                };
+                ensureLink('.login', 'login.html', 'Anmelden');
+                ensureLink('.register', 'register.html', 'Konto erstellen');
+                ensureLink('.profile', 'profil.html', 'Profil');
+                ensureLink('.admin', 'users.html', 'Admin-Bereich');
+                ensureLink('.logout', '#', 'Logout');
+            }
         }
 
         // avoid double-binding

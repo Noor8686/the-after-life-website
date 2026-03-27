@@ -36,7 +36,8 @@
         password
       };
       await apiPost("register.php", payload);
-      window.location.href = "profil.html";
+      // Nach Registrierung ebenfalls Startseite anzeigen
+      window.location.href = "index.html";
     } catch (err) {
       alert(err.message || "Registrierung fehlgeschlagen");
     } finally {
@@ -56,7 +57,19 @@
         password: form.password.value
       };
       await apiPost("login.php", payload);
-      window.location.href = "profil.html";
+
+      // Admin-Redirect: wenn Administrator, gehe zu users.html
+      try {
+        const me = await fetchMe();
+        if (me.role === 'admin') {
+          window.location.href = "users.html";
+          return;
+        }
+      } catch (e) {
+        // Wenn kein me, weiter zur Oberfläche
+      }
+
+      window.location.href = "index.html";
     } catch (err) {
       alert(err.message || "Login fehlgeschlagen");
     } finally {
@@ -86,6 +99,18 @@
         ? i18n.format(template, { name: me.name, email: me.email })
         : `Eingeloggt als: ${me.name} (${me.email})`;
       infoTarget.innerText = text;
+
+      if (me.role === 'admin') {
+        let adminLink = document.getElementById('admin-panel-link');
+        if (!adminLink) {
+          adminLink = document.createElement('a');
+          adminLink.id = 'admin-panel-link';
+          adminLink.href = 'users.html';
+          adminLink.className = 'button secondary';
+          adminLink.textContent = 'Admin-Bereich öffnen';
+          infoTarget.insertAdjacentElement('afterend', adminLink);
+        }
+      }
     } catch (err) {
       window.location.href = "login.html";
     }

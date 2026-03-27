@@ -17,20 +17,22 @@
 
     <main class="reveal">
         <button onclick="logout()">Logout</button>
-        <h2>Neuen Benutzer hinzufügen</h2>
+        <h2>Neue Benutzer hinzufügen</h2>
         <form id="addUserForm">
             <input type="text" id="newName" placeholder="Name" required>
             <input type="email" id="newEmail" placeholder="Email" required>
             <input type="password" id="newPassword" placeholder="Passwort" required>
             <button type="submit">Hinzufügen</button>
         </form>
-        <h2>Benutzerliste</h2>
+        <h2>Benutzerverwaltung</h2>
+        <input type="text" id="searchUsers" placeholder="Benutzer durchsuchen (Name/Email)" style="width: 100%; padding: 10px; margin-bottom: 10px; border-radius: 8px; border: 1px solid #ccc; background: rgba(255,255,255,0.1); color: #fff;">
         <table id="userTable">
             <thead>
                 <tr>
                     <th>ID</th>
                     <th>Name</th>
                     <th>Email</th>
+                    <th>Rolle</th>
                     <th>Aktion</th>
                 </tr>
             </thead>
@@ -40,9 +42,23 @@
         </table>
     </main>
 
-    <script src="app.js"></script>
-    <script src="script.js"></script>
+    <!-- Edit Modal -->
+    <div id="editModal" style="display: none; position: fixed; top: 0; left: 0; right: 0; bottom: 0; background: rgba(0,0,0,0.5); z-index: 1000; justify-content: center; align-items: center;">
+        <div style="background: #1a1f2e; padding: 20px; border-radius: 12px; min-width: 300px; box-shadow: 0 10px 40px rgba(0,0,0,0.5);">
+            <h3>Benutzer bearbeiten</h3>
+            <form id="editUserForm">
+                <input type="hidden" id="editUserId">
+                <input type="text" id="editName" placeholder="Name" required style="display: block; width: 100%; margin: 10px 0; padding: 8px; border-radius: 6px; border: 1px solid #444; background: rgba(255,255,255,0.1); color: #fff;">
+                <input type="email" id="editEmail" placeholder="Email" required style="display: block; width: 100%; margin: 10px 0; padding: 8px; border-radius: 6px; border: 1px solid #444; background: rgba(255,255,255,0.1); color: #fff;">
+                <button type="submit" style="margin-right: 10px;">Speichern</button>
+                <button type="button" onclick="closeEditModal()">Abbrechen</button>
+            </form>
+        </div>
+    </div>
+
     <script>
+        let allUsers = [];
+
         async function loadUsers() {
             const res = await fetch('/api/users.php', {
                 credentials: 'include'
@@ -53,8 +69,13 @@
                 return;
             }
 
-            const users = await res.json();
+            allUsers = await res.json();
+            renderUsers(allUsers);
+        }
+
+        function renderUsers(users) {
             const tableBody = document.querySelector("#userTable tbody");
+            tableBody.innerHTML = '';
 
             users.forEach(user => {
                 const row = document.createElement("tr");
@@ -64,12 +85,61 @@
                     <td>${user.name}</td>
                     <td>${user.email}</td>
                     <td>
+                        <select onchange="changeRole(${user.id}, this.value)" style="padding: 5px; border-radius: 4px; border: 1px solid #444; background: rgba(255,255,255,0.1); color: #fff;">
+                            <option value="user" ${user.role === 'user' ? 'selected' : ''}>User</option>
+                            <option value="admin" ${user.role === 'admin' ? 'selected' : ''}>Admin</option>
+                        </select>
+                    </td>
+                    <td>
+                        <button onclick="openEditModal(${user.id}, '${user.name}', '${user.email}')" style="margin-right: 5px;">Bearbeiten</button>
                         <button onclick="deleteUser(${user.id})">Löschen</button>
                     </td>
                 `;
 
                 tableBody.appendChild(row);
             });
+        }
+
+        function filterUsers() {
+            const searchTerm = document.getElementById('searchUsers').value.toLowerCase();
+            const filtered = allUsers.filter(user => 
+                user.name.toLowerCase().includes(searchTerm) || 
+                user.email.toLowerCase().includes(searchTerm)
+            );
+            renderUsers(filtered);
+        }
+
+        function openEditModal(id, name, email) {
+            document.getElementById('editUserId').value = id;
+            document.getElementById('editName').value = name;
+            document.getElementById('editEmail').value = email;
+            document.getElementById('editModal').style.display = 'flex';
+        }
+
+        function closeEditModal() {
+            document.getElementById('editModal').style.display = 'none';
+        }
+
+        async function changeRole(id, role) {
+            if (!confirm(`Rolle zu "${role}" wechseln?`)) return;
+
+            const res = await fetch('/api/change_role.php', {
+                method: 'POST',
+                credentials: 'include',
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify({ id, role })
+            });
+
+            const data = await res.json();
+
+            if (data.success) {
+                alert("Rolle aktualisiert");
+                loadUsers();
+            } else {
+                alert("Fehler: " + (data.error || "Unbekannt"));
+            }
         }
 
         async function deleteUser(id) {
@@ -88,7 +158,7 @@
 
             if (data.success) {
                 alert("User gelöscht");
-                location.reload();
+                loadUsers();
             } else {
                 alert("Fehler: " + (data.error || "Unbekannt"));
             }
@@ -118,11 +188,41 @@
             if (data.success) {
                 alert("User hinzugefügt");
                 document.getElementById('addUserForm').reset();
-                loadUsers(); // Liste neu laden
+                loadUsers();
             } else {
                 alert("Fehler: " + (data.error || "Unbekannt"));
             }
         });
+
+        // Edit Form Submit
+        document.getElementById('editUserForm').addEventListener('submit', async (e) => {
+            e.preventDefault();
+            const id = document.getElementById('editUserId').value;
+            const name = document.getElementById('editName').value;
+            const email = document.getElementById('editEmail').value;
+
+            const res = await fetch('/api/edit_user.php', {
+                method: 'POST',
+                credentials: 'include',
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify({ id, name, email })
+            });
+
+            const data = await res.json();
+
+            if (data.success) {
+                alert("Benutzer aktualisiert");
+                closeEditModal();
+                loadUsers();
+            } else {
+                alert("Fehler: " + (data.error || "Unbekannt"));
+            }
+        });
+
+        // Search Live-Filter
+        document.getElementById('searchUsers').addEventListener('keyup', filterUsers);
 
         async function logout() {
             const res = await fetch('/api/logout.php', {

@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Benutzerverwaltung - The After Life</title>
+    <link rel="stylesheet" href="style.css">
+    <script>
+        window.API_BASE = "/api";
+    </script>
+</head>
+<body>
+    <header class="reveal">
+        <h1>Benutzerverwaltung</h1>
+        <p>Nur für Administratoren.</p>
+    </header>
+
+    <main class="reveal">
+        <button onclick="logout()">Logout</button>
+        <h2>Neuen Benutzer hinzufügen</h2>
+        <form id="addUserForm">
+            <input type="text" id="newName" placeholder="Name" required>
+            <input type="email" id="newEmail" placeholder="Email" required>
+            <input type="password" id="newPassword" placeholder="Passwort" required>
+            <button type="submit">Hinzufügen</button>
+        </form>
+        <h2>Benutzerliste</h2>
+        <table id="userTable">
+            <thead>
+                <tr>
+                    <th>ID</th>
+                    <th>Name</th>
+                    <th>Email</th>
+                    <th>Aktion</th>
+                </tr>
+            </thead>
+            <tbody>
+                <!-- Benutzer werden hier geladen -->
+            </tbody>
+        </table>
+    </main>
+
+    <script src="app.js"></script>
+    <script src="script.js"></script>
+    <script>
+        async function loadUsers() {
+            const res = await fetch('/api/users.php', {
+                credentials: 'include'
+            });
+
+            if (!res.ok) {
+                alert('Kein Zugriff oder Fehler');
+                return;
+            }
+
+            const users = await res.json();
+            const tableBody = document.querySelector("#userTable tbody");
+
+            users.forEach(user => {
+                const row = document.createElement("tr");
+
+                row.innerHTML = `
+                    <td>${user.id}</td>
+                    <td>${user.name}</td>
+                    <td>${user.email}</td>
+                    <td>
+                        <button onclick="deleteUser(${user.id})">Löschen</button>
+                    </td>
+                `;
+
+                tableBody.appendChild(row);
+            });
+        }
+
+        async function deleteUser(id) {
+            if (!confirm("Wirklich löschen?")) return;
+
+            const res = await fetch('/api/delete_user.php', {
+                method: 'POST',
+                credentials: 'include',
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify({ id })
+            });
+
+            const data = await res.json();
+
+            if (data.success) {
+                alert("User gelöscht");
+                location.reload();
+            } else {
+                alert("Fehler: " + (data.error || "Unbekannt"));
+            }
+        }
+
+        // Beim Laden der Seite Benutzer laden
+        loadUsers();
+
+        // Form für neuen Benutzer
+        document.getElementById('addUserForm').addEventListener('submit', async (e) => {
+            e.preventDefault();
+            const name = document.getElementById('newName').value;
+            const email = document.getElementById('newEmail').value;
+            const password = document.getElementById('newPassword').value;
+
+            const res = await fetch('/api/add_user.php', {
+                method: 'POST',
+                credentials: 'include',
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify({ name, email, password })
+            });
+
+            const data = await res.json();
+
+            if (data.success) {
+                alert("User hinzugefügt");
+                document.getElementById('addUserForm').reset();
+                loadUsers(); // Liste neu laden
+            } else {
+                alert("Fehler: " + (data.error || "Unbekannt"));
+            }
+        });
+
+        async function logout() {
+            const res = await fetch('/api/logout.php', {
+                method: 'POST',
+                credentials: 'include'
+            });
+
+            const data = await res.json();
+
+            if (data.success) {
+                window.location.href = 'login.html';
+            }
+        }
+    </script>
+</body>
+</html>

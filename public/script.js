@@ -174,6 +174,8 @@ document.addEventListener('DOMContentLoaded', () => {
                     <a href="login.html" class="login">Anmelden</a>
                     <a href="register.html" class="register">Konto erstellen</a>
                     <a href="profil.html" class="profile">Profil</a>
+                    <a href="users.html" class="admin" style="display:none;">Admin-Bereich</a>
+                    <a href="#" class="logout" style="display:none;">Logout</a>
                 </div>
             `;
 
@@ -211,7 +213,72 @@ document.addEventListener('DOMContentLoaded', () => {
             if (!menu.contains(e.target)) closeMenu();
         });
 
+        const logoutLink = menu.querySelector('.account-dropdown .logout');
+        if (logoutLink) {
+            logoutLink.addEventListener('click', async (event) => {
+                event.preventDefault();
+                try {
+                    const res = await fetch(`${window.API_BASE}/logout.php`, {
+                        method: 'POST',
+                        credentials: 'include'
+                    });
+                    if (res.ok) {
+                        updateAccountMenu();
+                        window.location.href = 'login.html';
+                    }
+                } catch (err) {
+                    console.error('Logout fehlgeschlagen', err);
+                }
+            });
+        }
+
         menu.dataset.bound = "true";
+
+        // Direkt initialisieren, um Login-Zustand im Menü anzuzeigen
+        updateAccountMenu();
+    }
+
+    async function updateAccountMenu() {
+        const menu = document.querySelector('.account-menu');
+        if (!menu) return;
+
+        const loginLink = menu.querySelector('.account-dropdown .login');
+        const registerLink = menu.querySelector('.account-dropdown .register');
+        const profileLink = menu.querySelector('.account-dropdown .profile');
+        const adminLink = menu.querySelector('.account-dropdown .admin');
+        const logoutLink = menu.querySelector('.account-dropdown .logout');
+        const toggle = menu.querySelector('.account-toggle');
+
+        try {
+            const res = await fetch(`${window.API_BASE}/me.php`, {
+                credentials: 'include'
+            });
+
+            if (!res.ok) throw new Error('Nicht eingeloggt');
+            const me = await res.json();
+
+            loginLink && (loginLink.style.display = 'none');
+            registerLink && (registerLink.style.display = 'none');
+            profileLink && (profileLink.style.display = 'block');
+            logoutLink && (logoutLink.style.display = 'block');
+            if (adminLink) {
+                adminLink.style.display = me.id === 1 ? 'block' : 'none';
+            }
+
+            if (toggle) {
+                toggle.textContent = `Hi ${me.name}`;
+            }
+        } catch (err) {
+            loginLink && (loginLink.style.display = 'block');
+            registerLink && (registerLink.style.display = 'block');
+            profileLink && (profileLink.style.display = 'none');
+            adminLink && (adminLink.style.display = 'none');
+            logoutLink && (logoutLink.style.display = 'none');
+
+            if (toggle) {
+                toggle.textContent = 'Konto';
+            }
+        }
     }
 
     /* =========================================================
